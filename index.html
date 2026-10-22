@@ -6,8 +6,9 @@
   <meta name="description" content="Enva Tours — Bitácora y Cuadro de Liquidaciones Lighthouse Cancún">
   <meta name="theme-color" content="#0A1926">
 
-  <!-- Favicon vectorial SVG seguro embebido -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A1926'/%3E%3Cpath d='M16 6 L22 24 L16 20 L10 24 Z' fill='%23BD5307'/%3E%3Ccircle cx='16' cy='14' r='2.5' fill='%23FAF9F5'/%3E%3C/svg%3E">
+  <!-- Favicon oficial con Logo1.png y respaldo seguro -->
+  <link rel="icon" type="image/png" href="https://beamazingcolors.github.io/Clearboat/Logo1.png">
+  <link rel="apple-touch-icon" href="https://beamazingcolors.github.io/Clearboat/Logo1.png">
 
   <title id="pageTitle">Enva Tours — Bitácora Operativa & Liquidaciones</title>
 
@@ -110,14 +111,24 @@
 
   <!-- GATEKEEPER: ACCESO CON USUARIO Y CONTRASEÑA -->
   <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-editorial-cream/95 dark:bg-[#070D14]/95 backdrop-blur-md p-4 transition-opacity duration-300">
-    <div id="loginCard" class="bg-white dark:bg-[#121921] w-full max-w-sm p-8 sm:p-9 rounded-3xl hairline-border shadow-xl space-y-6">
+    <div id="loginCard" class="bg-white dark:bg-[#121921] w-full max-w-sm p-6 sm:p-9 rounded-3xl hairline-border shadow-xl space-y-5 sm:space-y-6">
       
-      <!-- Encabezado de Autenticación -->
-      <div class="text-center space-y-1.5">
-        <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] block">Lighthouse Cancún</span>
-        <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase tracking-tight">
-          Enva Tours
-        </h2>
+      <!-- Encabezado de Autenticación con Logo1.png -->
+      <div class="text-center space-y-2">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 mx-auto rounded-2xl bg-neutral-50 dark:bg-[#070D14] p-2 hairline-border shadow-sm flex items-center justify-center overflow-hidden">
+          <img 
+            src="https://beamazingcolors.github.io/Clearboat/Logo1.png" 
+            alt="Logo Enva Tours" 
+            class="w-full h-full object-contain"
+            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo1.png';"
+          />
+        </div>
+        <div>
+          <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] block">Lighthouse Cancún</span>
+          <h2 class="font-serif text-lg sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase tracking-tight">
+            Enva Tours
+          </h2>
+        </div>
       </div>
 
       <!-- Feedback de Validación -->
@@ -173,20 +184,25 @@
 
   <!-- NAVEGACIÓN PRINCIPAL -->
   <header class="sticky top-0 z-40 bg-editorial-cream/90 dark:bg-[#070D14]/90 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800 transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3.5 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 flex items-center justify-between">
       
-      <!-- Brand -->
-      <a href="#resumen" class="flex items-center gap-3 group focus:outline-none">
-        <div class="w-9 h-9 rounded-xl bg-[#0A1926] dark:bg-[#BD5307] flex items-center justify-center text-white font-serif font-bold text-sm tracking-widest shadow-sm">
-          ET
+      <!-- Brand con Logo1.png -->
+      <a href="#resumen" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white dark:bg-[#121921] p-1 flex items-center justify-center hairline-border shadow-sm flex-shrink-0 overflow-hidden">
+          <img 
+            src="https://beamazingcolors.github.io/Clearboat/Logo1.png" 
+            alt="Logo Clear Boat" 
+            class="w-full h-full object-contain"
+            onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo1.png';"
+          />
         </div>
         <div>
-          <div class="flex items-center gap-1.5">
-            <span class="text-[9px] uppercase tracking-[0.25em] font-bold text-neutral-500 dark:text-neutral-400">Operaciones</span>
-            <span class="text-neutral-300 dark:text-neutral-600">•</span>
-            <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#BD5307] dark:text-[#E07A2B]">Lighthouse Cancún</span>
+          <div class="flex items-center gap-1 sm:gap-1.5">
+            <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] sm:tracking-[0.25em] font-bold text-neutral-500 dark:text-neutral-400">Operaciones</span>
+            <span class="text-neutral-300 dark:text-neutral-600 text-[8px]">•</span>
+            <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] sm:tracking-[0.2em] font-semibold text-[#BD5307] dark:text-[#E07A2B]">Lighthouse</span>
           </div>
-          <span class="font-serif text-sm sm:text-base font-bold tracking-wide text-[#0A1926] dark:text-white uppercase block leading-tight">
+          <span class="font-serif text-xs sm:text-base font-bold tracking-wide text-[#0A1926] dark:text-white uppercase block leading-tight">
             Enva Tours
           </span>
         </div>
@@ -217,61 +233,75 @@
         </div>
 
         <!-- Botón Móvil -->
-        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press focus:outline-none">
+          <svg id="hamburgerIcon" class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="closeMenuIcon" class="w-5 h-5 hidden transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
     </div>
 
-    <!-- Menú Móvil -->
-    <div id="mobileMenuDrawer" class="hidden md:hidden px-4 pt-2 pb-4 border-t border-neutral-200 dark:border-neutral-800 bg-editorial-cream dark:bg-[#070D14] space-y-2">
-      <a href="#resumen" class="mobile-nav-link block px-4 py-2 rounded-xl text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/60 dark:hover:bg-neutral-800 transition">Resumen General</a>
-      <a href="#cupones" class="mobile-nav-link block px-4 py-2 rounded-xl text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/60 dark:hover:bg-neutral-800 transition">Registro de Cupones</a>
-      <div class="pt-2 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center text-xs">
-        <span class="text-neutral-400 font-mono text-[10px]">clearboat-admin</span>
-        <button onclick="handleLogout()" class="text-red-600 dark:text-red-400 font-semibold text-xs flex items-center gap-1">
-          Cerrar Sesión
-        </button>
+    <!-- Menú Móvil Fluido con Contornos Estables -->
+    <div id="mobileMenuDrawer" class="md:hidden max-h-0 opacity-0 pointer-events-none overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]">
+      <div class="px-4 pb-3.5 pt-1">
+        <div class="bg-white/95 dark:bg-[#121921]/95 backdrop-blur-xl hairline-border shadow-xl shadow-black/5 dark:shadow-black/30 rounded-2xl p-2 space-y-1">
+          <a href="#resumen" class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-all duration-200" data-target="resumen">
+            <span class="font-medium">Resumen General</span>
+            <span class="text-[10px] font-mono opacity-50">01</span>
+          </a>
+          <a href="#cupones" class="mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-all duration-200" data-target="cupones">
+            <span class="font-medium">Registro de Cupones</span>
+            <span class="text-[10px] font-mono opacity-50">02</span>
+          </a>
+          <div class="pt-2.5 mt-1 border-t border-neutral-100 dark:border-neutral-800 px-2 flex justify-between items-center text-xs">
+            <div class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span class="text-neutral-400 font-mono text-[10px]">clearboat-admin</span>
+            </div>
+            <button onclick="handleLogout()" class="text-red-600 dark:text-red-400 font-semibold text-xs py-1 px-2.5 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/30 transition flex items-center gap-1 active:scale-95">
+              Cerrar Sesión
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- CONTENEDOR PRINCIPAL SPA -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 w-full space-y-10">
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-5 sm:py-8 w-full space-y-6 sm:space-y-10">
 
     <!-- ========================================== -->
     <!-- 1. VISTA: RESUMEN (#resumen)               -->
     <!-- ========================================== -->
-    <section id="view-resumen" class="page-view space-y-8 animate-hero">
+    <section id="view-resumen" class="page-view space-y-6 sm:space-y-8 animate-hero">
       
       <!-- Hero -->
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200/80 dark:border-neutral-800">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 pb-5 sm:pb-6 border-b border-neutral-200/80 dark:border-neutral-800">
         <div>
-          <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A1926] dark:text-white uppercase">
+          <h1 class="font-serif text-xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A1926] dark:text-white uppercase">
             Bitácora Operativa Clear Boat
           </h1>
-          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl font-light leading-relaxed">
-            Concentrado de operaciones y liquidaciones en Lighthouse Cancún entre el 29 de septiembre y 13 de octubre de 2026.
+          <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-1.5 sm:mt-2 max-w-2xl font-light leading-relaxed">
+            Concentrado de operaciones y liquidaciones en Lighthouse Cancún entre el 29 de septiembre y 22 de octubre de 2026.
           </p>
         </div>
 
-        <!-- Tipo de Cambio y Paquetes -->
-        <div class="flex items-center gap-4 bg-white dark:bg-[#121921] p-4 rounded-2xl hairline-border shadow-sm">
-          <div>
-            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Tipo de Cambio</span>
-            <span class="text-base font-mono font-bold text-[#0A1926] dark:text-white">$18.00 MXN</span>
+        <!-- Tipo de Cambio y Paquetes: Cuadrado y Simétrico en Móvil -->
+        <div class="grid grid-cols-2 sm:flex sm:items-center gap-3 sm:gap-4 bg-white dark:bg-[#121921] p-3.5 sm:p-4 rounded-2xl hairline-border shadow-sm w-full sm:w-auto">
+          <div class="border-r border-neutral-200/80 dark:border-neutral-800 pr-3 sm:pr-0 sm:border-r-0">
+            <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Tipo de Cambio</span>
+            <span class="text-sm sm:text-base font-mono font-bold text-[#0A1926] dark:text-white mt-0.5 block">$18.00 MXN</span>
           </div>
-          <div class="h-8 w-px bg-neutral-200 dark:bg-neutral-800"></div>
+          <div class="h-8 w-px bg-neutral-200 dark:bg-neutral-800 hidden sm:block"></div>
           <div>
-            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Servicios Activos</span>
-            <div class="flex items-center gap-3.5 mt-1">
-              <div class="inline-flex items-center gap-1.5 text-xs font-medium text-[#0A1926] dark:text-neutral-200">
-                <span class="w-3.5 h-[2px] bg-blue-500 rounded-full inline-block"></span>
+            <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Servicios Activos</span>
+            <div class="flex items-center gap-2.5 sm:gap-3.5 mt-1 sm:mt-1.5">
+              <div class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-[#0A1926] dark:text-neutral-200">
+                <span class="w-3 sm:w-3.5 h-[2px] bg-blue-500 rounded-full inline-block"></span>
                 <span>Clear Boat</span>
               </div>
-              <div class="inline-flex items-center gap-1.5 text-xs font-medium text-[#0A1926] dark:text-neutral-200">
-                <span class="w-3.5 h-[2px] bg-purple-500 rounded-full inline-block"></span>
+              <div class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-[#0A1926] dark:text-neutral-200">
+                <span class="w-3 sm:w-3.5 h-[2px] bg-purple-500 rounded-full inline-block"></span>
                 <span>Fotografía</span>
               </div>
             </div>
@@ -279,37 +309,37 @@
         </div>
       </div>
 
-      <!-- Bento Grid: 3 Métricas Principales -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Bento Grid: 3 Métricas Principales Proporcionadas en Móvil -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
         <!-- Métrica 1 -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-1">
+        <div class="bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-1">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Pasajeros Totales</span>
+            <span class="text-[10px] sm:text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Pasajeros Totales</span>
             <span class="text-xs font-mono text-neutral-400">PAX</span>
           </div>
-          <div class="my-5">
+          <div class="my-3 sm:my-5">
             <div class="flex items-baseline gap-2">
-              <span id="metricTotalPax" class="text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">29</span>
+              <span id="metricTotalPax" class="text-4xl sm:text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">29</span>
               <span class="text-xs text-neutral-400">pasajeros</span>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 font-light">
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1.5 sm:mt-2 font-light">
               28 PAX en Clear Boat (25 adultos, 3 niños) y 1 PAX en Fotografía.
             </p>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
             <span>Clear Boat: 28</span>
-            <span class="text-purple-600 dark:text-purple-400">Fotografía: 1</span>
+            <span class="text-purple-600 dark:text-purple-400 font-medium">Fotografía: 1</span>
           </div>
         </div>
 
         <!-- Métrica 2 -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-2">
+        <div class="bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-2">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Liquidación & Saldo</span>
+            <span class="text-[10px] sm:text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Liquidación & Saldo</span>
             <span class="text-xs font-mono text-neutral-400">USD</span>
           </div>
-          <div class="my-3 space-y-1">
+          <div class="my-3 space-y-1.5 sm:space-y-1">
             <div class="flex items-baseline justify-between text-xs">
               <span class="text-neutral-400">Total Acumulado:</span>
               <span class="font-mono font-medium text-neutral-600 dark:text-neutral-400">$<span id="metricTotalUsd">639</span>.00</span>
@@ -320,22 +350,22 @@
             </div>
             <div class="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-baseline justify-between">
               <span class="text-xs font-semibold text-[#BD5307] dark:text-[#E07A2B]">Saldo por Pagar:</span>
-              <span class="text-3xl font-light font-mono tracking-tight text-[#BD5307] dark:text-[#E07A2B]">$<span id="metricBalanceUsd">139</span>.00</span>
+              <span class="text-2xl sm:text-3xl font-light font-mono tracking-tight text-[#BD5307] dark:text-[#E07A2B]">$<span id="metricBalanceUsd">139</span>.00</span>
             </div>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
             <span>Enva: $625</span>
-            <span class="text-purple-600 dark:text-purple-400">Fotografía: $14</span>
+            <span class="text-purple-600 dark:text-purple-400 font-medium">Fotografía: $14</span>
           </div>
         </div>
 
         <!-- Métrica 3 -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-3">
+        <div class="bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-3">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Equivalente Nacional</span>
+            <span class="text-[10px] sm:text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Equivalente Nacional</span>
             <span class="text-xs font-mono text-neutral-400">MXN</span>
           </div>
-          <div class="my-3 space-y-1">
+          <div class="my-3 space-y-1.5 sm:space-y-1">
             <div class="flex items-baseline justify-between text-xs">
               <span class="text-neutral-400">Total en MXN:</span>
               <span class="font-mono font-medium text-neutral-600 dark:text-neutral-400">$<span id="metricTotalMxn">11,502</span>.00</span>
@@ -346,7 +376,7 @@
             </div>
             <div class="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-baseline justify-between">
               <span class="text-xs font-semibold text-[#0A1926] dark:text-white">Resta por Pagar:</span>
-              <span class="text-3xl font-light font-mono tracking-tight text-[#0A1926] dark:text-white">$<span id="metricBalanceMxn">2,502</span>.00</span>
+              <span class="text-2xl sm:text-3xl font-light font-mono tracking-tight text-[#0A1926] dark:text-white">$<span id="metricBalanceMxn">2,502</span>.00</span>
             </div>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
@@ -358,54 +388,62 @@
       </div>
 
       <!-- CUADRO DE PAGOS: DÍAS DE LIQUIDACIÓN AL PROVEEDOR -->
-      <div class="bg-white dark:bg-[#121921] p-6 sm:p-8 rounded-3xl hairline-border shadow-sm space-y-6 reveal-on-scroll">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-neutral-100 dark:border-neutral-800">
+      <div class="bg-white dark:bg-[#121921] p-4 sm:p-8 rounded-3xl hairline-border shadow-sm space-y-4 sm:space-y-6 reveal-on-scroll">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 border-b border-neutral-100 dark:border-neutral-800">
           <div>
-            <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Calendario de Pagos</span>
-            <h2 class="font-serif text-lg sm:text-xl font-bold text-[#0A1926] dark:text-white uppercase">
+            <span class="text-[9px] sm:text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-0.5 sm:mb-1">Calendario de Pagos</span>
+            <h2 class="font-serif text-base sm:text-xl font-bold text-[#0A1926] dark:text-white uppercase">
               Días de Liquidación & Pagos al Proveedor
             </h2>
           </div>
           
-          <!-- Control de Pagos Realizados y Saldo Restante -->
-          <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
-            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-              <span class="text-[10px] uppercase text-neutral-400 font-sans">Pago Realizado:</span>
+          <!-- Control de Pagos Cuadrado en Móvil -->
+          <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 font-mono text-xs w-full lg:w-auto">
+            <div class="col-span-1 flex items-center justify-between sm:justify-start gap-1 px-3 py-2 sm:py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
+              <span class="text-[9px] uppercase text-neutral-400 font-sans">Abono:</span>
               <div class="flex items-center">
-                <span class="text-neutral-500 mr-0.5">$</span>
+                <span class="text-neutral-500 mr-0.5 text-xs">$</span>
                 <input 
                   type="number" 
                   id="inputMontoPagado" 
                   value="500" 
                   min="0" 
                   step="1"
-                  class="w-16 bg-transparent font-bold text-emerald-600 dark:text-emerald-400 focus:outline-none border-b border-neutral-300 dark:border-neutral-700 text-xs py-0.5"
+                  class="w-14 sm:w-16 bg-transparent font-bold text-emerald-600 dark:text-emerald-400 focus:outline-none border-b border-neutral-300 dark:border-neutral-700 text-xs py-0.5 text-right sm:text-left"
                   title="Modificar abono o pago realizado"
                 />
-                <span class="text-[10px] text-neutral-400 ml-1">USD</span>
+                <span class="text-[9px] text-neutral-400 ml-1">USD</span>
               </div>
             </div>
 
-            <span class="px-3 py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border text-neutral-600 dark:text-neutral-300">
-              Total: $<span id="badgeTotalUsd">639.00</span> USD
-            </span>
+            <div class="col-span-1 px-3 py-2 sm:py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border text-neutral-600 dark:text-neutral-300 flex items-center justify-between sm:justify-start gap-1 text-center sm:text-left">
+              <span class="text-[9px] uppercase text-neutral-400 font-sans sm:hidden">Total:</span>
+              <span>$<span id="badgeTotalUsd">639.00</span> <span class="text-[9px] text-neutral-400">USD</span></span>
+            </div>
 
-            <span class="px-3.5 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 hairline-border border-amber-200 dark:border-amber-900 font-bold text-[#BD5307] dark:text-[#E07A2B]">
-              Saldo por Pagar: $<span id="badgeBalanceUsd">139.00</span> USD
-            </span>
+            <div class="col-span-2 sm:col-span-1 px-3.5 py-2 sm:py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 hairline-border border-amber-200 dark:border-amber-900 font-bold text-[#BD5307] dark:text-[#E07A2B] flex items-center justify-between sm:justify-start gap-2">
+              <span class="text-[10px] uppercase font-sans tracking-wide">Saldo por Pagar:</span>
+              <span>$<span id="badgeBalanceUsd">139.00</span> USD</span>
+            </div>
           </div>
         </div>
 
+        <!-- Indicador de desplazamiento en móvil -->
+        <div class="flex justify-between items-center sm:hidden px-1">
+          <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">Desglose de jornadas</span>
+          <span class="text-[10px] font-mono text-neutral-400 flex items-center gap-1">↔ Desliza</span>
+        </div>
+
         <!-- Tabla Editorial del Cuadro de Pagos -->
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs">
+        <div class="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+          <table class="w-full text-left text-xs whitespace-nowrap sm:whitespace-normal">
             <thead class="bg-neutral-50 dark:bg-[#0A1926]/50 text-neutral-400 uppercase tracking-widest text-[9px] font-semibold border-b border-neutral-100 dark:border-neutral-800">
               <tr>
-                <th class="px-5 py-3.5">Día Liquidado</th>
-                <th class="px-5 py-3.5">Servicios Cubiertos</th>
-                <th class="px-5 py-3.5">Cupones Liquidados</th>
-                <th class="px-5 py-3.5 text-right">Pago (USD)</th>
-                <th class="px-5 py-3.5 text-right">Equivalente (MXN)</th>
+                <th class="px-4 sm:px-5 py-3 sm:py-3.5">Día Liquidado</th>
+                <th class="px-4 sm:px-5 py-3 sm:py-3.5">Servicios Cubiertos</th>
+                <th class="px-4 sm:px-5 py-3 sm:py-3.5">Cupones Liquidados</th>
+                <th class="px-4 sm:px-5 py-3 sm:py-3.5 text-right">Pago (USD)</th>
+                <th class="px-4 sm:px-5 py-3 sm:py-3.5 text-right">Equivalente (MXN)</th>
               </tr>
             </thead>
             <tbody id="settlementTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800 font-light font-mono">
@@ -414,88 +452,88 @@
             <tfoot class="bg-neutral-50/70 dark:bg-[#0A1926]/40 border-t border-neutral-200 dark:border-neutral-800 font-mono text-neutral-800 dark:text-neutral-200">
               <!-- Fila 1: Total Acumulado Generado -->
               <tr class="border-b border-neutral-200/60 dark:border-neutral-800/60">
-                <td colspan="3" class="px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">Total Acumulado Generado</td>
-                <td class="px-5 py-2.5 text-right font-bold text-neutral-900 dark:text-white" id="footTotalUsd">$639.00 USD</td>
-                <td class="px-5 py-2.5 text-right text-neutral-700 dark:text-neutral-300" id="footTotalMxn">$11,502.00 MXN</td>
+                <td colspan="3" class="px-4 sm:px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">Total Acumulado Generado</td>
+                <td class="px-4 sm:px-5 py-2.5 text-right font-bold text-neutral-900 dark:text-white" id="footTotalUsd">$639.00 USD</td>
+                <td class="px-4 sm:px-5 py-2.5 text-right text-neutral-700 dark:text-neutral-300" id="footTotalMxn">$11,502.00 MXN</td>
               </tr>
               <!-- Fila 2: Pagos Realizados al Proveedor -->
               <tr class="border-b border-neutral-200/60 dark:border-neutral-800/60 text-emerald-600 dark:text-emerald-400">
-                <td colspan="3" class="px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">(-) Pagos Realizados al Proveedor</td>
-                <td class="px-5 py-2.5 text-right font-bold" id="footPaidUsd">-$500.00 USD</td>
-                <td class="px-5 py-2.5 text-right" id="footPaidMxn">-$9,000.00 MXN</td>
+                <td colspan="3" class="px-4 sm:px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">(-) Pagos Realizados al Proveedor</td>
+                <td class="px-4 sm:px-5 py-2.5 text-right font-bold" id="footPaidUsd">-$500.00 USD</td>
+                <td class="px-4 sm:px-5 py-2.5 text-right" id="footPaidMxn">-$9,000.00 MXN</td>
               </tr>
               <!-- Fila 3: Saldo Pendiente por Liquidar (Resta) -->
               <tr class="bg-amber-50/50 dark:bg-amber-950/20 font-bold text-[#BD5307] dark:text-[#E07A2B]">
-                <td colspan="3" class="px-5 py-3 uppercase tracking-wider text-[10px] font-sans">(=) Saldo Pendiente por Liquidar (Resta)</td>
-                <td class="px-5 py-3 text-right text-sm" id="footBalanceUsd">$139.00 USD</td>
-                <td class="px-5 py-3 text-right text-sm" id="footBalanceMxn">$2,502.00 MXN</td>
+                <td colspan="3" class="px-4 sm:px-5 py-3 uppercase tracking-wider text-[10px] font-sans">(=) Saldo Pendiente por Liquidar (Resta)</td>
+                <td class="px-4 sm:px-5 py-3 text-right text-sm" id="footBalanceUsd">$139.00 USD</td>
+                <td class="px-4 sm:px-5 py-3 text-right text-sm" id="footBalanceMxn">$2,502.00 MXN</td>
               </tr>
             </tfoot>
           </table>
         </div>
       </div>
 
-      <!-- Gráficas Analíticas -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 reveal-on-scroll">
+      <!-- Gráficas Analíticas Cuadradas en Móvil -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 reveal-on-scroll">
         
         <!-- Gráfica 1 -->
-        <div class="lg:col-span-7 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
-          <div class="flex items-center justify-between gap-2 mb-6">
+        <div class="lg:col-span-7 bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
+          <div class="flex items-center justify-between gap-2 mb-4 sm:mb-6">
             <div>
-              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Volumen Diario</span>
-              <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Facturación Neta por Jornada</h2>
+              <span class="text-[9px] sm:text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-0.5">Volumen Diario</span>
+              <h2 class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white">Facturación Neta por Jornada</h2>
             </div>
-            <span class="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-3 py-1 rounded-full">
-              4 Jornadas
+            <span class="text-[10px] sm:text-[11px] font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-2.5 py-1 rounded-full">
+              5 Jornadas
             </span>
           </div>
           
-          <div class="relative h-64 w-full">
+          <div class="relative h-56 sm:h-64 w-full">
             <canvas id="chartDailyBilling" class="cursor-pointer"></canvas>
           </div>
           
-          <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 font-light">
-            <span>Pico operativo: <strong class="text-[#0A1926] dark:text-white">30 de Septiembre</strong> ($325 USD)</span>
-            <span class="font-mono text-[11px]">Clic en barra para ver detalle</span>
+          <div class="pt-3 sm:pt-4 mt-3 sm:mt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-light">
+            <span>Pico: <strong class="text-[#0A1926] dark:text-white">30 Sep</strong> ($325)</span>
+            <span class="font-mono text-[10px]">Toca para detalle</span>
           </div>
         </div>
 
         <!-- Gráfica 2 -->
-        <div class="lg:col-span-5 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
+        <div class="lg:col-span-5 bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
           <div>
-            <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Composición</span>
-            <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Distribución de Pasajeros</h2>
+            <span class="text-[9px] sm:text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-0.5">Composición</span>
+            <h2 class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white">Distribución de Pasajeros</h2>
           </div>
           
-          <div class="relative h-56 w-full my-4 flex items-center justify-center">
+          <div class="relative h-48 sm:h-56 w-full my-3 sm:my-4 flex items-center justify-center">
             <canvas id="chartDemographics" class="cursor-pointer"></canvas>
           </div>
           
-          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-neutral-100 dark:border-neutral-800">
-            <div class="p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center">
-              <span class="text-[10px] uppercase font-mono text-neutral-400 block">Adultos</span>
-              <span class="text-xl font-light text-[#0A1926] dark:text-white">22 <span class="text-xs text-neutral-400">(88%)</span></span>
+          <div class="grid grid-cols-2 gap-2 sm:gap-3 pt-3 sm:pt-4 border-t border-neutral-100 dark:border-neutral-800">
+            <div class="p-2.5 sm:p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center">
+              <span class="text-[9px] uppercase font-mono text-neutral-400 block">Adultos</span>
+              <span class="text-base sm:text-xl font-light text-[#0A1926] dark:text-white">25 <span class="text-[10px] text-neutral-400">(86%)</span></span>
             </div>
-            <div class="p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center cursor-pointer" onclick="openCouponDetailModal('894')">
-              <span class="text-[10px] uppercase font-mono text-neutral-400 block">Niños (#894)</span>
-              <span class="text-xl font-light text-[#BD5307]">3 <span class="text-xs text-neutral-400">(12%)</span></span>
+            <div class="p-2.5 sm:p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center cursor-pointer active:scale-95 transition" onclick="openCouponDetailModal('894')">
+              <span class="text-[9px] uppercase font-mono text-neutral-400 block">Niños (#894)</span>
+              <span class="text-base sm:text-xl font-light text-[#BD5307]">3 <span class="text-[10px] text-neutral-400">(10%)</span></span>
             </div>
           </div>
         </div>
 
         <!-- Gráfica 3 -->
-        <div class="lg:col-span-12 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+        <div class="lg:col-span-12 bg-white dark:bg-[#121921] p-5 sm:p-7 rounded-2xl hairline-border shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2 mb-4 sm:mb-6">
             <div>
-              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Distribución Individual</span>
-              <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Importe Neto por Cupón</h2>
+              <span class="text-[9px] sm:text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-0.5">Distribución Individual</span>
+              <h2 class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white">Importe Neto por Cupón</h2>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light">
-              Cupones <button onclick="openCouponDetailModal('860')" class="font-semibold underline">#860</button> y <button onclick="openCouponDetailModal('856')" class="font-semibold underline">#856</button> representan el 59.1% del total.
+            <p class="text-[11px] sm:text-xs text-neutral-500 dark:text-neutral-400 font-light">
+              Cupones <button onclick="openCouponDetailModal('860')" class="font-semibold underline">#860</button> y <button onclick="openCouponDetailModal('856')" class="font-semibold underline">#856</button> representan más del 50%.
             </p>
           </div>
           
-          <div class="relative h-60 w-full">
+          <div class="relative h-56 sm:h-60 w-full">
             <canvas id="chartCouponBreakdown" class="cursor-pointer"></canvas>
           </div>
         </div>
@@ -507,68 +545,71 @@
     <!-- ========================================== -->
     <!-- 2. VISTA: TABLA DE CUPONES (#cupones)      -->
     <!-- ========================================== -->
-    <section id="view-cupones" class="page-view space-y-6 hidden">
+    <section id="view-cupones" class="page-view space-y-4 sm:space-y-6 hidden">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-neutral-200/80 dark:border-neutral-800">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 sm:gap-4 pb-3 sm:pb-4 border-b border-neutral-200/80 dark:border-neutral-800">
         <div>
-          <span class="text-[10px] uppercase tracking-widest font-semibold text-neutral-400">Libro Contable</span>
-          <h2 class="font-serif text-2xl font-bold text-[#0A1926] dark:text-white uppercase">Registro Individual de Cupones</h2>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-            Haz clic en cualquier fila para consultar el desglose completo.
+          <span class="text-[9px] sm:text-[10px] uppercase tracking-widest font-semibold text-neutral-400">Libro Contable</span>
+          <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase">Registro Individual de Cupones</h2>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 sm:mt-1">
+            Toca cualquier fila para consultar el desglose completo.
           </p>
         </div>
 
-        <!-- Buscador y Exportación -->
-        <div class="flex flex-wrap items-center gap-3">
+        <!-- Buscador y Exportación perfectamente alineados en móvil -->
+        <div class="flex items-center gap-2 w-full md:w-auto">
           <input 
             type="text" 
             id="couponSearchInput" 
-            placeholder="Filtrar por cupón o fecha..." 
-            class="text-xs bg-white dark:bg-[#121921] hairline-border px-3.5 py-2 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#BD5307] w-52 sm:w-60 transition"
+            placeholder="Buscar cupón o fecha..." 
+            class="flex-1 md:w-60 text-xs bg-white dark:bg-[#121921] hairline-border px-3.5 py-2.5 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#BD5307] transition"
           />
-          <button onclick="exportAuditDataCSV()" class="px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-medium hover:opacity-90 transition interactive-press flex items-center gap-1.5 shadow-sm">
+          <button onclick="exportAuditDataCSV()" class="px-3.5 py-2.5 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-semibold whitespace-nowrap hover:opacity-90 transition interactive-press flex items-center gap-1.5 shadow-sm">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Exportar CSV
+            <span>CSV</span>
           </button>
         </div>
       </div>
 
-      <!-- Filtros por Servicio -->
-      <div class="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-[#121921] p-3 rounded-2xl hairline-border shadow-sm">
-        <div class="flex items-center gap-2 text-xs font-medium">
-          <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mr-1">Filtrar:</span>
-          <button onclick="setServiceFilter('all')" id="filterBtnAll" class="px-3 py-1.5 rounded-xl bg-[#0A1926] text-white dark:bg-white dark:text-black text-[11px] font-semibold transition interactive-press">
+      <!-- Filtros por Servicio: Cuadriculados y simétricos en móvil -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 bg-white dark:bg-[#121921] p-2.5 sm:p-3 rounded-2xl hairline-border shadow-sm">
+        <div class="grid grid-cols-3 sm:flex items-center gap-1.5 text-xs font-medium">
+          <button onclick="setServiceFilter('all')" id="filterBtnAll" class="px-2 sm:px-3 py-2 sm:py-1.5 rounded-xl bg-[#0A1926] text-white dark:bg-white dark:text-black text-[11px] font-semibold transition interactive-press text-center">
             Todos (9)
           </button>
-          <button onclick="setServiceFilter('clearboat')" id="filterBtnClearBoat" class="px-3 py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Clear Boat (8)
+          <button onclick="setServiceFilter('clearboat')" id="filterBtnClearBoat" class="px-2 sm:px-3 py-2 sm:py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center justify-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Clear (8)
           </button>
-          <button onclick="setServiceFilter('foto')" id="filterBtnFoto" class="px-3 py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Fotografía (1)
+          <button onclick="setServiceFilter('foto')" id="filterBtnFoto" class="px-2 sm:px-3 py-2 sm:py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center justify-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Foto (1)
           </button>
         </div>
-        <div class="text-[11px] font-mono text-neutral-400" id="filterStatusLabel">
+        <div class="text-[10px] sm:text-[11px] font-mono text-neutral-400 text-center sm:text-right" id="filterStatusLabel">
           Mostrando 9 registros
         </div>
       </div>
 
-      <!-- Tabla Responsiva -->
+      <!-- Tabla Responsiva con contornos fijos y swipe hint -->
       <div class="bg-white dark:bg-[#121921] rounded-2xl hairline-border overflow-hidden shadow-sm">
+        <div class="flex justify-between items-center sm:hidden px-4 py-2 border-b border-neutral-100 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40">
+          <span class="text-[9px] font-mono text-neutral-400 uppercase tracking-widest">Cupones registrados</span>
+          <span class="text-[9px] font-mono text-neutral-400 flex items-center gap-1">↔ Desliza</span>
+        </div>
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs" id="couponsTable">
+          <table class="w-full text-left text-xs whitespace-nowrap" id="couponsTable">
             <thead class="bg-neutral-50 dark:bg-[#0A1926]/50 text-neutral-400 uppercase tracking-widest text-[9px] font-semibold border-b border-neutral-100 dark:border-neutral-800">
               <tr>
-                <th class="px-5 py-4">Cupón</th>
-                <th class="px-5 py-4">Fecha Operación</th>
-                <th class="px-5 py-4">Servicio</th>
-                <th class="px-5 py-4">Proveedor</th>
-                <th class="px-5 py-4 text-center">Adultos</th>
-                <th class="px-5 py-4 text-center">Niños</th>
-                <th class="px-5 py-4 text-right">Neto PAX</th>
-                <th class="px-5 py-4 text-right">Neto Reserva</th>
-                <th class="px-5 py-4 text-center">Día Liquidado</th>
-                <th class="px-5 py-4 text-right">Abono</th>
-                <th class="px-5 py-4 text-center">Acción</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4">Cupón</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4">Fecha Operación</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4">Servicio</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4">Proveedor</th>
+                <th class="px-3 sm:px-5 py-3.5 sm:py-4 text-center">Adultos</th>
+                <th class="px-3 sm:px-5 py-3.5 sm:py-4 text-center">Niños</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4 text-right">Neto PAX</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4 text-right">Neto Reserva</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4 text-center">Día Liquidado</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4 text-right">Abono</th>
+                <th class="px-4 sm:px-5 py-3.5 sm:py-4 text-center">Acción</th>
               </tr>
             </thead>
             <tbody id="couponTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800 font-light">
@@ -576,14 +617,14 @@
             </tbody>
             <tfoot class="bg-neutral-50/80 dark:bg-[#0A1926]/70 border-t border-neutral-200 dark:border-neutral-800 font-semibold text-neutral-800 dark:text-neutral-200 font-mono">
               <tr>
-                <td colspan="4" class="px-5 py-4 uppercase tracking-wider text-[10px] font-sans">Totales</td>
-                <td class="px-5 py-4 text-center" id="totalTableAdults">26</td>
-                <td class="px-5 py-4 text-center" id="totalTableKids">3</td>
-                <td class="px-5 py-4 text-right text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right text-[#0A1926] dark:text-white" id="totalTableNet">$639 USD</td>
-                <td class="px-5 py-4 text-center text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right text-emerald-600 dark:text-emerald-400 font-bold" id="totalTableDeposit">$639 USD</td>
-                <td class="px-5 py-4 text-center text-[10px] text-neutral-400">—</td>
+                <td colspan="4" class="px-4 sm:px-5 py-3.5 sm:py-4 uppercase tracking-wider text-[10px] font-sans">Totales</td>
+                <td class="px-3 sm:px-5 py-3.5 sm:py-4 text-center" id="totalTableAdults">26</td>
+                <td class="px-3 sm:px-5 py-3.5 sm:py-4 text-center" id="totalTableKids">3</td>
+                <td class="px-4 sm:px-5 py-3.5 sm:py-4 text-right text-neutral-400">—</td>
+                <td class="px-4 sm:px-5 py-3.5 sm:py-4 text-right text-[#0A1926] dark:text-white" id="totalTableNet">$639 USD</td>
+                <td class="px-4 sm:px-5 py-3.5 sm:py-4 text-center text-neutral-400">—</td>
+                <td class="px-4 sm:px-5 py-3.5 sm:py-4 text-right text-emerald-600 dark:text-emerald-400 font-bold" id="totalTableDeposit">$639 USD</td>
+                <td class="px-4 sm:px-5 py-3.5 sm:py-4 text-center text-[10px] text-neutral-400">—</td>
               </tr>
             </tfoot>
           </table>
@@ -596,7 +637,7 @@
     <!-- 3. VISTA: 404 NOT FOUND (#404)             -->
     <!-- ========================================== -->
     <section id="view-404" class="page-view space-y-6 text-center py-16 hidden">
-      <div class="max-w-md mx-auto space-y-4">
+      <div class="max-w-md mx-auto space-y-4 px-4">
         <span class="text-6xl font-serif font-light text-[#BD5307] block">404</span>
         <h2 class="font-serif text-xl font-bold text-[#0A1926] dark:text-white uppercase">
           Página no encontrada
@@ -611,15 +652,15 @@
 
   </main>
 
-  <!-- MODAL DE DETALLE -->
-  <div id="couponDetailModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 dark:bg-black/80 backdrop-blur-sm p-4 hidden transition-all duration-200">
-    <div id="couponModalCard" class="bg-white dark:bg-[#121921] w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl hairline-border shadow-2xl p-6 sm:p-8 space-y-6 transform transition-all duration-200 scale-95 opacity-0">
+  <!-- MODAL DE DETALLE CUADRADO EN MÓVIL -->
+  <div id="couponDetailModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 dark:bg-black/80 backdrop-blur-sm p-3 sm:p-4 hidden transition-all duration-200">
+    <div id="couponModalCard" class="bg-white dark:bg-[#121921] w-full max-w-xl max-h-[92vh] overflow-y-auto rounded-3xl hairline-border shadow-2xl p-5 sm:p-8 space-y-4 sm:space-y-6 transform transition-all duration-200 scale-95 opacity-0">
       
       <!-- Encabezado del Detalle -->
-      <div class="flex items-start justify-between border-b border-neutral-100 dark:border-neutral-800 pb-4">
+      <div class="flex items-start justify-between border-b border-neutral-100 dark:border-neutral-800 pb-3 sm:pb-4">
         <div>
           <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] dark:text-[#E07A2B] block mb-0.5">Ficha de Liquidación</span>
-          <h3 id="modalDetailTitle" class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase"></h3>
+          <h3 id="modalDetailTitle" class="font-serif text-lg sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase"></h3>
           <p id="modalDetailSubtitle" class="text-xs text-neutral-500 dark:text-neutral-400 font-light"></p>
         </div>
         <button onclick="closeCouponDetailModal()" class="p-2 rounded-xl text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition focus:outline-none" aria-label="Cerrar">
@@ -630,17 +671,17 @@
       <!-- Selector de Cupones Múltiples -->
       <div id="modalMultiCouponTabsContainer" class="hidden">
         <label class="block text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-2">Cupones de esta jornada:</label>
-        <div id="modalMultiCouponTabs" class="flex flex-wrap gap-2"></div>
+        <div id="modalMultiCouponTabs" class="flex flex-wrap gap-1.5 sm:gap-2"></div>
       </div>
 
-      <!-- Cuadrícula de Campos -->
-      <div id="modalFieldsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+      <!-- Cuadrícula de Campos perfectamente cuadrada en 2 columnas -->
+      <div id="modalFieldsGrid" class="grid grid-cols-2 gap-2 sm:gap-3 font-mono text-xs">
         <!-- Generado dinámicamente -->
       </div>
 
       <!-- Pie del Modal -->
-      <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex justify-end">
-        <button onclick="closeCouponDetailModal()" class="px-6 py-2.5 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition">
+      <div class="pt-3 sm:pt-4 border-t border-neutral-100 dark:border-neutral-800 flex justify-end">
+        <button onclick="closeCouponDetailModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition">
           Cerrar
         </button>
       </div>
@@ -653,14 +694,14 @@
     id="backToTopBtn" 
     onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
     aria-label="Volver arriba" 
-    class="fixed bottom-6 right-6 p-3 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none z-40"
+    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 p-3 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none z-40"
   >
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
   </button>
 
   <!-- FOOTER EDITORIAL -->
-  <footer class="border-t border-neutral-200/80 dark:border-neutral-800 bg-white/50 dark:bg-[#070D14] py-8 text-xs text-neutral-500 font-light mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="border-t border-neutral-200/80 dark:border-neutral-800 bg-white/50 dark:bg-[#070D14] py-6 sm:py-8 text-xs text-neutral-500 font-light mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left">
       <div>
         <p>© 2026 Enva Tours S.A. de C.V. — Lighthouse Cancún.</p>
       </div>
@@ -1018,8 +1059,47 @@
         }
       });
 
-      const mobileDrawer = document.getElementById('mobileMenuDrawer');
-      if (mobileDrawer) mobileDrawer.classList.add('hidden');
+      // Indicador activo para enlaces móviles con contorno estable
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        const target = link.getAttribute('data-target');
+        if (target === activePage) {
+          link.className = "mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-[#0A1926] text-white dark:bg-white dark:text-black transition-all duration-200 shadow-sm";
+        } else {
+          link.className = "mobile-nav-link flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-medium text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800/70 transition-all duration-200";
+        }
+      });
+
+      closeMobileMenu();
+    }
+
+    function toggleMobileMenu(forceClose = false) {
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const burgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeMenuIcon');
+      if (!drawer) return;
+
+      const isOpen = drawer.classList.contains('menu-open') && !forceClose;
+      if (isOpen) {
+        closeMobileMenu();
+      } else if (!forceClose) {
+        drawer.classList.add('menu-open');
+        drawer.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none');
+        drawer.classList.add('max-h-96', 'opacity-100', 'pointer-events-auto');
+        if (burgerIcon) burgerIcon.classList.add('hidden');
+        if (closeIcon) closeIcon.classList.remove('hidden');
+      }
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobileMenuDrawer');
+      const burgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeMenuIcon');
+      if (!drawer) return;
+
+      drawer.classList.remove('menu-open', 'max-h-96', 'opacity-100', 'pointer-events-auto');
+      drawer.classList.add('max-h-0', 'opacity-0', 'pointer-events-none');
+      if (burgerIcon) burgerIcon.classList.remove('hidden');
+      if (closeIcon) closeIcon.classList.add('hidden');
     }
 
     // =========================================================================
@@ -1623,10 +1703,21 @@
       });
 
       const menuBtn = document.getElementById('mobileMenuBtn');
-      const drawer = document.getElementById('mobileMenuDrawer');
-      if (menuBtn && drawer) {
-        menuBtn.addEventListener('click', () => drawer.classList.toggle('hidden'));
+      if (menuBtn) {
+        menuBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
       }
+
+      // Cierre suave al tocar fuera del menú
+      document.addEventListener('click', (e) => {
+        const drawer = document.getElementById('mobileMenuDrawer');
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        if (drawer && !drawer.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
 
       const observer = new IntersectionObserver(entries => {
         entries.forEach(e => {
