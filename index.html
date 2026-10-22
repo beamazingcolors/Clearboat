@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="description" content="Sistema de Auditoría Operativa y Conciliación Financiera para Enva Tours y Lighthouse Cancún. Registro de cupones, análisis de aforo y seguridad criptográfica.">
+  <meta name="description" content="Enva Tours — Bitácora y Cuadro de Liquidaciones Lighthouse Cancún">
   <meta name="theme-color" content="#0A1926">
 
   <!-- Favicon vectorial SVG seguro embebido -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A1926'/%3E%3Cpath d='M16 6 L22 24 L16 20 L10 24 Z' fill='%23BD5307'/%3E%3Ccircle cx='16' cy='14' r='2.5' fill='%23FAF9F5'/%3E%3C/svg%3E">
 
-  <title id="pageTitle">Enva Tours — Bitácora Operativa & Auditoría Lighthouse</title>
+  <title id="pageTitle">Enva Tours — Bitácora Operativa & Liquidaciones</title>
 
   <!-- Tailwind CSS & Configuración de Dark Mode -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -52,19 +50,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:italic,wght@0,400;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
-    /* Suavizado y Animaciones Base */
     html {
       scroll-behavior: smooth;
     }
     body {
-      transition: background-color 0.4s ease, color 0.4s ease;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     
-    /* Animaciones de Entrada (Hero y Scroll) */
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(18px);
       }
       to {
         opacity: 1;
@@ -72,100 +68,91 @@
       }
     }
 
-    @keyframes pulseSoft {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.85; }
-    }
-
     .animate-hero {
-      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    .animate-stagger-1 { animation: fadeInUp 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    .animate-stagger-2 { animation: fadeInUp 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
-    .animate-stagger-3 { animation: fadeInUp 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .animate-stagger-1 { animation: fadeInUp 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .animate-stagger-2 { animation: fadeInUp 0.7s 0.18s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .animate-stagger-3 { animation: fadeInUp 0.7s 0.26s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-    /* Observador de Scroll para Elementos */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(16px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .reveal-on-scroll.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Microinteracciones */
     .interactive-press:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
     .hairline-border {
-      border: 1px solid var(--border-color, rgba(18, 24, 32, 0.08));
+      border: 1px solid rgba(18, 24, 32, 0.08);
     }
     .dark .hairline-border {
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* Animación de error en formulario de acceso */
     @keyframes shakeSoft {
       0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-6px); }
-      40%, 80% { transform: translateX(6px); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
     }
     .shake-error {
-      animation: shakeSoft 0.4s ease-in-out;
+      animation: shakeSoft 0.35s ease-in-out;
     }
   </style>
 </head>
 
 <body class="bg-editorial-cream text-neutral-900 dark:bg-[#070D14] dark:text-neutral-100 min-h-screen font-sans flex flex-col antialiased selection:bg-[#0A1926] selection:text-white dark:selection:bg-[#BD5307]">
 
-  <!-- GATEKEEPER: PANTALLA DE ACCESO RESTRINGIDO CON USUARIO Y CONTRASEÑA -->
-  <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-editorial-cream/95 dark:bg-[#070D14]/95 backdrop-blur-md p-4 transition-all duration-500">
-    <div id="loginCard" class="bg-white dark:bg-[#121921] w-full max-w-md p-8 sm:p-10 rounded-3xl hairline-border shadow-2xl space-y-6">
+  <!-- GATEKEEPER: ACCESO CON USUARIO Y CONTRASEÑA -->
+  <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-editorial-cream/95 dark:bg-[#070D14]/95 backdrop-blur-md p-4 transition-opacity duration-300">
+    <div id="loginCard" class="bg-white dark:bg-[#121921] w-full max-w-sm p-8 sm:p-9 rounded-3xl hairline-border shadow-xl space-y-6">
       
       <!-- Encabezado de Autenticación -->
-      <div class="text-center space-y-2">
+      <div class="text-center space-y-1.5">
+        <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] block">Lighthouse Cancún</span>
         <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase tracking-tight">
-          Lighthouse Cancún
+          Enva Tours
         </h2>
       </div>
 
       <!-- Feedback de Validación -->
-      <div id="loginFeedback" class="hidden p-3.5 rounded-xl text-xs font-mono text-center"></div>
+      <div id="loginFeedback" class="hidden p-3 rounded-xl text-xs font-mono text-center"></div>
 
       <!-- Formulario de Acceso -->
-      <form id="loginForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+      <form id="loginForm" class="space-y-4">
         <div>
           <label for="loginUsername" class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Identificador de Usuario</label>
-          <div class="relative">
-            <input 
-              type="text" 
-              id="loginUsername" 
-              required 
-              autocomplete="username"
-              placeholder="" 
-              class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/80 hairline-border focus:outline-none focus:ring-1 focus:ring-[#BD5307] transition font-mono"
-            />
-          </div>
+          <input 
+            type="text" 
+            id="loginUsername" 
+            required 
+            autocomplete="username"
+            placeholder="" 
+            class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/80 hairline-border focus:outline-none focus:ring-1 focus:ring-[#BD5307] transition font-mono"
+          />
         </div>
 
         <div>
-          <label for="loginPassword" class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Contraseña de Validación</label>
+          <label for="loginPassword" class="block text-[11px] font-semibold text-neutral-600 dark:text-neutral-300 mb-1">Contraseña</label>
           <div class="relative">
             <input 
               type="password" 
               id="loginPassword" 
               required 
               autocomplete="current-password"
-              placeholder="••••••••••••" 
+              placeholder="" 
               class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-800/80 hairline-border focus:outline-none focus:ring-1 focus:ring-[#BD5307] transition font-mono pr-10"
             />
             <button 
               type="button" 
-              onclick="togglePasswordVisibility()" 
+              id="togglePasswordBtn"
               class="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-700 dark:hover:text-neutral-200 transition focus:outline-none"
-              aria-label="Alternar visibilidad de contraseña"
+              aria-label="Alternar visibilidad"
             >
               <svg id="eyeIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
             </button>
@@ -175,42 +162,28 @@
         <button 
           type="submit" 
           id="loginSubmitBtn"
-          class="w-full py-3 rounded-xl bg-[#0A1926] dark:bg-[#BD5307] text-white text-xs font-semibold uppercase tracking-wider hover:bg-neutral-800 dark:hover:bg-[#983F05] transition interactive-press shadow-md"
+          class="w-full py-3 rounded-xl bg-[#0A1926] dark:bg-[#BD5307] text-white text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition interactive-press shadow-sm"
         >
-          Autenticar & Desbloquear
+          Ingresar al Sistema
         </button>
       </form>
-
-      <!-- Pie Informativo de Seguridad -->
-      <div class="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-[10px] text-neutral-400 font-mono">
-        <span>Canal Backend Seguro</span>
-        <span id="loginAttemptsCounter">Intentos permitidos: 5</span>
-      </div>
 
     </div>
   </div>
 
-  <!-- ALERTA DE SEGURIDAD / CONEXIÓN HTTPS -->
-  <div id="httpsSecurityBanner" class="hidden bg-[#0A1926] text-amber-300 text-[11px] font-mono py-2 px-4 text-center border-b border-amber-500/20 z-50">
-    <span class="inline-flex items-center gap-1.5">
-      <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-      Aviso de Canal: Se recomienda visualizar este sistema bajo protocolo <strong>HTTPS forzado</strong> con cifrado TLS 1.3.
-    </span>
-  </div>
-
-  <!-- NAVEGACIÓN PRINCIPAL (ESCRITORIO & MÓVIL) -->
+  <!-- NAVEGACIÓN PRINCIPAL -->
   <header class="sticky top-0 z-40 bg-editorial-cream/90 dark:bg-[#070D14]/90 backdrop-blur-md border-b border-neutral-200/80 dark:border-neutral-800 transition-colors">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3.5 flex items-center justify-between">
       
-      <!-- Brand & Título Semántico -->
-      <a href="#resumen" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#BD5307]">
-        <div class="w-9 h-9 rounded-xl bg-[#0A1926] dark:bg-[#BD5307] flex items-center justify-center text-white font-serif font-bold text-sm tracking-widest shadow-sm group-hover:scale-105 transition-transform duration-300">
+      <!-- Brand -->
+      <a href="#resumen" class="flex items-center gap-3 group focus:outline-none">
+        <div class="w-9 h-9 rounded-xl bg-[#0A1926] dark:bg-[#BD5307] flex items-center justify-center text-white font-serif font-bold text-sm tracking-widest shadow-sm">
           ET
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="text-[9px] uppercase tracking-[0.25em] font-bold text-neutral-600 dark:text-neutral-300">Auditoría Operativa</span>
-            <span class="text-neutral-400 dark:text-neutral-500">•</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] font-bold text-neutral-500 dark:text-neutral-400">Operaciones</span>
+            <span class="text-neutral-300 dark:text-neutral-600">•</span>
             <span class="text-[9px] uppercase tracking-[0.2em] font-semibold text-[#BD5307] dark:text-[#E07A2B]">Lighthouse Cancún</span>
           </div>
           <span class="font-serif text-sm sm:text-base font-bold tracking-wide text-[#0A1926] dark:text-white uppercase block leading-tight">
@@ -219,170 +192,261 @@
         </div>
       </a>
 
-      <!-- Navegación de Escritorio con URLs Propias -->
+      <!-- Navegación de Escritorio -->
       <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-1 bg-white/70 dark:bg-[#121921]/70 p-1.5 rounded-full border border-neutral-200/80 dark:border-neutral-800 text-xs font-medium">
-        <a href="#resumen" class="nav-link px-4 py-1.5 rounded-full transition-all duration-200 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-target="resumen">Resumen</a>
-        <a href="#cupones" class="nav-link px-4 py-1.5 rounded-full transition-all duration-200 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white" data-target="cupones">Cupones</a>
+        <a href="#resumen" class="nav-link px-4 py-1.5 rounded-full transition-all duration-200" data-target="resumen">Resumen</a>
+        <a href="#cupones" class="nav-link px-4 py-1.5 rounded-full transition-all duration-200" data-target="cupones">Cupones</a>
       </nav>
 
-      <!-- Botones de Acción: Modo Oscuro, Autenticación y Botón Móvil -->
+      <!-- Botones de Acción -->
       <div class="flex items-center gap-2">
-        
-        <!-- Toggle Modo Oscuro -->
+        <!-- Toggle Tema -->
         <button id="themeToggleBtn" aria-label="Alternar modo oscuro" class="p-2 rounded-xl text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press focus:outline-none">
-          <!-- Sol (Visible en dark) -->
           <svg class="w-4 h-4 hidden dark:block text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          <!-- Luna (Visible en light) -->
           <svg class="w-4 h-4 block dark:hidden text-[#0A1926]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
 
-        <!-- Indicador de Sesión Activa & Botón de Bloqueo/Cierre -->
+        <!-- Indicador de Sesión -->
         <div id="authenticatedUserBadge" class="hidden sm:inline-flex items-center gap-1.5">
-          <div class="inline-flex items-center px-3 py-1.5 rounded-xl text-[11px] font-mono border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#121921]">
-            <span id="authRoleLabel" class="text-neutral-700 dark:text-neutral-300 font-medium">clearboat-admin</span>
-          </div>
-          <button onclick="handleLogout()" title="Bloquear y Cerrar Sesión" class="p-2 rounded-xl text-neutral-500 hover:text-red-600 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press focus:outline-none" aria-label="Cerrar sesión">
+          <span class="px-3 py-1.5 rounded-xl text-[11px] font-mono border border-neutral-300 dark:border-neutral-700 bg-white dark:bg-[#121921] text-neutral-700 dark:text-neutral-300 font-medium">
+            clearboat-admin
+          </span>
+          <button onclick="handleLogout()" title="Cerrar Sesión" class="p-2 rounded-xl text-neutral-400 hover:text-red-600 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press focus:outline-none" aria-label="Cerrar sesión">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
           </button>
         </div>
 
-        <!-- Hamburguesa Navegación Móvil -->
-        <button id="mobileMenuBtn" aria-label="Abrir menú móvil" aria-expanded="false" class="md:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press">
+        <!-- Botón Móvil -->
+        <button id="mobileMenuBtn" aria-label="Abrir menú" class="md:hidden p-2 rounded-xl text-neutral-700 dark:text-neutral-200 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition interactive-press">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
 
     </div>
 
-    <!-- Menú Desplegable Móvil -->
+    <!-- Menú Móvil -->
     <div id="mobileMenuDrawer" class="hidden md:hidden px-4 pt-2 pb-4 border-t border-neutral-200 dark:border-neutral-800 bg-editorial-cream dark:bg-[#070D14] space-y-2">
       <a href="#resumen" class="mobile-nav-link block px-4 py-2 rounded-xl text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/60 dark:hover:bg-neutral-800 transition">Resumen General</a>
       <a href="#cupones" class="mobile-nav-link block px-4 py-2 rounded-xl text-xs font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200/60 dark:hover:bg-neutral-800 transition">Registro de Cupones</a>
       <div class="pt-2 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center text-xs">
-        <span class="text-neutral-500 font-mono text-[10px]">Sesión: clearboat-admin</span>
+        <span class="text-neutral-400 font-mono text-[10px]">clearboat-admin</span>
         <button onclick="handleLogout()" class="text-red-600 dark:text-red-400 font-semibold text-xs flex items-center gap-1">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
           Cerrar Sesión
         </button>
       </div>
     </div>
   </header>
 
-  <!-- CONTENEDOR DE PÁGINAS SPA CON RUTAS POR HASH -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 w-full space-y-12">
+  <!-- CONTENEDOR PRINCIPAL SPA -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 w-full space-y-10">
 
     <!-- ========================================== -->
-    <!-- 1. VISTA: RESUMEN / DASHBOARD (#resumen) -->
+    <!-- 1. VISTA: RESUMEN (#resumen)               -->
     <!-- ========================================== -->
     <section id="view-resumen" class="page-view space-y-8 animate-hero">
       
-      <!-- Encabezado Hero con animación -->
+      <!-- Hero -->
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-neutral-200/80 dark:border-neutral-800">
         <div>
           <h1 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#0A1926] dark:text-white uppercase">
-            Auditoría Operativa Clear Boat
+            Bitácora Operativa Clear Boat
           </h1>
           <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl font-light leading-relaxed">
-            Consolidación de operaciones entre el 29 de septiembre y 13 de octubre de 2026. Desglose financiero auditado bajo tipo de cambio contractual homologado.
+            Concentrado de operaciones y liquidaciones en Lighthouse Cancún entre el 29 de septiembre y 13 de octubre de 2026.
           </p>
         </div>
 
-        <!-- Ficha Rápida Tipo de Cambio -->
+        <!-- Tipo de Cambio y Paquetes -->
         <div class="flex items-center gap-4 bg-white dark:bg-[#121921] p-4 rounded-2xl hairline-border shadow-sm">
           <div>
-            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Tipo de Cambio Fijo</span>
-            <span class="text-base font-mono font-bold text-[#0A1926] dark:text-white">$18.00 MXN / USD</span>
+            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Tipo de Cambio</span>
+            <span class="text-base font-mono font-bold text-[#0A1926] dark:text-white">$18.00 MXN</span>
           </div>
           <div class="h-8 w-px bg-neutral-200 dark:bg-neutral-800"></div>
           <div>
-            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Operador Responsable</span>
-            <span class="text-xs font-semibold text-[#BD5307] dark:text-amber-500">Enva Tours S.A.</span>
+            <span class="text-[10px] font-mono tracking-widest text-neutral-400 block uppercase">Servicios Activos</span>
+            <div class="flex items-center gap-3.5 mt-1">
+              <div class="inline-flex items-center gap-1.5 text-xs font-medium text-[#0A1926] dark:text-neutral-200">
+                <span class="w-3.5 h-[2px] bg-blue-500 rounded-full inline-block"></span>
+                <span>Clear Boat</span>
+              </div>
+              <div class="inline-flex items-center gap-1.5 text-xs font-medium text-[#0A1926] dark:text-neutral-200">
+                <span class="w-3.5 h-[2px] bg-purple-500 rounded-full inline-block"></span>
+                <span>Fotografía</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Bento Grid: Métricas Clave (3 Módulos) -->
+      <!-- Bento Grid: 3 Métricas Principales -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- Métrica 1: Pasajeros Embarcados -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:shadow-md animate-stagger-1">
+        <!-- Métrica 1 -->
+        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-1">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Pasajeros Embarcados</span>
+            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Pasajeros Totales</span>
             <span class="text-xs font-mono text-neutral-400">PAX</span>
           </div>
-          <div class="my-6">
+          <div class="my-5">
             <div class="flex items-baseline gap-2">
-              <span class="text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">25</span>
-              <span class="text-xs text-neutral-400 font-medium">totales</span>
+              <span id="metricTotalPax" class="text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">29</span>
+              <span class="text-xs text-neutral-400">pasajeros</span>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 font-light leading-relaxed">
-              22 adultos registrados con tarifa neta comercial y 3 menores en expedición.
+            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 font-light">
+              28 PAX en Clear Boat (25 adultos, 3 niños) y 1 PAX en Fotografía.
             </p>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Adultos: 22</span>
-            <span>Menores: 3</span>
+            <span>Clear Boat: 28</span>
+            <span class="text-purple-600 dark:text-purple-400">Fotografía: 1</span>
           </div>
         </div>
 
-        <!-- Métrica 2: Costo Neto Proveedor -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:shadow-md animate-stagger-2">
+        <!-- Métrica 2 -->
+        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-2">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Costo Neto Proveedor</span>
+            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Liquidación & Saldo</span>
             <span class="text-xs font-mono text-neutral-400">USD</span>
           </div>
-          <div class="my-6">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs text-neutral-400">$</span>
-              <span class="text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">550</span>
-              <span class="text-xs text-neutral-400">.00</span>
+          <div class="my-3 space-y-1">
+            <div class="flex items-baseline justify-between text-xs">
+              <span class="text-neutral-400">Total Acumulado:</span>
+              <span class="font-mono font-medium text-neutral-600 dark:text-neutral-400">$<span id="metricTotalUsd">639</span>.00</span>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 font-light leading-relaxed">
-              Liquidación neta total transferida al operador Enva Tours.
-            </p>
+            <div class="flex items-baseline justify-between text-xs">
+              <span class="text-neutral-400">Pagos al Proveedor:</span>
+              <span class="font-mono font-medium text-emerald-600 dark:text-emerald-400">-$<span id="metricPaidUsd">500</span>.00</span>
+            </div>
+            <div class="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-baseline justify-between">
+              <span class="text-xs font-semibold text-[#BD5307] dark:text-[#E07A2B]">Saldo por Pagar:</span>
+              <span class="text-3xl font-light font-mono tracking-tight text-[#BD5307] dark:text-[#E07A2B]">$<span id="metricBalanceUsd">139</span>.00</span>
+            </div>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Tarifa neta / PAX</span>
-            <span class="text-[#0A1926] dark:text-white font-medium">$25.00 USD</span>
+            <span>Enva: $625</span>
+            <span class="text-purple-600 dark:text-purple-400">Fotografía: $14</span>
           </div>
         </div>
 
-        <!-- Métrica 3: Moneda Nacional -->
-        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:shadow-md animate-stagger-3">
+        <!-- Métrica 3 -->
+        <div class="bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm animate-stagger-3">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Importe en Moneda Nacional</span>
+            <span class="text-[11px] tracking-widest uppercase font-semibold text-neutral-500 dark:text-neutral-400">Equivalente Nacional</span>
             <span class="text-xs font-mono text-neutral-400">MXN</span>
           </div>
-          <div class="my-6">
-            <div class="flex items-baseline gap-1">
-              <span class="text-xs text-neutral-400">$</span>
-              <span class="text-5xl font-light tracking-tight text-[#0A1926] dark:text-white">9,900</span>
-              <span class="text-xs text-neutral-400">.00</span>
+          <div class="my-3 space-y-1">
+            <div class="flex items-baseline justify-between text-xs">
+              <span class="text-neutral-400">Total en MXN:</span>
+              <span class="font-mono font-medium text-neutral-600 dark:text-neutral-400">$<span id="metricTotalMxn">11,502</span>.00</span>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-2 font-light leading-relaxed">
-              Valoración convertida con la tasa de cambio contractual ($18.00 MXN).
-            </p>
+            <div class="flex items-baseline justify-between text-xs">
+              <span class="text-neutral-400">Abonado (MXN):</span>
+              <span class="font-mono font-medium text-emerald-600 dark:text-emerald-400">-$<span id="metricPaidMxn">9,000</span>.00</span>
+            </div>
+            <div class="pt-2 border-t border-neutral-100 dark:border-neutral-800 flex items-baseline justify-between">
+              <span class="text-xs font-semibold text-[#0A1926] dark:text-white">Resta por Pagar:</span>
+              <span class="text-3xl font-light font-mono tracking-tight text-[#0A1926] dark:text-white">$<span id="metricBalanceMxn">2,502</span>.00</span>
+            </div>
           </div>
           <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between text-[11px] font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Cálculo Exacto</span>
-            <span class="text-[#BD5307] dark:text-amber-500 font-mono">$550 × $18.00</span>
+            <span>Tipo de cambio:</span>
+            <span>$18.00 MXN</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Bento Grid: Módulo de Gráficas Analíticas -->
+      <!-- CUADRO DE PAGOS: DÍAS DE LIQUIDACIÓN AL PROVEEDOR -->
+      <div class="bg-white dark:bg-[#121921] p-6 sm:p-8 rounded-3xl hairline-border shadow-sm space-y-6 reveal-on-scroll">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-neutral-100 dark:border-neutral-800">
+          <div>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Calendario de Pagos</span>
+            <h2 class="font-serif text-lg sm:text-xl font-bold text-[#0A1926] dark:text-white uppercase">
+              Días de Liquidación & Pagos al Proveedor
+            </h2>
+          </div>
+          
+          <!-- Control de Pagos Realizados y Saldo Restante -->
+          <div class="flex flex-wrap items-center gap-2.5 font-mono text-xs">
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
+              <span class="text-[10px] uppercase text-neutral-400 font-sans">Pago Realizado:</span>
+              <div class="flex items-center">
+                <span class="text-neutral-500 mr-0.5">$</span>
+                <input 
+                  type="number" 
+                  id="inputMontoPagado" 
+                  value="500" 
+                  min="0" 
+                  step="1"
+                  class="w-16 bg-transparent font-bold text-emerald-600 dark:text-emerald-400 focus:outline-none border-b border-neutral-300 dark:border-neutral-700 text-xs py-0.5"
+                  title="Modificar abono o pago realizado"
+                />
+                <span class="text-[10px] text-neutral-400 ml-1">USD</span>
+              </div>
+            </div>
+
+            <span class="px-3 py-1.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border text-neutral-600 dark:text-neutral-300">
+              Total: $<span id="badgeTotalUsd">639.00</span> USD
+            </span>
+
+            <span class="px-3.5 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 hairline-border border-amber-200 dark:border-amber-900 font-bold text-[#BD5307] dark:text-[#E07A2B]">
+              Saldo por Pagar: $<span id="badgeBalanceUsd">139.00</span> USD
+            </span>
+          </div>
+        </div>
+
+        <!-- Tabla Editorial del Cuadro de Pagos -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-neutral-50 dark:bg-[#0A1926]/50 text-neutral-400 uppercase tracking-widest text-[9px] font-semibold border-b border-neutral-100 dark:border-neutral-800">
+              <tr>
+                <th class="px-5 py-3.5">Día Liquidado</th>
+                <th class="px-5 py-3.5">Servicios Cubiertos</th>
+                <th class="px-5 py-3.5">Cupones Liquidados</th>
+                <th class="px-5 py-3.5 text-right">Pago (USD)</th>
+                <th class="px-5 py-3.5 text-right">Equivalente (MXN)</th>
+              </tr>
+            </thead>
+            <tbody id="settlementTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800 font-light font-mono">
+              <!-- Renderizado dinámicamente -->
+            </tbody>
+            <tfoot class="bg-neutral-50/70 dark:bg-[#0A1926]/40 border-t border-neutral-200 dark:border-neutral-800 font-mono text-neutral-800 dark:text-neutral-200">
+              <!-- Fila 1: Total Acumulado Generado -->
+              <tr class="border-b border-neutral-200/60 dark:border-neutral-800/60">
+                <td colspan="3" class="px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">Total Acumulado Generado</td>
+                <td class="px-5 py-2.5 text-right font-bold text-neutral-900 dark:text-white" id="footTotalUsd">$639.00 USD</td>
+                <td class="px-5 py-2.5 text-right text-neutral-700 dark:text-neutral-300" id="footTotalMxn">$11,502.00 MXN</td>
+              </tr>
+              <!-- Fila 2: Pagos Realizados al Proveedor -->
+              <tr class="border-b border-neutral-200/60 dark:border-neutral-800/60 text-emerald-600 dark:text-emerald-400">
+                <td colspan="3" class="px-5 py-2.5 uppercase tracking-wider text-[10px] font-sans font-semibold">(-) Pagos Realizados al Proveedor</td>
+                <td class="px-5 py-2.5 text-right font-bold" id="footPaidUsd">-$500.00 USD</td>
+                <td class="px-5 py-2.5 text-right" id="footPaidMxn">-$9,000.00 MXN</td>
+              </tr>
+              <!-- Fila 3: Saldo Pendiente por Liquidar (Resta) -->
+              <tr class="bg-amber-50/50 dark:bg-amber-950/20 font-bold text-[#BD5307] dark:text-[#E07A2B]">
+                <td colspan="3" class="px-5 py-3 uppercase tracking-wider text-[10px] font-sans">(=) Saldo Pendiente por Liquidar (Resta)</td>
+                <td class="px-5 py-3 text-right text-sm" id="footBalanceUsd">$139.00 USD</td>
+                <td class="px-5 py-3 text-right text-sm" id="footBalanceMxn">$2,502.00 MXN</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+
+      <!-- Gráficas Analíticas -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 reveal-on-scroll">
         
-        <!-- Gráfica 1: Facturación por Día -->
+        <!-- Gráfica 1 -->
         <div class="lg:col-span-7 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+          <div class="flex items-center justify-between gap-2 mb-6">
             <div>
-              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Volumen Financiero • Clic para ver cupones</span>
+              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Volumen Diario</span>
               <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Facturación Neta por Jornada</h2>
             </div>
-            <span class="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-3 py-1 rounded-full cursor-pointer hover:bg-neutral-200 dark:hover:bg-neutral-700 transition" onclick="openDateDetailModal(1)" title="Ver pico operativo del 30 de Septiembre">
-              USD acumulado por día
+            <span class="text-[11px] font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-100 dark:bg-neutral-800 px-3 py-1 rounded-full">
+              4 Jornadas
             </span>
           </div>
           
@@ -391,20 +455,20 @@
           </div>
           
           <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 font-light">
-            <span>Pico operativo: <strong class="cursor-pointer hover:underline text-[#0A1926] dark:text-white" onclick="openDateDetailModal(1)">30 de Septiembre</strong> ($325 USD • 13 PAX)</span>
-            <span class="font-mono text-[11px]">4 Fechas Activas (Clic en barra)</span>
+            <span>Pico operativo: <strong class="text-[#0A1926] dark:text-white">30 de Septiembre</strong> ($325 USD)</span>
+            <span class="font-mono text-[11px]">Clic en barra para ver detalle</span>
           </div>
         </div>
 
-        <!-- Gráfica 2: Composición Demográfica -->
+        <!-- Gráfica 2 -->
         <div class="lg:col-span-5 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm">
           <div>
-            <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Composición del Pasaje</span>
-            <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Distribución Adultos / Niños</h2>
+            <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Composición</span>
+            <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Distribución de Pasajeros</h2>
           </div>
           
           <div class="relative h-56 w-full my-4 flex items-center justify-center">
-            <canvas id="chartDemographics"></canvas>
+            <canvas id="chartDemographics" class="cursor-pointer"></canvas>
           </div>
           
           <div class="grid grid-cols-2 gap-3 pt-4 border-t border-neutral-100 dark:border-neutral-800">
@@ -412,22 +476,22 @@
               <span class="text-[10px] uppercase font-mono text-neutral-400 block">Adultos</span>
               <span class="text-xl font-light text-[#0A1926] dark:text-white">22 <span class="text-xs text-neutral-400">(88%)</span></span>
             </div>
-            <div class="p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center cursor-pointer hover:border-[#BD5307] transition" onclick="openCouponDetailModal('894')" title="Ver cupón con menores registrados">
-              <span class="text-[10px] uppercase font-mono text-neutral-400 block">Niños (Cupón #894)</span>
+            <div class="p-3 bg-neutral-50 dark:bg-[#0A1926]/40 rounded-xl hairline-border text-center cursor-pointer" onclick="openCouponDetailModal('894')">
+              <span class="text-[10px] uppercase font-mono text-neutral-400 block">Niños (#894)</span>
               <span class="text-xl font-light text-[#BD5307]">3 <span class="text-xs text-neutral-400">(12%)</span></span>
             </div>
           </div>
         </div>
 
-        <!-- Gráfica 3: Dispersión por Cupón -->
+        <!-- Gráfica 3 -->
         <div class="lg:col-span-12 bg-white dark:bg-[#121921] p-7 rounded-2xl hairline-border shadow-sm">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
             <div>
-              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Análisis por Cupón • Clic en barra para detalle completo</span>
-              <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Importe Neto Reportado por Cupón</h2>
+              <span class="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 block mb-1">Distribución Individual</span>
+              <h2 class="font-serif text-base font-bold text-[#0A1926] dark:text-white">Importe Neto por Cupón</h2>
             </div>
             <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light">
-              Los cupones <button onclick="openCouponDetailModal('860')" class="font-semibold underline hover:text-[#BD5307]">#860</button> y <button onclick="openCouponDetailModal('856')" class="font-semibold underline hover:text-[#BD5307]">#856</button> concentran el <strong>59.1%</strong> del costo total reportado.
+              Cupones <button onclick="openCouponDetailModal('860')" class="font-semibold underline">#860</button> y <button onclick="openCouponDetailModal('856')" class="font-semibold underline">#856</button> representan el 59.1% del total.
             </p>
           </div>
           
@@ -441,33 +505,50 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- 2. VISTA: TABLA DE CUPONES (#cupones)     -->
+    <!-- 2. VISTA: TABLA DE CUPONES (#cupones)      -->
     <!-- ========================================== -->
     <section id="view-cupones" class="page-view space-y-6 hidden">
       
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-neutral-200/80 dark:border-neutral-800">
         <div>
-          <span class="text-[10px] uppercase tracking-widest font-semibold text-neutral-400">Libro Contable Auditado</span>
+          <span class="text-[10px] uppercase tracking-widest font-semibold text-neutral-400">Libro Contable</span>
           <h2 class="font-serif text-2xl font-bold text-[#0A1926] dark:text-white uppercase">Registro Individual de Cupones</h2>
           <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-1">
-            Validación de integridad row-level. Haz clic en cualquier fila o cupón para abrir su ficha detallada oficial.
+            Haz clic en cualquier fila para consultar el desglose completo.
           </p>
         </div>
 
-        <!-- Acciones: Búsqueda y Descarga Segura -->
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <input 
-              type="text" 
-              id="couponSearchInput" 
-              placeholder="Filtrar por cupón o fecha..." 
-              class="text-xs bg-white dark:bg-[#121921] hairline-border px-3.5 py-2 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#BD5307] w-52 sm:w-64 transition"
-            />
-          </div>
-          <button onclick="exportAuditDataCSV()" class="px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200 transition interactive-press flex items-center gap-1.5 shadow-sm">
+        <!-- Buscador y Exportación -->
+        <div class="flex flex-wrap items-center gap-3">
+          <input 
+            type="text" 
+            id="couponSearchInput" 
+            placeholder="Filtrar por cupón o fecha..." 
+            class="text-xs bg-white dark:bg-[#121921] hairline-border px-3.5 py-2 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#BD5307] w-52 sm:w-60 transition"
+          />
+          <button onclick="exportAuditDataCSV()" class="px-4 py-2 bg-neutral-900 dark:bg-white text-white dark:text-black rounded-xl text-xs font-medium hover:opacity-90 transition interactive-press flex items-center gap-1.5 shadow-sm">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
             Exportar CSV
           </button>
+        </div>
+      </div>
+
+      <!-- Filtros por Servicio -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-[#121921] p-3 rounded-2xl hairline-border shadow-sm">
+        <div class="flex items-center gap-2 text-xs font-medium">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mr-1">Filtrar:</span>
+          <button onclick="setServiceFilter('all')" id="filterBtnAll" class="px-3 py-1.5 rounded-xl bg-[#0A1926] text-white dark:bg-white dark:text-black text-[11px] font-semibold transition interactive-press">
+            Todos (9)
+          </button>
+          <button onclick="setServiceFilter('clearboat')" id="filterBtnClearBoat" class="px-3 py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span> Clear Boat (8)
+          </button>
+          <button onclick="setServiceFilter('foto')" id="filterBtnFoto" class="px-3 py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-purple-500"></span> Fotografía (1)
+          </button>
+        </div>
+        <div class="text-[11px] font-mono text-neutral-400" id="filterStatusLabel">
+          Mostrando 9 registros
         </div>
       </div>
 
@@ -475,139 +556,37 @@
       <div class="bg-white dark:bg-[#121921] rounded-2xl hairline-border overflow-hidden shadow-sm">
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs" id="couponsTable">
-            <thead class="bg-neutral-50 dark:bg-[#0A1926]/50 text-neutral-400 dark:text-neutral-400 uppercase tracking-widest text-[9px] font-semibold border-b border-neutral-100 dark:border-neutral-800">
+            <thead class="bg-neutral-50 dark:bg-[#0A1926]/50 text-neutral-400 uppercase tracking-widest text-[9px] font-semibold border-b border-neutral-100 dark:border-neutral-800">
               <tr>
                 <th class="px-5 py-4">Cupón</th>
-                <th class="px-5 py-4">Fecha</th>
+                <th class="px-5 py-4">Fecha Operación</th>
                 <th class="px-5 py-4">Servicio</th>
+                <th class="px-5 py-4">Proveedor</th>
                 <th class="px-5 py-4 text-center">Adultos</th>
                 <th class="px-5 py-4 text-center">Niños</th>
                 <th class="px-5 py-4 text-right">Neto PAX</th>
                 <th class="px-5 py-4 text-right">Neto Reserva</th>
-                <th class="px-5 py-4 text-right">Depósito</th>
-                <th class="px-5 py-4 text-center">Balance</th>
-                <th class="px-5 py-4 text-right">Liquidación</th>
+                <th class="px-5 py-4 text-center">Día Liquidado</th>
+                <th class="px-5 py-4 text-right">Abono</th>
                 <th class="px-5 py-4 text-center">Acción</th>
               </tr>
             </thead>
-            <tbody id="couponTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800/80 font-light">
-              <!-- Fila 858 -->
-              <tr onclick="openCouponDetailModal('858')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#858</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">29/09/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">2</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$50 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$50 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$50 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 860 -->
-              <tr onclick="openCouponDetailModal('860')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#860</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">30/09/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">7</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$175 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$175 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0*</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$175 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 856 -->
-              <tr onclick="openCouponDetailModal('856')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#856</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">30/09/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">6</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$150 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$150 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0*</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$150 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 864 -->
-              <tr onclick="openCouponDetailModal('864')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#864</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">03/10/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">2</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$50 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$50 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0*</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$50 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 865 -->
-              <tr onclick="openCouponDetailModal('865')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#865</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">03/10/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">2</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$50 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$50 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0*</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$50 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 867 -->
-              <tr onclick="openCouponDetailModal('867')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#867</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">03/10/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">1</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$25 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0*</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$25 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
-              <!-- Fila 894 -->
-              <tr onclick="openCouponDetailModal('894')" class="cursor-pointer hover:bg-neutral-50/80 dark:hover:bg-neutral-800/50 transition group">
-                <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-neutral-200 group-hover:text-[#BD5307] transition">#894</td>
-                <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">13/10/2026</td>
-                <td class="px-5 py-4 font-medium text-neutral-800 dark:text-neutral-200">Clear Boat</td>
-                <td class="px-5 py-4 text-center font-mono">2</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-800 dark:text-neutral-200 font-semibold">3</td>
-                <td class="px-5 py-4 text-right font-mono">$25 USD</td>
-                <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$50 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$50 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">0</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-medium">-$50 USD</td>
-                <td class="px-5 py-4 text-center"><span class="font-mono text-[10px] px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 group-hover:bg-[#0A1926] group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition">Ver Detalle →</span></td>
-              </tr>
+            <tbody id="couponTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800 font-light">
+              <!-- Rellenado dinámicamente -->
             </tbody>
-            <tfoot class="bg-neutral-50 dark:bg-[#0A1926]/70 border-t border-neutral-200 dark:border-neutral-800 font-semibold text-neutral-800 dark:text-neutral-200">
+            <tfoot class="bg-neutral-50/80 dark:bg-[#0A1926]/70 border-t border-neutral-200 dark:border-neutral-800 font-semibold text-neutral-800 dark:text-neutral-200 font-mono">
               <tr>
-                <td colspan="3" class="px-5 py-4 uppercase tracking-wider text-[10px]">Totales Consolidados</td>
-                <td class="px-5 py-4 text-center font-mono">22</td>
-                <td class="px-5 py-4 text-center font-mono">3</td>
-                <td class="px-5 py-4 text-right font-mono text-neutral-400">—</td>
-                <td class="px-5 py-4 text-right font-mono text-[#0A1926] dark:text-white">$550 USD</td>
-                <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400">$550 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-neutral-400">$0</td>
-                <td class="px-5 py-4 text-right font-mono text-red-600 dark:text-red-400 font-bold">-$550 USD</td>
-                <td class="px-5 py-4 text-center font-mono text-[9px] text-emerald-600 dark:text-emerald-400">100% OK</td>
+                <td colspan="4" class="px-5 py-4 uppercase tracking-wider text-[10px] font-sans">Totales</td>
+                <td class="px-5 py-4 text-center" id="totalTableAdults">26</td>
+                <td class="px-5 py-4 text-center" id="totalTableKids">3</td>
+                <td class="px-5 py-4 text-right text-neutral-400">—</td>
+                <td class="px-5 py-4 text-right text-[#0A1926] dark:text-white" id="totalTableNet">$639 USD</td>
+                <td class="px-5 py-4 text-center text-neutral-400">—</td>
+                <td class="px-5 py-4 text-right text-emerald-600 dark:text-emerald-400 font-bold" id="totalTableDeposit">$639 USD</td>
+                <td class="px-5 py-4 text-center text-[10px] text-neutral-400">—</td>
               </tr>
             </tfoot>
           </table>
-        </div>
-        <div class="p-4 bg-neutral-50/60 dark:bg-neutral-900/60 border-t border-neutral-100 dark:border-neutral-800 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-400 font-mono gap-2">
-          <span>* Asentado por conciliación: celdas vacías normalizadas a 0 por cobertura total de depósito.</span>
-          <span class="text-neutral-500">Protocolo de Integridad: SHA-256 HMAC</span>
         </div>
       </div>
 
@@ -618,16 +597,13 @@
     <!-- ========================================== -->
     <section id="view-404" class="page-view space-y-6 text-center py-16 hidden">
       <div class="max-w-md mx-auto space-y-4">
-        <span class="text-7xl font-serif font-light text-[#BD5307] block">404</span>
-        <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase">
-          Página Fuera de Bitácora
+        <span class="text-6xl font-serif font-light text-[#BD5307] block">404</span>
+        <h2 class="font-serif text-xl font-bold text-[#0A1926] dark:text-white uppercase">
+          Página no encontrada
         </h2>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light leading-relaxed">
-          El identificador solicitado no coincide con ningún registro o módulo operativo de Lighthouse Cancún.
-        </p>
-        <div class="pt-4">
-          <a href="#resumen" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider transition hover:scale-105">
-            Retornar al Resumen Principal
+        <div class="pt-2">
+          <a href="#resumen" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider transition hover:opacity-90">
+            Regresar al Resumen
           </a>
         </div>
       </div>
@@ -635,102 +611,87 @@
 
   </main>
 
-  <!-- MODAL EDITORIAL: INFORMACIÓN CON DETALLE BASADA 100% EN EL GOOGLE SHEET -->
-  <div id="couponDetailModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 dark:bg-black/80 backdrop-blur-sm p-4 hidden transition-all duration-300">
-    <div id="couponModalCard" class="bg-white dark:bg-[#121921] w-full max-w-2xl max-h-[92vh] overflow-y-auto rounded-3xl hairline-border shadow-2xl p-6 sm:p-8 space-y-6 transform transition-all duration-300 scale-95 opacity-0">
+  <!-- MODAL DE DETALLE -->
+  <div id="couponDetailModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 dark:bg-black/80 backdrop-blur-sm p-4 hidden transition-all duration-200">
+    <div id="couponModalCard" class="bg-white dark:bg-[#121921] w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl hairline-border shadow-2xl p-6 sm:p-8 space-y-6 transform transition-all duration-200 scale-95 opacity-0">
       
       <!-- Encabezado del Detalle -->
       <div class="flex items-start justify-between border-b border-neutral-100 dark:border-neutral-800 pb-4">
         <div>
-          <div class="flex items-center gap-2 mb-1">
-            <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] dark:text-[#E07A2B]">Google Sheet • Hoja 1</span>
-            <span class="text-neutral-300 dark:text-neutral-700">•</span>
-            <span class="text-[9px] uppercase tracking-widest text-neutral-400 font-mono">Registro Oficial</span>
-          </div>
+          <span class="text-[9px] uppercase tracking-[0.25em] font-semibold text-[#BD5307] dark:text-[#E07A2B] block mb-0.5">Ficha de Liquidación</span>
           <h3 id="modalDetailTitle" class="font-serif text-xl sm:text-2xl font-bold text-[#0A1926] dark:text-white uppercase"></h3>
-          <p id="modalDetailSubtitle" class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 font-light"></p>
+          <p id="modalDetailSubtitle" class="text-xs text-neutral-500 dark:text-neutral-400 font-light"></p>
         </div>
-        <button onclick="closeCouponDetailModal()" class="p-2 rounded-xl text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition focus:outline-none" aria-label="Cerrar ventana modal">
+        <button onclick="closeCouponDetailModal()" class="p-2 rounded-xl text-neutral-400 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition focus:outline-none" aria-label="Cerrar">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- Selector si la jornada contiene más de un cupón (ej. 30/09 o 03/10) -->
+      <!-- Selector de Cupones Múltiples -->
       <div id="modalMultiCouponTabsContainer" class="hidden">
         <label class="block text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-2">Cupones de esta jornada:</label>
         <div id="modalMultiCouponTabs" class="flex flex-wrap gap-2"></div>
       </div>
 
-      <!-- Desglose Completo de las 16 Columnas del Google Sheet -->
+      <!-- Cuadrícula de Campos -->
       <div id="modalFieldsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
         <!-- Generado dinámicamente -->
       </div>
 
-      <!-- Pie Informativo del Modal -->
-      <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-400 font-mono gap-3">
-        <span>Archivo: Enva Tours - Lighthouse 2026 (gid=0)</span>
-        <button onclick="closeCouponDetailModal()" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition">
-          Cerrar Ficha
+      <!-- Pie del Modal -->
+      <div class="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex justify-end">
+        <button onclick="closeCouponDetailModal()" class="px-6 py-2.5 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-black text-xs font-semibold uppercase tracking-wider hover:opacity-90 transition">
+          Cerrar
         </button>
       </div>
 
     </div>
   </div>
 
-  <!-- BANNER DE CONSENTIMIENTO DE COOKIES EDITORIAL -->
-  <aside id="cookieBanner" aria-label="Consentimiento de cookies" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md bg-white dark:bg-[#121921] p-5 rounded-2xl hairline-border shadow-2xl z-50 flex flex-col gap-3 transition-transform duration-500">
-    <div class="flex items-start gap-3">
-      <div class="w-8 h-8 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 flex-shrink-0 flex items-center justify-center text-xs">
-        🍪
-      </div>
-      <div>
-        <h4 class="font-serif text-xs font-bold text-[#0A1926] dark:text-white uppercase tracking-wider">Privacidad & Cookies Seguras</h4>
-        <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 font-light leading-relaxed">
-          Utilizamos cookies esenciales con atributos <code class="font-mono text-[10px]">SameSite=Strict; Secure</code> para garantizar la sesión de auditoría y métricas de rendimiento anónimas.
-        </p>
-      </div>
-    </div>
-    <div class="flex items-center justify-end gap-2 pt-2 border-t border-neutral-100 dark:border-neutral-800 text-xs">
-      <button onclick="acceptCookies(false)" class="px-3 py-1.5 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white font-medium transition">Rechazar no esenciales</button>
-      <button onclick="acceptCookies(true)" class="px-4 py-1.5 rounded-lg bg-[#0A1926] dark:bg-white text-white dark:text-black font-semibold transition hover:opacity-90">Aceptar Todas</button>
-    </div>
-  </aside>
-
-  <!-- BOTÓN VOLVER ARRIBA (BACK TO TOP) -->
+  <!-- BOTÓN VOLVER ARRIBA -->
   <button 
     id="backToTopBtn" 
     onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" 
     aria-label="Volver arriba" 
-    class="fixed bottom-6 right-6 p-3 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none z-40"
+    class="fixed bottom-6 right-6 p-3 rounded-full bg-[#0A1926] dark:bg-white text-white dark:text-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none z-40"
   >
     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
   </button>
 
   <!-- FOOTER EDITORIAL -->
-  <footer class="border-t border-neutral-200/80 dark:border-neutral-800 bg-white/50 dark:bg-[#070D14] py-8 text-xs text-neutral-500 font-light">
+  <footer class="border-t border-neutral-200/80 dark:border-neutral-800 bg-white/50 dark:bg-[#070D14] py-8 text-xs text-neutral-500 font-light mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <p>© 2026 Enva Tours S.A. de C.V. — Todos los derechos reservados.</p>
-        <p class="text-[10px] text-neutral-400 font-mono mt-0.5">Bitácora Lighthouse Cancún • Cifrado AES-256 / SHA-256</p>
+        <p>© 2026 Enva Tours S.A. de C.V. — Lighthouse Cancún.</p>
       </div>
       <div class="flex items-center gap-6 text-[11px] font-mono">
         <a href="#resumen" class="hover:text-black dark:hover:text-white transition">Resumen</a>
         <a href="#cupones" class="hover:text-black dark:hover:text-white transition">Cupones</a>
-        <span id="telemetryIndicator" class="text-emerald-600 dark:text-emerald-400">• Conexión Segura</span>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT INTEGRADO: LÓGICA, GRÁFICAS & ARQUITECTURA DE CLIENTE/BACKEND -->
+  <!-- SCRIPT INTEGRADO -->
   <script>
     // =========================================================================
-    // BASE DE DATOS EXACTA DE LA HOJA DE CÁLCULO DE GOOGLE (SIN ALTERACIONES)
-    // Hoja 1: 'Enva Tours - Lighthouse 2026' (1REgo_ekhlLB6zTFZFjCIFiFpIiPjkBA2V093SZ1tuGw)
-    // 16 Columnas: Actividad, Cupon, Servicio, Adultos, Niños, Día, Día de operación,
-    // Provedor, Costo Reporte neto por persona, Costo Reporte neto por total de reserva,
-    // Moneda, Tipo de cambio, Deposito, Balance, Total, Locación.
+    // ESTADO DE LA APLICACIÓN
     // =========================================================================
-    const SHEET_DATA = [
+    const AppState = {
+      theme: 'light',
+      isAuthenticated: false,
+      montoPagado: 500, // Abono o pago registrado inicial al proveedor
+      charts: {
+        daily: null,
+        demo: null,
+        coupon: null
+      }
+    };
+
+    const TSV_PUBLIC_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQRCjHLZnyYx6iVukzsUYGPD-AB5J_r8ly86mNzBqBYZ9Qks_-etXgQ6UUtLViSRJNQlWlYhEWj7put/pub?output=tsv';
+    let currentServiceFilter = 'all';
+
+    // Base de datos estandarizada basada en la hoja de cálculo
+    let SHEET_DATA = [
       {
         actividad: "Clear Boat",
         cupon: "858",
@@ -739,14 +700,16 @@
         ninos: "",
         dia: "29/09/26",
         diaOperacion: "29/09/26",
+        diaLiquidacion: "29/09/26",
+        abonoEnva: "50",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "50",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "50",
         balance: "0",
-        total: "-50",
+        total: "50",
         locacion: "Lighthouse"
       },
       {
@@ -757,14 +720,16 @@
         ninos: "",
         dia: "30/09/26",
         diaOperacion: "30/09/26",
+        diaLiquidacion: "30/09/26",
+        abonoEnva: "175",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "175",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "175",
-        balance: "", // En la hoja viene vacío
-        total: "-175",
+        balance: "0",
+        total: "175",
         locacion: "Lighthouse"
       },
       {
@@ -775,14 +740,16 @@
         ninos: "",
         dia: "30/09/26",
         diaOperacion: "30/09/26",
+        diaLiquidacion: "30/09/26",
+        abonoEnva: "150",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "150",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "150",
-        balance: "", // En la hoja viene vacío
-        total: "-150",
+        balance: "0",
+        total: "150",
         locacion: "Lighthouse"
       },
       {
@@ -793,14 +760,16 @@
         ninos: "",
         dia: "03/10/26",
         diaOperacion: "03/10/26",
+        diaLiquidacion: "03/10/26",
+        abonoEnva: "50",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "50",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "50",
-        balance: "", // En la hoja viene vacío
-        total: "-50",
+        balance: "0",
+        total: "50",
         locacion: "Lighthouse"
       },
       {
@@ -811,14 +780,16 @@
         ninos: "",
         dia: "03/10/26",
         diaOperacion: "03/10/26",
+        diaLiquidacion: "03/10/26",
+        abonoEnva: "50",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "50",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "50",
-        balance: "", // En la hoja viene vacío
-        total: "-50",
+        balance: "0",
+        total: "50",
         locacion: "Lighthouse"
       },
       {
@@ -829,14 +800,16 @@
         ninos: "",
         dia: "03/10/26",
         diaOperacion: "03/10/26",
+        diaLiquidacion: "03/10/26",
+        abonoEnva: "25",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "25",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "25",
-        balance: "", // En la hoja viene vacío
-        total: "-25",
+        balance: "0",
+        total: "25",
         locacion: "Lighthouse"
       },
       {
@@ -847,389 +820,571 @@
         ninos: "3",
         dia: "13/10/26",
         diaOperacion: "13/10/26",
+        diaLiquidacion: "13/10/26",
+        abonoEnva: "50",
         provedor: "Enva Tours",
         costoNetoPax: "25",
         costoNetoReserva: "50",
-        moneda: "USA",
+        moneda: "USD",
         tipoCambio: "18",
         deposito: "50",
         balance: "0",
-        total: "-50",
+        total: "50",
+        locacion: "Lighthouse"
+      },
+      {
+        actividad: "Fotografia",
+        cupon: "895",
+        servicio: "Fotografia",
+        adultos: "1",
+        ninos: "",
+        dia: "13/10/26",
+        diaOperacion: "13/10/26",
+        diaLiquidacion: "13/10/26",
+        abonoEnva: "14",
+        provedor: "Fotografia",
+        costoNetoPax: "14",
+        costoNetoReserva: "14",
+        moneda: "USD",
+        tipoCambio: "18",
+        deposito: "14",
+        balance: "0",
+        total: "14",
+        locacion: "Lighthouse"
+      },
+      {
+        actividad: "Clear Boat",
+        cupon: "917",
+        servicio: "Clear Boat",
+        adultos: "3",
+        ninos: "",
+        dia: "22/10/26",
+        diaOperacion: "22/10/26",
+        diaLiquidacion: "22/10/26",
+        abonoEnva: "75",
+        provedor: "Enva Tours",
+        costoNetoPax: "25",
+        costoNetoReserva: "75",
+        moneda: "USD",
+        tipoCambio: "18",
+        deposito: "75",
+        balance: "0",
+        total: "75",
         locacion: "Lighthouse"
       }
     ];
 
     // =========================================================================
-    // GESTIÓN DEL MODAL DE INFORMACIÓN CON DETALLE OFICIAL
+    // AUTENTICACIÓN
     // =========================================================================
-    function openCouponDetailModal(cuponId) {
-      const item = SHEET_DATA.find(d => d.cupon === String(cuponId));
-      if (!item) return;
-
-      document.getElementById('modalDetailTitle').innerText = `Cupón #${item.cupon} — ${item.servicio}`;
-      document.getElementById('modalDetailSubtitle').innerText = `Fecha: ${item.dia} • Proveedor: ${item.provedor} • Locación: ${item.locacion}`;
-      document.getElementById('modalMultiCouponTabsContainer').classList.add('hidden');
-
-      renderModalFieldGrid(item);
-      showModalCard();
-    }
-
-    function openDateDetailModal(dateIndex) {
-      // Las 4 fechas de la gráfica: 0: 29/09/26, 1: 30/09/26, 2: 03/10/26, 3: 13/10/26
-      const dateMap = ["29/09/26", "30/09/26", "03/10/26", "13/10/26"];
-      const targetDate = dateMap[dateIndex];
-      if (!targetDate) return;
-
-      const couponsOfDate = SHEET_DATA.filter(d => d.dia === targetDate);
-      if (couponsOfDate.length === 0) return;
-
-      const tabsContainer = document.getElementById('modalMultiCouponTabsContainer');
-      const tabsWrapper = document.getElementById('modalMultiCouponTabs');
-      tabsWrapper.innerHTML = '';
-
-      if (couponsOfDate.length > 1) {
-        tabsContainer.classList.remove('hidden');
-        couponsOfDate.forEach((c, idx) => {
-          const btn = document.createElement('button');
-          btn.className = `px-3 py-1.5 rounded-lg text-[11px] font-mono transition ${idx === 0 ? 'bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200'}`;
-          btn.innerText = `Cupón #${c.cupon} ($${c.costoNetoReserva} USD)`;
-          btn.onclick = () => {
-            tabsWrapper.querySelectorAll('button').forEach(b => {
-              b.className = 'px-3 py-1.5 rounded-lg text-[11px] font-mono transition bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 hover:bg-neutral-200';
-            });
-            btn.className = 'px-3 py-1.5 rounded-lg text-[11px] font-mono transition bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold';
-            renderModalFieldGrid(c);
-          };
-          tabsWrapper.appendChild(btn);
-        });
-      } else {
-        tabsContainer.classList.add('hidden');
-      }
-
-      const firstItem = couponsOfDate[0];
-      document.getElementById('modalDetailTitle').innerText = `Jornada ${targetDate} (${couponsOfDate.length} cupón${couponsOfDate.length > 1 ? 'es' : ''})`;
-      document.getElementById('modalDetailSubtitle').innerText = `Servicio: Clear Boat • Proveedor: Enva Tours • Locación: Lighthouse`;
-
-      renderModalFieldGrid(firstItem);
-      showModalCard();
-    }
-
-    function renderModalFieldGrid(item) {
-      const grid = document.getElementById('modalFieldsGrid');
-      grid.innerHTML = '';
-
-      const fieldsDefinition = [
-        { label: "Actividad", val: item.actividad, highlight: false },
-        { label: "Cupon", val: item.cupon, highlight: true },
-        { label: "Servicio", val: item.servicio, highlight: false },
-        { label: "Adultos", val: item.adultos, highlight: false },
-        { label: "Niños", val: item.ninos !== "" ? item.ninos : "(vacío en hoja)", highlight: item.ninos !== "" },
-        { label: "Día", val: item.dia, highlight: false },
-        { label: "Día de operación", val: item.diaOperacion, highlight: false },
-        { label: "Provedor", val: item.provedor, highlight: false },
-        { label: "Costo Reporte neto por persona", val: `$${item.costoNetoPax} ${item.moneda}`, highlight: false },
-        { label: "Costo Reporte neto por total de reserva", val: `$${item.costoNetoReserva} ${item.moneda}`, highlight: true },
-        { label: "Moneda", val: item.moneda, highlight: false },
-        { label: "Tipo de cambio", val: `$${item.tipoCambio} MXN`, highlight: false },
-        { label: "Deposito", val: `$${item.deposito} ${item.moneda}`, highlight: false },
-        { label: "Balance", val: item.balance !== "" ? item.balance : "(vacío en hoja)", highlight: false },
-        { label: "Total", val: `${item.total} ${item.moneda}`, highlight: true, isRed: true },
-        { label: "Locación", val: item.locacion, highlight: false }
-      ];
-
-      fieldsDefinition.forEach(field => {
-        const card = document.createElement('div');
-        card.className = "p-3 bg-neutral-50 dark:bg-[#070D14]/70 rounded-xl hairline-border flex flex-col justify-between";
-        card.innerHTML = `
-          <span class="text-[10px] uppercase font-mono tracking-wider text-neutral-400 block mb-1">${field.label}</span>
-          <span class="text-sm font-semibold ${field.isRed ? 'text-red-600 dark:text-red-400' : (field.highlight ? 'text-[#BD5307] dark:text-[#E07A2B]' : 'text-neutral-900 dark:text-neutral-100')}">
-            ${field.val}
-          </span>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function showModalCard() {
-      const modal = document.getElementById('couponDetailModal');
-      const card = document.getElementById('couponModalCard');
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => {
-        card.classList.remove('scale-95', 'opacity-0');
-        card.classList.add('scale-100', 'opacity-100');
-      }, 10);
-    }
-
-    function closeCouponDetailModal() {
-      const modal = document.getElementById('couponDetailModal');
-      const card = document.getElementById('couponModalCard');
-      card.classList.remove('scale-100', 'opacity-100');
-      card.classList.add('scale-95', 'opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
-      }, 200);
-    }
-
-    // Cerrar modal con la tecla Escape o click fuera
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeCouponDetailModal();
-    });
-    document.getElementById('couponDetailModal')?.addEventListener('click', (e) => {
-      if (e.target.id === 'couponDetailModal') closeCouponDetailModal();
-    });
-
-    // =========================================================================
-    // ESTADO GLOBAL & CONTROLADORES DE SEGURIDAD Y ACCESO
-    // =========================================================================
-    const AppState = {
-      theme: 'light',
-      charts: {},
-      chartsInitialized: false,
-      isAuthenticated: false,
-      attempts: 0
-    };
-
-    // Función de autenticación oficial
-    async function handleLoginSubmit(event) {
-      event.preventDefault();
-      const usernameInput = document.getElementById('loginUsername');
-      const passwordInput = document.getElementById('loginPassword');
-      const feedback = document.getElementById('loginFeedback');
-      const submitBtn = document.getElementById('loginSubmitBtn');
-      const card = document.getElementById('loginCard');
-
-      const u = usernameInput ? usernameInput.value.trim() : '';
-      const p = passwordInput ? passwordInput.value.trim() : '';
-
-      // Validación de credenciales autorizadas
-      if (u.toLowerCase() === 'clearboat-admin' && p === 'Clearboat2026') {
-        feedback.className = "p-3 rounded-xl text-xs font-mono text-center bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 block";
-        feedback.innerText = "✓ Credenciales verificadas. Accediendo al sistema...";
-        feedback.classList.remove('hidden');
-        submitBtn.disabled = true;
-        submitBtn.innerText = "Desbloqueando...";
-
-        // Almacenar sesión en memoria de navegación
-        sessionStorage.setItem('clearboat_auth', 'true');
-        sessionStorage.setItem('clearboat_user', 'clearboat-admin');
-        AppState.isAuthenticated = true;
-
-        setTimeout(() => {
-          unlockApp();
-        }, 400);
-      } else {
-        AppState.attempts = (AppState.attempts || 0) + 1;
-        const remaining = Math.max(0, 5 - AppState.attempts);
-        const attemptsCounter = document.getElementById('loginAttemptsCounter');
-        if (attemptsCounter) attemptsCounter.innerText = `Intentos permitidos: ${remaining}`;
-
-        feedback.className = "p-3 rounded-xl text-xs font-mono text-center bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-300 border border-red-200 dark:border-red-800 block";
-        feedback.innerText = "Usuario o contraseña incorrectos. Intente nuevamente.";
-        feedback.classList.remove('hidden');
-
-        if (card) {
-          card.classList.remove('shake-error');
-          void card.offsetWidth; // Forzar reflujo de animación
-          card.classList.add('shake-error');
-        }
-
-        if (AppState.attempts >= 5) {
-          submitBtn.disabled = true;
-          feedback.innerText = "Exceso de intentos fallidos. Bloqueado por 30 segundos.";
-          setTimeout(() => {
-            AppState.attempts = 0;
-            submitBtn.disabled = false;
-            if (attemptsCounter) attemptsCounter.innerText = "Intentos permitidos: 5";
-            feedback.classList.add('hidden');
-          }, 30000);
-        }
-      }
-    }
-
-    function unlockApp() {
-      const gatekeeper = document.getElementById('loginGatekeeper');
-      if (gatekeeper) {
-        gatekeeper.classList.add('opacity-0', 'pointer-events-none');
-        setTimeout(() => {
-          gatekeeper.classList.add('hidden');
-          gatekeeper.style.display = 'none';
-        }, 400);
-      }
-
-      const userBadge = document.getElementById('authenticatedUserBadge');
-      if (userBadge) userBadge.classList.remove('hidden');
-
-      initRouter();
-
-      if (!AppState.chartsInitialized) {
-        initCharts();
-        AppState.chartsInitialized = true;
-      }
-    }
-
     function checkAuthOnLoad() {
-      const isAuth = sessionStorage.getItem('clearboat_auth') === 'true';
-      if (isAuth) {
-        AppState.isAuthenticated = true;
-        unlockApp();
+      const session = sessionStorage.getItem('cb_auth_session');
+      if (session === 'authenticated_clearboat_2026') {
+        unlockApp(false);
+      } else {
+        const gatekeeper = document.getElementById('loginGatekeeper');
+        if (gatekeeper) {
+          gatekeeper.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+        }
       }
     }
 
-    function handleLogout() {
-      sessionStorage.removeItem('clearboat_auth');
-      sessionStorage.removeItem('clearboat_user');
-      window.location.hash = 'resumen';
-      location.reload();
+    function setupLoginForm() {
+      const form = document.getElementById('loginForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const userInput = document.getElementById('loginUsername');
+        const passInput = document.getElementById('loginPassword');
+        const feedback = document.getElementById('loginFeedback');
+        const loginCard = document.getElementById('loginCard');
+
+        const username = (userInput ? userInput.value : '').trim().toLowerCase();
+        const password = (passInput ? passInput.value : '').trim();
+
+        if (username === 'clearboat-admin' && password === 'Clearboat2026') {
+          sessionStorage.setItem('cb_auth_session', 'authenticated_clearboat_2026');
+          unlockApp(true);
+        } else {
+          if (loginCard) {
+            loginCard.classList.remove('shake-error');
+            void loginCard.offsetWidth;
+            loginCard.classList.add('shake-error');
+          }
+          if (feedback) {
+            feedback.className = "p-3 rounded-xl text-xs font-mono text-center bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300 hairline-border border-red-200 dark:border-red-900";
+            feedback.innerText = "Usuario o contraseña incorrectos.";
+            feedback.classList.remove('hidden');
+          }
+        }
+      });
+
+      const toggleBtn = document.getElementById('togglePasswordBtn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', togglePasswordVisibility);
+      }
     }
 
     function togglePasswordVisibility() {
-      const pwdInput = document.getElementById('loginPassword');
+      const passInput = document.getElementById('loginPassword');
       const eyeIcon = document.getElementById('eyeIcon');
-      if (!pwdInput) return;
+      if (!passInput) return;
 
-      if (pwdInput.type === 'password') {
-        pwdInput.type = 'text';
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
         if (eyeIcon) {
           eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18"/>`;
         }
       } else {
-        pwdInput.type = 'password';
+        passInput.type = 'password';
         if (eyeIcon) {
           eyeIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`;
         }
       }
     }
 
-    // =========================================================================
-    // ENRUTADOR SPA (URLS PROPIAS POR HASH)
-    // =========================================================================
-    function initRouter() {
-      function handleRoute() {
-        const hash = window.location.hash.replace('#', '') || 'resumen';
-        const validRoutes = ['resumen', 'cupones'];
+    function handleLogout() {
+      sessionStorage.removeItem('cb_auth_session');
+      AppState.isAuthenticated = false;
 
-        document.querySelectorAll('.page-view').forEach(view => view.classList.add('hidden'));
+      const gatekeeper = document.getElementById('loginGatekeeper');
+      const userBadge = document.getElementById('authenticatedUserBadge');
+      const userInput = document.getElementById('loginUsername');
+      const passInput = document.getElementById('loginPassword');
+      const feedback = document.getElementById('loginFeedback');
 
-        if (validRoutes.includes(hash)) {
-          const activeView = document.getElementById(`view-${hash}`);
-          if (activeView) activeView.classList.remove('hidden');
-          const titleEl = document.getElementById('pageTitle');
-          if (titleEl) {
-            titleEl.innerText = hash === 'resumen'
-              ? 'Enva Tours — Bitácora Operativa & Auditoría Lighthouse'
-              : 'Enva Tours — Registro Individual de Cupones';
-          }
+      if (userInput) userInput.value = '';
+      if (passInput) passInput.value = '';
+      if (feedback) feedback.classList.add('hidden');
+      if (userBadge) userBadge.classList.add('hidden');
+
+      if (gatekeeper) {
+        gatekeeper.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+      }
+    }
+
+    function unlockApp(animate) {
+      AppState.isAuthenticated = true;
+      const gatekeeper = document.getElementById('loginGatekeeper');
+      const userBadge = document.getElementById('authenticatedUserBadge');
+
+      if (userBadge) userBadge.classList.remove('hidden');
+
+      if (gatekeeper) {
+        if (animate) {
+          gatekeeper.classList.add('opacity-0', 'pointer-events-none');
+          setTimeout(() => gatekeeper.classList.add('hidden'), 300);
         } else {
-          const view404 = document.getElementById('view-404');
-          if (view404) view404.classList.remove('hidden');
-          const titleEl = document.getElementById('pageTitle');
-          if (titleEl) titleEl.innerText = 'Página Fuera de Bitácora — Enva Tours';
+          gatekeeper.classList.add('hidden', 'opacity-0', 'pointer-events-none');
         }
-
-        // Actualizar estados visuales de links de navegación
-        document.querySelectorAll('.nav-link').forEach(link => {
-          const target = link.getAttribute('data-target');
-          if (target === hash) {
-            link.className = 'nav-link px-4 py-1.5 rounded-full transition-all duration-200 bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold shadow-sm';
-          } else {
-            link.className = 'nav-link px-4 py-1.5 rounded-full transition-all duration-200 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white';
-          }
-        });
-
-        // Cerrar menú móvil
-        document.getElementById('mobileMenuDrawer')?.classList.add('hidden');
       }
 
-      window.addEventListener('hashchange', handleRoute);
-      handleRoute();
+      // Sincronización silenciosa en background
+      fetchLiveGoogleSheetData();
+
+      // Renderizado
+      renderSettlementTable();
+      renderTableData();
+      handleRouting();
+
+      setTimeout(() => {
+        initCharts();
+      }, 100);
     }
 
     // =========================================================================
-    // TEMA & MODO OSCURO
+    // ENRUTADOR SPA
     // =========================================================================
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      setTheme(savedTheme);
+    function handleRouting() {
+      const hash = window.location.hash.replace('#', '').trim() || 'resumen';
+      const validPages = ['resumen', 'cupones'];
 
-      document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
-        const newTheme = AppState.theme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.add('hidden');
       });
-    }
 
-    function setTheme(theme) {
-      AppState.theme = theme;
-      localStorage.setItem('theme', theme);
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      updateChartThemes();
-    }
+      const activePage = validPages.includes(hash) ? hash : '404';
+      const targetView = document.getElementById(`view-${activePage}`);
+      if (targetView) targetView.classList.remove('hidden');
 
-    // =========================================================================
-    // SCROLL, REVEAL & MENÚ MÓVIL
-    // =========================================================================
-    function initInteractions() {
-      const backToTopBtn = document.getElementById('backToTopBtn');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          backToTopBtn?.classList.remove('opacity-0', 'pointer-events-none');
-          backToTopBtn?.classList.add('opacity-100');
+      document.querySelectorAll('.nav-link').forEach(link => {
+        const target = link.getAttribute('data-target');
+        if (target === activePage) {
+          link.className = "nav-link px-4 py-1.5 rounded-full transition-all duration-200 bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold shadow-sm";
         } else {
-          backToTopBtn?.classList.remove('opacity-100');
-          backToTopBtn?.classList.add('opacity-0', 'pointer-events-none');
+          link.className = "nav-link px-4 py-1.5 rounded-full transition-all duration-200 text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white";
         }
       });
 
-      // Observer para scroll suave
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-          }
-        });
-      }, { threshold: 0.08 });
-
-      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-      // Botón menú móvil
-      document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
-        const drawer = document.getElementById('mobileMenuDrawer');
-        if (drawer) drawer.classList.toggle('hidden');
-      });
+      const mobileDrawer = document.getElementById('mobileMenuDrawer');
+      if (mobileDrawer) mobileDrawer.classList.add('hidden');
     }
 
     // =========================================================================
-    // 6. VISUALIZACIÓN ANALÍTICA (CHART.JS CON INTERACCIÓN CLIC A DETALLE)
+    // CUADRO DE PAGOS / DÍAS DE LIQUIDACIÓN
+    // =========================================================================
+    function renderSettlementTable() {
+      const tbody = document.getElementById('settlementTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const groups = {};
+      let totalUSD = 0;
+      let totalPaxCount = 0;
+
+      SHEET_DATA.forEach(item => {
+        const payDay = item.diaLiquidacion || item.dia || item.diaOperacion || "Sin fecha";
+        const amount = parseFloat(item.abonoEnva || item.deposito || item.costoNetoReserva || 0);
+        const ad = parseInt(item.adultos || 0, 10);
+        const kd = parseInt(item.ninos || 0, 10);
+        
+        totalUSD += amount;
+        totalPaxCount += (isNaN(ad) ? 0 : ad) + (isNaN(kd) ? 0 : kd);
+
+        if (!groups[payDay]) {
+          groups[payDay] = {
+            date: payDay,
+            amountUSD: 0,
+            services: new Set(),
+            coupons: []
+          };
+        }
+
+        groups[payDay].amountUSD += amount;
+        groups[payDay].services.add(item.servicio || item.actividad);
+        groups[payDay].coupons.push(item.cupon);
+      });
+
+      const exchangeRate = 18.0;
+
+      Object.values(groups).forEach(g => {
+        const mxn = g.amountUSD * exchangeRate;
+        const serviceList = Array.from(g.services).map(s => {
+          const isPhoto = s.toLowerCase().includes('foto');
+          return isPhoto 
+            ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Fotografía</span>`
+            : `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-900">Clear Boat</span>`;
+        }).join(' ');
+
+        const couponLinks = g.coupons.map(c => 
+          `<button onclick="openCouponDetailModal('${c}')" class="underline hover:text-[#BD5307] transition">#${c}</button>`
+        ).join(', ');
+
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-neutral-50/70 dark:hover:bg-neutral-800/40 transition";
+        tr.innerHTML = `
+          <td class="px-5 py-3.5 font-bold text-[#0A1926] dark:text-white">${g.date}</td>
+          <td class="px-5 py-3.5 font-sans">${serviceList}</td>
+          <td class="px-5 py-3.5 text-neutral-600 dark:text-neutral-400">${couponLinks}</td>
+          <td class="px-5 py-3.5 text-right font-bold text-neutral-900 dark:text-white">$${g.amountUSD.toFixed(2)} USD</td>
+          <td class="px-5 py-3.5 text-right text-neutral-700 dark:text-neutral-300">$${mxn.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Cálculos de deducción de pagos (Total - Pagado = Saldo)
+      const paidUSD = AppState.montoPagado;
+      const balanceUSD = totalUSD - paidUSD;
+      const totalMXN = totalUSD * exchangeRate;
+      const paidMXN = paidUSD * exchangeRate;
+      const balanceMXN = balanceUSD * exchangeRate;
+
+      // Actualizar tarjetas del Hero / Bento Grid
+      const metricPax = document.getElementById('metricTotalPax');
+      const metricUsd = document.getElementById('metricTotalUsd');
+      const metricPaidUsd = document.getElementById('metricPaidUsd');
+      const metricBalanceUsd = document.getElementById('metricBalanceUsd');
+      const metricTotalMxn = document.getElementById('metricTotalMxn');
+      const metricPaidMxn = document.getElementById('metricPaidMxn');
+      const metricBalanceMxn = document.getElementById('metricBalanceMxn');
+
+      if (metricPax) metricPax.innerText = totalPaxCount;
+      if (metricUsd) metricUsd.innerText = totalUSD.toFixed(0);
+      if (metricPaidUsd) metricPaidUsd.innerText = paidUSD.toFixed(0);
+      if (metricBalanceUsd) metricBalanceUsd.innerText = balanceUSD.toFixed(0);
+      if (metricTotalMxn) metricTotalMxn.innerText = totalMXN.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      if (metricPaidMxn) metricPaidMxn.innerText = paidMXN.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+      if (metricBalanceMxn) metricBalanceMxn.innerText = balanceMXN.toLocaleString('es-MX', { maximumFractionDigits: 0 });
+
+      // Actualizar cabecera del cuadro de pagos
+      const badgeTotalUsd = document.getElementById('badgeTotalUsd');
+      const badgeBalanceUsd = document.getElementById('badgeBalanceUsd');
+      if (badgeTotalUsd) badgeTotalUsd.innerText = `${totalUSD.toFixed(2)}`;
+      if (badgeBalanceUsd) badgeBalanceUsd.innerText = `${balanceUSD.toFixed(2)}`;
+
+      // Actualizar pie de tabla del cuadro de pagos
+      const footTotalUsd = document.getElementById('footTotalUsd');
+      const footTotalMxn = document.getElementById('footTotalMxn');
+      const footPaidUsd = document.getElementById('footPaidUsd');
+      const footPaidMxn = document.getElementById('footPaidMxn');
+      const footBalanceUsd = document.getElementById('footBalanceUsd');
+      const footBalanceMxn = document.getElementById('footBalanceMxn');
+
+      if (footTotalUsd) footTotalUsd.innerText = `$${totalUSD.toFixed(2)} USD`;
+      if (footTotalMxn) footTotalMxn.innerText = `$${totalMXN.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+      if (footPaidUsd) footPaidUsd.innerText = `-$${paidUSD.toFixed(2)} USD`;
+      if (footPaidMxn) footPaidMxn.innerText = `-$${paidMXN.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+      if (footBalanceUsd) footBalanceUsd.innerText = `$${balanceUSD.toFixed(2)} USD`;
+      if (footBalanceMxn) footBalanceMxn.innerText = `$${balanceMXN.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+    }
+
+    // =========================================================================
+    // TABLA PRINCIPAL DE CUPONES
+    // =========================================================================
+    function setServiceFilter(filter) {
+      currentServiceFilter = filter;
+      
+      const btnAll = document.getElementById('filterBtnAll');
+      const btnClearBoat = document.getElementById('filterBtnClearBoat');
+      const btnFoto = document.getElementById('filterBtnFoto');
+      
+      const activeClass = "px-3 py-1.5 rounded-xl bg-[#0A1926] text-white dark:bg-white dark:text-black text-[11px] font-semibold transition interactive-press";
+      const inactiveClass = "px-3 py-1.5 rounded-xl text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] transition interactive-press";
+
+      if (btnAll) btnAll.className = filter === 'all' ? activeClass : inactiveClass;
+      if (btnClearBoat) btnClearBoat.className = filter === 'clearboat' ? activeClass : inactiveClass;
+      if (btnFoto) btnFoto.className = filter === 'foto' ? activeClass : inactiveClass;
+
+      renderTableData();
+    }
+
+    function renderTableData() {
+      const tbody = document.getElementById('couponTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      let sumAdults = 0;
+      let sumKids = 0;
+      let sumNet = 0;
+      let sumDeposit = 0;
+      let count = 0;
+
+      const filtered = SHEET_DATA.filter(item => {
+        const isPhoto = (item.servicio || item.actividad || '').toLowerCase().includes('foto');
+        if (currentServiceFilter === 'clearboat') return !isPhoto;
+        if (currentServiceFilter === 'foto') return isPhoto;
+        return true;
+      });
+
+      filtered.forEach(item => {
+        const ad = parseInt(item.adultos || 0, 10);
+        const kd = parseInt(item.ninos || 0, 10);
+        const net = parseFloat(item.costoNetoReserva || 0);
+        const dep = parseFloat(item.abonoEnva || item.deposito || 0);
+
+        sumAdults += isNaN(ad) ? 0 : ad;
+        sumKids += isNaN(kd) ? 0 : kd;
+        sumNet += isNaN(net) ? 0 : net;
+        sumDeposit += isNaN(dep) ? 0 : dep;
+        count++;
+
+        const isPhoto = (item.servicio || item.actividad || '').toLowerCase().includes('foto');
+        const badge = isPhoto
+          ? `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-purple-50 text-purple-700 dark:bg-purple-950/40 dark:text-purple-300 border border-purple-200 dark:border-purple-800">Fotografía</span>`
+          : `<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-medium bg-blue-50 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300 border border-blue-200 dark:border-blue-900">Clear Boat</span>`;
+
+        const tr = document.createElement('tr');
+        tr.className = "cursor-pointer hover:bg-neutral-50/70 dark:hover:bg-neutral-800/40 transition";
+        tr.onclick = () => openCouponDetailModal(item.cupon);
+
+        tr.innerHTML = `
+          <td class="px-5 py-4 font-mono font-medium text-[#0A1926] dark:text-white">#${item.cupon}</td>
+          <td class="px-5 py-4 font-mono text-neutral-600 dark:text-neutral-400">${item.diaOperacion || item.dia}</td>
+          <td class="px-5 py-4">${badge}</td>
+          <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400 font-medium">${item.provedor}</td>
+          <td class="px-5 py-4 text-center font-mono">${item.adultos}</td>
+          <td class="px-5 py-4 text-center font-mono text-neutral-400">${item.ninos || '—'}</td>
+          <td class="px-5 py-4 text-right font-mono">$${item.costoNetoPax} USD</td>
+          <td class="px-5 py-4 text-right font-mono font-medium text-neutral-900 dark:text-white">$${item.costoNetoReserva} USD</td>
+          <td class="px-5 py-4 text-center font-mono font-semibold text-[#BD5307]">${item.diaLiquidacion || item.dia}</td>
+          <td class="px-5 py-4 text-right font-mono text-emerald-600 dark:text-emerald-400 font-semibold">$${item.abonoEnva || item.deposito} USD</td>
+          <td class="px-5 py-4 text-center"><span class="text-[10px] font-mono px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800 hover:bg-[#0A1926] hover:text-white dark:hover:bg-white dark:hover:text-black transition">Ver Ficha</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      const elAdults = document.getElementById('totalTableAdults');
+      const elKids = document.getElementById('totalTableKids');
+      const elNet = document.getElementById('totalTableNet');
+      const elDep = document.getElementById('totalTableDeposit');
+      const statusLabel = document.getElementById('filterStatusLabel');
+
+      if (elAdults) elAdults.innerText = sumAdults;
+      if (elKids) elKids.innerText = sumKids;
+      if (elNet) elNet.innerText = `$${sumNet} USD`;
+      if (elDep) elDep.innerText = `$${sumDeposit} USD`;
+      if (statusLabel) statusLabel.innerText = `Mostrando ${count} de ${SHEET_DATA.length} registros`;
+    }
+
+    // =========================================================================
+    // MODAL DE DETALLE
+    // =========================================================================
+    function openCouponDetailModal(couponId) {
+      const item = SHEET_DATA.find(d => String(d.cupon) === String(couponId)) || SHEET_DATA[0];
+      if (!item) return;
+
+      const modal = document.getElementById('couponDetailModal');
+      const card = document.getElementById('couponModalCard');
+      const title = document.getElementById('modalDetailTitle');
+      const subtitle = document.getElementById('modalDetailSubtitle');
+      const multiContainer = document.getElementById('modalMultiCouponTabsContainer');
+
+      if (title) title.innerText = `Cupón #${item.cupon} • ${item.servicio}`;
+      if (subtitle) subtitle.innerText = `Fecha: ${item.diaOperacion || item.dia} | Proveedor: ${item.provedor}`;
+      if (multiContainer) multiContainer.classList.add('hidden');
+
+      renderModalFieldGrid(item);
+
+      if (modal && card) {
+        modal.classList.remove('hidden');
+        void modal.offsetWidth;
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }
+    }
+
+    function openDateDetailModal(dateIndex) {
+      const dateMap = {
+        0: '29/09/26',
+        1: '30/09/26',
+        2: '03/10/26',
+        3: '13/10/26',
+        4: '22/10/26'
+      };
+      const targetDate = dateMap[dateIndex] || '30/09/26';
+      const matching = SHEET_DATA.filter(d => (d.diaOperacion || d.dia) === targetDate);
+      if (matching.length === 0) return;
+
+      const modal = document.getElementById('couponDetailModal');
+      const card = document.getElementById('couponModalCard');
+      const title = document.getElementById('modalDetailTitle');
+      const subtitle = document.getElementById('modalDetailSubtitle');
+      const multiContainer = document.getElementById('modalMultiCouponTabsContainer');
+      const multiTabs = document.getElementById('modalMultiCouponTabs');
+
+      if (title) title.innerText = `Jornada del ${targetDate}`;
+      if (subtitle) subtitle.innerText = `${matching.length} cupón(es) registrado(s)`;
+
+      if (matching.length > 1 && multiContainer && multiTabs) {
+        multiContainer.classList.remove('hidden');
+        multiTabs.innerHTML = '';
+        matching.forEach((it, idx) => {
+          const btn = document.createElement('button');
+          btn.className = `px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition ${idx === 0 ? 'bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300'}`;
+          btn.innerText = `#${it.cupon} (${it.servicio})`;
+          btn.onclick = () => {
+            Array.from(multiTabs.children).forEach(c => {
+              c.className = 'px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300';
+            });
+            btn.className = 'px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition bg-[#0A1926] text-white dark:bg-white dark:text-black font-semibold';
+            renderModalFieldGrid(it);
+          };
+          multiTabs.appendChild(btn);
+        });
+      } else if (multiContainer) {
+        multiContainer.classList.add('hidden');
+      }
+
+      renderModalFieldGrid(matching[0]);
+
+      if (modal && card) {
+        modal.classList.remove('hidden');
+        void modal.offsetWidth;
+        card.classList.remove('scale-95', 'opacity-0');
+        card.classList.add('scale-100', 'opacity-100');
+      }
+    }
+
+    function renderModalFieldGrid(item) {
+      const grid = document.getElementById('modalFieldsGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+
+      const isPhoto = (item.servicio || item.actividad || '').toLowerCase().includes('foto');
+
+      const fields = [
+        { label: "Servicio / Paquete", val: item.servicio, isPhoto: isPhoto, isBadge: true },
+        { label: "Cupón", val: `#${item.cupon}`, highlight: true },
+        { label: "Proveedor", val: item.provedor },
+        { label: "Adultos", val: item.adultos },
+        { label: "Niños", val: item.ninos || '0' },
+        { label: "Día Operación", val: item.diaOperacion || item.dia },
+        { label: "Día Liquidado", val: item.diaLiquidacion || item.dia, highlight: true },
+        { label: "Abono / Pago Realizado", val: `$${item.abonoEnva || item.deposito} ${item.moneda}`, isGreen: true },
+        { label: "Costo Neto PAX", val: `$${item.costoNetoPax} ${item.moneda}` },
+        { label: "Costo Neto Reserva", val: `$${item.costoNetoReserva} ${item.moneda}`, highlight: true },
+        { label: "Tipo de Cambio", val: `$${item.tipoCambio} MXN` },
+        { label: "Locación", val: item.locacion }
+      ];
+
+      fields.forEach(f => {
+        const c = document.createElement('div');
+        c.className = "p-3 bg-neutral-50 dark:bg-[#070D14]/70 rounded-xl hairline-border flex flex-col justify-between";
+
+        let textClass = 'text-neutral-900 dark:text-neutral-100';
+        if (f.isGreen) textClass = 'text-emerald-600 dark:text-emerald-400 font-bold';
+        else if (f.highlight) textClass = 'text-[#BD5307] dark:text-[#E07A2B] font-bold';
+
+        let content = `<span class="text-sm font-semibold ${textClass}">${f.val}</span>`;
+        if (f.isBadge) {
+          content = f.isPhoto
+            ? `<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold bg-purple-100 text-purple-800 dark:bg-purple-900/60 dark:text-purple-300 w-max">Fotografía</span>`
+            : `<span class="inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold bg-blue-100 text-blue-800 dark:bg-blue-900/60 dark:text-blue-300 w-max">Clear Boat</span>`;
+        }
+
+        c.innerHTML = `
+          <span class="text-[10px] uppercase font-mono tracking-wider text-neutral-400 block mb-1">${f.label}</span>
+          ${content}
+        `;
+        grid.appendChild(c);
+      });
+    }
+
+    function closeCouponDetailModal() {
+      const modal = document.getElementById('couponDetailModal');
+      const card = document.getElementById('couponModalCard');
+      if (card) {
+        card.classList.remove('scale-100', 'opacity-100');
+        card.classList.add('scale-95', 'opacity-0');
+      }
+      setTimeout(() => {
+        if (modal) modal.classList.add('hidden');
+      }, 200);
+    }
+
+    // =========================================================================
+    // GRÁFICAS ANALÍTICAS (CHART.JS)
     // =========================================================================
     function initCharts() {
+      if (typeof Chart === 'undefined') return;
       Chart.defaults.font.family = "'Inter', sans-serif";
-      
+
       const textColor = AppState.theme === 'dark' ? '#94A3B8' : '#71717A';
       const gridColor = AppState.theme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(18, 24, 32, 0.05)';
 
+      if (AppState.charts.daily) { AppState.charts.daily.destroy(); AppState.charts.daily = null; }
+      if (AppState.charts.demo) { AppState.charts.demo.destroy(); AppState.charts.demo = null; }
+      if (AppState.charts.coupon) { AppState.charts.coupon.destroy(); AppState.charts.coupon = null; }
+
       const canvasDaily = document.getElementById('chartDailyBilling');
       if (canvasDaily) {
-        const ctxDaily = canvasDaily.getContext('2d');
-        AppState.charts.daily = new Chart(ctxDaily, {
+        AppState.charts.daily = new Chart(canvasDaily.getContext('2d'), {
           type: 'bar',
           data: {
-            labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct'],
+            labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct', '22 Oct'],
             datasets: [
               {
                 label: 'Monto Neto (USD)',
-                data: [50, 325, 125, 50],
-                backgroundColor: '#0A1926',
+                data: [50, 325, 125, 64, 75],
+                backgroundColor: ['#0A1926', '#0A1926', '#0A1926', '#2A2748', '#0A1926'],
                 borderRadius: 6,
-                barThickness: 28
+                barThickness: 24
               },
               {
                 label: 'Pasajeros (PAX)',
-                data: [2, 13, 5, 5],
+                data: [2, 13, 5, 6, 3],
                 type: 'line',
                 borderColor: '#BD5307',
                 backgroundColor: '#BD5307',
@@ -1238,7 +1393,6 @@
                 pointRadius: 4,
                 pointBackgroundColor: '#FFFFFF',
                 pointBorderColor: '#BD5307',
-                pointBorderWidth: 2,
                 yAxisID: 'yPax'
               }
             ]
@@ -1246,21 +1400,10 @@
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (event, elements) => {
-              if (elements && elements.length > 0) {
-                const clickedIndex = elements[0].index;
-                openDateDetailModal(clickedIndex);
-              }
-            },
-            onHover: (event, chartElement) => {
-              event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
+            onClick: (e, els) => {
+              if (els && els.length > 0) openDateDetailModal(els[0].index);
             },
             plugins: {
-              tooltip: {
-                callbacks: {
-                  afterBody: () => '👉 Clic para inspeccionar cupones'
-                }
-              },
               legend: {
                 position: 'top',
                 align: 'end',
@@ -1272,13 +1415,13 @@
               y: {
                 beginAtZero: true,
                 grid: { color: gridColor },
-                ticks: { color: textColor, callback: (v) => `$${v}` }
+                ticks: { color: textColor, callback: v => `$${v}` }
               },
               yPax: {
                 position: 'right',
                 beginAtZero: true,
                 grid: { display: false },
-                ticks: { color: textColor, stepSize: 5, callback: (v) => `${v} pax` }
+                ticks: { color: textColor, stepSize: 5, callback: v => `${v} pax` }
               }
             }
           }
@@ -1287,14 +1430,13 @@
 
       const canvasDemo = document.getElementById('chartDemographics');
       if (canvasDemo) {
-        const ctxDemo = canvasDemo.getContext('2d');
-        AppState.charts.demo = new Chart(ctxDemo, {
+        AppState.charts.demo = new Chart(canvasDemo.getContext('2d'), {
           type: 'doughnut',
           data: {
-            labels: ['Adultos', 'Niños'],
+            labels: ['Adultos', 'Niños', 'Fotografía'],
             datasets: [{
-              data: [22, 3],
-              backgroundColor: ['#0A1926', '#BD5307'],
+              data: [25, 3, 1],
+              backgroundColor: ['#0A1926', '#BD5307', '#7C3AED'],
               borderWidth: 2,
               borderColor: AppState.theme === 'dark' ? '#121921' : '#FFFFFF'
             }]
@@ -1303,69 +1445,45 @@
             responsive: true,
             maintainAspectRatio: false,
             cutout: '72%',
-            onClick: (event, elements) => {
-              if (elements && elements.length > 0) {
-                const clickedIndex = elements[0].index;
-                if (clickedIndex === 1) {
-                  openCouponDetailModal('894');
-                } else {
-                  openDateDetailModal(1);
-                }
+            onClick: (e, els) => {
+              if (els && els.length > 0) {
+                if (els[0].index === 1) openCouponDetailModal('894');
+                else if (els[0].index === 2) openCouponDetailModal('895');
+                else openDateDetailModal(1);
               }
             },
-            onHover: (event, chartElement) => {
-              event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
-            },
-            plugins: {
-              legend: { display: false }
-            }
+            plugins: { legend: { display: false } }
           }
         });
       }
 
-      const couponCodesOrder = ['860', '856', '858', '864', '865', '894', '867'];
+      const couponList = ['860', '856', '917', '858', '864', '865', '894', '867', '895'];
       const canvasCoupon = document.getElementById('chartCouponBreakdown');
       if (canvasCoupon) {
-        const ctxCoupon = canvasCoupon.getContext('2d');
-        AppState.charts.coupon = new Chart(ctxCoupon, {
+        AppState.charts.coupon = new Chart(canvasCoupon.getContext('2d'), {
           type: 'bar',
           data: {
-            labels: ['#860 (30 Sep)', '#856 (30 Sep)', '#858 (29 Sep)', '#864 (03 Oct)', '#865 (03 Oct)', '#894 (13 Oct)', '#867 (03 Oct)'],
+            labels: ['#860 (Clear)', '#856 (Clear)', '#917 (Clear)', '#858 (Clear)', '#864 (Clear)', '#865 (Clear)', '#894 (Clear)', '#867 (Clear)', '#895 (Foto)'],
             datasets: [{
-              label: 'Total Reserva (USD)',
-              data: [175, 150, 50, 50, 50, 50, 25],
-              backgroundColor: ['#0A1926', '#142F47', '#3B5B75', '#3B5B75', '#3B5B75', '#3B5B75', '#758D9E'],
+              data: [175, 150, 75, 50, 50, 50, 50, 25, 14],
+              backgroundColor: ['#0A1926', '#142F47', '#1E4061', '#3B5B75', '#3B5B75', '#3B5B75', '#3B5B75', '#758D9E', '#7C3AED'],
               borderRadius: 6,
-              barThickness: 18
+              barThickness: 16
             }]
           },
           options: {
             indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (event, elements) => {
-              if (elements && elements.length > 0) {
-                const clickedIndex = elements[0].index;
-                const targetCoupon = couponCodesOrder[clickedIndex];
-                openCouponDetailModal(targetCoupon);
-              }
+            onClick: (e, els) => {
+              if (els && els.length > 0) openCouponDetailModal(couponList[els[0].index]);
             },
-            onHover: (event, chartElement) => {
-              event.native.target.style.cursor = chartElement[0] ? 'pointer' : 'default';
-            },
-            plugins: { 
-              legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  afterBody: () => '👉 Clic para abrir detalle oficial'
-                }
-              }
-            },
+            plugins: { legend: { display: false } },
             scales: {
               x: {
                 beginAtZero: true,
                 grid: { color: gridColor },
-                ticks: { color: textColor, callback: (v) => `$${v}` }
+                ticks: { color: textColor, callback: v => `$${v}` }
               },
               y: { grid: { display: false }, ticks: { color: textColor } }
             }
@@ -1391,52 +1509,163 @@
     }
 
     // =========================================================================
-    // 7. EXPORTACIÓN SEGURA CSV
+    // SINCRONIZACIÓN EN BACKGROUND
+    // =========================================================================
+    async function fetchLiveGoogleSheetData() {
+      try {
+        const res = await fetch(`${TSV_PUBLIC_URL}&_t=${Date.now()}`);
+        if (!res.ok) return;
+        const text = await res.text();
+        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0);
+        if (lines.length < 2) return;
+
+        const headers = lines[0].split('\t').map(h => h.trim());
+        const rows = lines.slice(1).map(line => {
+          const cols = line.split('\t');
+          const obj = {};
+          headers.forEach((h, i) => { obj[h] = (cols[i] || '').trim(); });
+          return obj;
+        });
+
+        if (rows.length > 0) {
+          SHEET_DATA = rows.map(r => {
+            const keys = Object.keys(r);
+            const findKey = sub => keys.find(k => k.toLowerCase().includes(sub.toLowerCase())) || '';
+
+            const diaLiquidKey = findKey('liquid') || findKey('abono') || findKey('fecha de pago');
+            const abonoKey = findKey('abono') || findKey('pagado') || findKey('total de reserva') || findKey('deposito');
+            const actVal = r[findKey('actividad')] || "Clear Boat";
+            const servVal = r[findKey('servicio')] || actVal;
+
+            return {
+              actividad: actVal,
+              cupon: r[findKey('cupon')] || "",
+              servicio: servVal,
+              adultos: r[findKey('adult')] || "0",
+              ninos: r[findKey('niño')] || r[findKey('nino')] || "",
+              dia: r[findKey('día')] || r[findKey('dia')] || "",
+              diaOperacion: r[findKey('operación')] || r[findKey('operacion')] || r[findKey('dia')] || "",
+              diaLiquidacion: r[diaLiquidKey] || r[findKey('dia')] || "",
+              abonoEnva: r[abonoKey] || r[findKey('deposito')] || "0",
+              provedor: r[findKey('provedor')] || r[findKey('proveedor')] || (servVal.toLowerCase().includes('foto') ? "Fotografia" : "Enva Tours"),
+              costoNetoPax: r[findKey('persona')] || "25",
+              costoNetoReserva: r[findKey('total de reserva')] || "50",
+              moneda: r[findKey('moneda')] || "USD",
+              tipoCambio: r[findKey('tipo de cambio')] || "18",
+              deposito: r[findKey('deposito')] || "50",
+              balance: r[findKey('balance')] || "0",
+              total: r[findKey('total')] || "50",
+              locacion: r[findKey('locación')] || r[findKey('locacion')] || "Lighthouse"
+            };
+          }).filter(it => it.cupon !== "");
+
+          renderTableData();
+          renderSettlementTable();
+          if (AppState.charts.daily) initCharts();
+        }
+      } catch (e) {
+        // Silencioso: opera con la base local
+      }
+    }
+
+    // =========================================================================
+    // EXPORTACIÓN CSV
     // =========================================================================
     function exportAuditDataCSV() {
-      const csvContent = "data:text/csv;charset=utf-8," 
-        + "Cupón,Fecha,Servicio,Adultos,Niños,Neto_PAX,Neto_Reserva,Deposito,Balance,Liquidacion\n"
-        + "858,29/09/2026,Clear Boat,2,0,25,50,50,0,-50\n"
-        + "860,30/09/2026,Clear Boat,7,0,25,175,175,0,-175\n"
-        + "856,30/09/2026,Clear Boat,6,0,25,150,150,0,-150\n"
-        + "864,03/10/2026,Clear Boat,2,0,25,50,50,0,-50\n"
-        + "865,03/10/2026,Clear Boat,2,0,25,50,50,0,-50\n"
-        + "867,03/10/2026,Clear Boat,1,0,25,25,25,0,-25\n"
-        + "894,13/10/2026,Clear Boat,2,3,25,50,50,0,-50";
-
-      const encodedUri = encodeURI(csvContent);
+      let csv = "data:text/csv;charset=utf-8,Cupón,Fecha,Servicio,Proveedor,Adultos,Niños,Neto_PAX,Neto_Reserva,Día_Liquidado,Abono\n";
+      SHEET_DATA.forEach(r => {
+        csv += `"${r.cupon}","${r.diaOperacion || r.dia}","${r.servicio}","${r.provedor}","${r.adultos}","${r.ninos || 0}","${r.costoNetoPax}","${r.costoNetoReserva}","${r.diaLiquidacion || r.dia}","${r.abonoEnva || r.deposito}"\n`;
+      });
       const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "auditoria_enva_tours_lighthouse_2026.csv");
+      link.href = encodeURI(csv);
+      link.download = "liquidaciones_enva_tours.csv";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
 
     // =========================================================================
-    // 8. COOKIES & BÚSQUEDA & INICIALIZACIÓN
+    // INICIALIZACIÓN DE TEMA & EVENTOS
     // =========================================================================
-    function acceptCookies(all) {
-      const banner = document.getElementById('cookieBanner');
-      if (banner) {
-        banner.classList.add('translate-y-24', 'opacity-0');
-        setTimeout(() => banner.remove(), 600);
+    function initTheme() {
+      const saved = localStorage.getItem('cb_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(saved);
+
+      const btn = document.getElementById('themeToggleBtn');
+      if (btn) {
+        btn.addEventListener('click', () => {
+          setTheme(AppState.theme === 'dark' ? 'light' : 'dark');
+          updateChartThemes();
+        });
       }
     }
 
-    document.getElementById('couponSearchInput')?.addEventListener('input', function(e) {
-      const query = e.target.value.toLowerCase().trim();
-      const rows = document.querySelectorAll('#couponTableBody tr');
-      rows.forEach(row => {
-        const text = row.innerText.toLowerCase();
-        row.style.display = text.includes(query) ? '' : 'none';
-      });
-    });
+    function setTheme(t) {
+      AppState.theme = t;
+      if (t === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('cb_theme', t);
+    }
 
-    // Inicializador al cargar el DOM
+    function initInteractions() {
+      const backBtn = document.getElementById('backToTopBtn');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          backBtn?.classList.remove('opacity-0', 'pointer-events-none');
+          backBtn?.classList.add('opacity-100');
+        } else {
+          backBtn?.classList.add('opacity-0', 'pointer-events-none');
+          backBtn?.classList.remove('opacity-100');
+        }
+      });
+
+      const menuBtn = document.getElementById('mobileMenuBtn');
+      const drawer = document.getElementById('mobileMenuDrawer');
+      if (menuBtn && drawer) {
+        menuBtn.addEventListener('click', () => drawer.classList.toggle('hidden'));
+      }
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('is-visible');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+      window.addEventListener('hashchange', handleRouting);
+
+      const modal = document.getElementById('couponDetailModal');
+      if (modal) {
+        modal.addEventListener('click', e => {
+          if (e.target.id === 'couponDetailModal') closeCouponDetailModal();
+        });
+      }
+
+      // Escuchar modificaciones en el monto pagado
+      const pagoInput = document.getElementById('inputMontoPagado');
+      if (pagoInput) {
+        pagoInput.addEventListener('input', e => {
+          const val = parseFloat(e.target.value);
+          AppState.montoPagado = isNaN(val) ? 0 : val;
+          renderSettlementTable();
+        });
+      }
+
+      document.getElementById('couponSearchInput')?.addEventListener('input', e => {
+        const q = e.target.value.toLowerCase().trim();
+        document.querySelectorAll('#couponTableBody tr').forEach(row => {
+          row.style.display = row.innerText.toLowerCase().includes(q) ? '' : 'none';
+        });
+      });
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       initTheme();
       initInteractions();
+      setupLoginForm();
       checkAuthOnLoad();
     });
   </script>
