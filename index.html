@@ -501,24 +501,11 @@
             </p>
           </div>
 
-          <!-- Módulo Interactivo de Abono / Pagos Realizados -->
+          <!-- Módulo Consolidado de Pagos Realizados y Saldo (No editable) -->
           <div class="flex flex-wrap items-center gap-3">
             <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border flex items-center gap-2">
               <span class="text-[10px] font-mono uppercase text-neutral-400">Total Pagado:</span>
-              <div class="flex items-center">
-                <span class="text-xs font-mono font-semibold text-emerald-700 dark:text-emerald-400 mr-1">$</span>
-                <input 
-                  type="number" 
-                  id="inputPaidAmount" 
-                  value="500" 
-                  min="0"
-                  max="1000"
-                  step="1"
-                  oninput="updatePaymentCalculation(this.value)"
-                  class="w-20 px-2 py-1 rounded-lg text-xs font-mono font-bold bg-white dark:bg-[#0E1722] text-emerald-700 dark:text-emerald-400 hairline-border focus:outline-none focus:border-[#BD5307]"
-                />
-                <span class="text-xs font-mono font-semibold text-neutral-400 ml-1">USD</span>
-              </div>
+              <span id="displayPaidAmount" class="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">$500.00 USD</span>
             </div>
 
             <!-- Resumen de Saldo Rápido -->
@@ -1370,9 +1357,9 @@
       }
     }
 
-    // CÁLCULO DINÁMICO DE PAGOS & SALDO
-    function updatePaymentCalculation(val) {
-      const paid = parseFloat(val) || 0;
+    // CÁLCULO CONSOLIDADO DE PAGOS & SALDO (INMUTABLE)
+    function updatePaymentCalculation(val = 500) {
+      const paid = parseFloat(val) || 500;
       AppState.paidAmount = paid;
 
       const totalAccumulated = 639.00;
@@ -1383,19 +1370,34 @@
       const remainingMxn = remaining * exchangeRate;
 
       // Actualizar tarjeta métrica
-      document.getElementById('metricPaidDisplay').textContent = `$${paid.toFixed(2)} USD`;
-      document.getElementById('metricRemainingDisplay').textContent = `$${remaining.toFixed(2)} USD`;
-      document.getElementById('metricPaidMxnDisplay').textContent = `$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-      document.getElementById('metricRemainingMxnDisplay').textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+      const elemPaid = document.getElementById('metricPaidDisplay');
+      if (elemPaid) elemPaid.textContent = `$${paid.toFixed(2)} USD`;
 
-      // Actualizar badge rápido
-      document.getElementById('quickRemainingBadge').textContent = `$${remaining.toFixed(2)} USD`;
+      const elemRem = document.getElementById('metricRemainingDisplay');
+      if (elemRem) elemRem.textContent = `$${remaining.toFixed(2)} USD`;
+
+      const elemPaidMxn = document.getElementById('metricPaidMxnDisplay');
+      if (elemPaidMxn) elemPaidMxn.textContent = `$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+
+      const elemRemMxn = document.getElementById('metricRemainingMxnDisplay');
+      if (elemRemMxn) elemRemMxn.textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+
+      // Actualizar insignia rápida
+      const elemQuick = document.getElementById('quickRemainingBadge');
+      if (elemQuick) elemQuick.textContent = `$${remaining.toFixed(2)} USD`;
 
       // Actualizar pie de tabla
-      document.getElementById('tableFooterPaid').textContent = `-$${paid.toFixed(2)} USD`;
-      document.getElementById('tableFooterPaidMxn').textContent = `-$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-      document.getElementById('tableFooterRemaining').textContent = `$${remaining.toFixed(2)} USD`;
-      document.getElementById('tableFooterRemainingMxn').textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+      const elemTablePaid = document.getElementById('tableFooterPaid');
+      if (elemTablePaid) elemTablePaid.textContent = `-$${paid.toFixed(2)} USD`;
+
+      const elemTablePaidMxn = document.getElementById('tableFooterPaidMxn');
+      if (elemTablePaidMxn) elemTablePaidMxn.textContent = `-$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
+
+      const elemTableRem = document.getElementById('tableFooterRemaining');
+      if (elemTableRem) elemTableRem.textContent = `$${remaining.toFixed(2)} USD`;
+
+      const elemTableRemMxn = document.getElementById('tableFooterRemainingMxn');
+      if (elemTableRemMxn) elemTableRemMxn.textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
     }
 
     // VISTAS MÓVILES (TARJETAS VS TABLA)
