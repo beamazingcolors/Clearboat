@@ -221,23 +221,21 @@
   <header class="w-full hairline-b bg-[#FAF9F5]/90 dark:bg-[#070D14]/90 glass-editorial sticky top-0 z-40 px-4 sm:px-8 py-3.5 transition-colors duration-300">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
       
-      <!-- Identidad Corporativa y Logotipo Oficial -->
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-neutral-50 dark:bg-[#070D14] p-1.5 hairline-border flex items-center justify-center overflow-hidden shadow-sm">
-            <img 
-              src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-              alt="Logo Enva Tours" 
-              class="w-full h-full object-contain"
-              onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-            />
-          </div>
-          <div>
-            <span class="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-semibold text-[#BD5307] block font-mono">Lighthouse Cancún</span>
-            <span class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block">Enva Tours</span>
-          </div>
+      <!-- Identidad Corporativa y Logotipo Oficial (Enlace directo a Inicio) -->
+      <a href="#resumen" class="flex items-center gap-3 cursor-pointer group" title="Ir a la página de inicio">
+        <div class="w-10 h-10 rounded-2xl bg-neutral-50 dark:bg-[#070D14] p-1.5 hairline-border flex items-center justify-center overflow-hidden shadow-sm group-hover:border-[#BD5307] transition">
+          <img 
+            src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
+            alt="Logo Enva Tours" 
+            class="w-full h-full object-contain"
+            onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
+          />
         </div>
-      </div>
+        <div>
+          <span class="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-semibold text-[#BD5307] block font-mono">Lighthouse Cancún</span>
+          <span class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block group-hover:text-[#BD5307] transition">Enva Tours</span>
+        </div>
+      </a>
 
       <!-- Navegación Central (Desktop) -->
       <nav class="hidden md:flex items-center gap-1 bg-white dark:bg-[#0E1722] p-1 rounded-full hairline-border shadow-sm text-xs font-medium">
@@ -290,8 +288,8 @@
         
         <!-- Encabezado de Marca dentro del Menú -->
         <div class="flex items-center justify-between pb-3 hairline-b">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#070D14] p-1 hairline-border flex items-center justify-center overflow-hidden">
+          <a href="#resumen" onclick="toggleMobileMenu(false)" class="flex items-center gap-2.5 cursor-pointer group" title="Ir a la página de inicio">
+            <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#070D14] p-1 hairline-border flex items-center justify-center overflow-hidden group-hover:border-[#BD5307] transition">
               <img 
                 src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
                 alt="Logo" 
@@ -301,9 +299,9 @@
             </div>
             <div>
               <span class="text-[9px] uppercase tracking-wider font-mono text-[#BD5307] block font-semibold">Lighthouse Cancún</span>
-              <span class="font-serif text-xs font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block">Enva Tours</span>
+              <span class="font-serif text-xs font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block group-hover:text-[#BD5307] transition">Enva Tours</span>
             </div>
-          </div>
+          </a>
         </div>
 
         <!-- Enlaces Táctiles de Navegación -->
@@ -1094,8 +1092,8 @@
   <!-- ========================================== -->
   <footer class="w-full hairline-t bg-white dark:bg-[#070D14] py-8 sm:py-10 px-4 sm:px-8 mt-12 transition-colors">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 font-mono">
-      <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#0E1722] p-1 hairline-border flex items-center justify-center overflow-hidden">
+      <a href="#resumen" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-3 cursor-pointer group" title="Ir a la página de inicio">
+        <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#0E1722] p-1 hairline-border flex items-center justify-center overflow-hidden group-hover:border-[#BD5307] transition">
           <img 
             src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
             alt="Logo" 
@@ -1104,14 +1102,10 @@
           />
         </div>
         <div>
-          <span class="font-serif font-bold text-[#0A1926] dark:text-white block text-sm">Enva Tours — Lighthouse Cancún</span>
+          <span class="font-serif font-bold text-[#0A1926] dark:text-white block text-sm group-hover:text-[#BD5307] transition">Enva Tours — Lighthouse Cancún</span>
           <span class="text-[10px]">Libro de Cupones & Auditoría Financiera 2026</span>
         </div>
-      </div>
-      <div class="text-[11px] text-center sm:text-right">
-        <span>Blvd. Kukulcán Km 3.5, Zona Hotelera, Cancún Q. Roo</span>
-        <span class="block text-[10px] text-neutral-500 mt-0.5">Sistemas de Navegación & Control Náutico</span>
-      </div>
+      </a>
     </div>
   </footer>
 
