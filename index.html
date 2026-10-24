@@ -3,39 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dashboard de liquidaciones, libro contable de cupones y auditoría financiera de Enva Tours en muelle Lighthouse Cancún.">
-  <title>Enva Tours — Lighthouse Cancún | Dashboard Operativo & Auditoría</title>
-
-  <!-- Favicon Oficial con resolución nítida (Logo.png) -->
-  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png">
+  <title>Auditoría Operativa — Enva Tours & Fotografía | Lighthouse</title>
+  
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" onerror="this.href='https://beamazingcolors.github.io/Clearboat/Logo.png'">
   <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png">
 
-  <!-- Tipografía Editorial Suiza & Clásica -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Serif:italic,wght@0,400;1,400&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            serif: ['Cinzel', 'serif'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-            editorial: ['Instrument Serif', 'serif'],
-          },
           colors: {
-            brand: {
-              navy: '#0A1926',
-              dark: '#070D14',
-              surface: '#FAF9F5',
-              terracotta: '#BD5307',
-              pearl: '#FFFFFF',
-              sand: '#F4F2EC',
+            editorial: {
+              cream: '#FAF9F5',
+              surface: '#FFFFFF',
+              border: 'rgba(18, 24, 32, 0.08)',
+              primary: '#0A1926',
+              accent: '#BD5307',
+              photo: '#4A284D'
             }
           }
         }
@@ -43,1844 +28,892 @@
     }
   </script>
 
-  <!-- Chart.js para visualización de métricas analíticas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
-    /* Estilos Editoriales Base & Variables de Tema */
-    :root {
-      --bg-editorial: #FAF9F5;
-      --text-editorial: #0A1926;
-      --card-editorial: #FFFFFF;
-      --border-hairline: rgba(10, 25, 38, 0.08);
-      --accent-warm: #BD5307;
-    }
-
-    .dark {
-      --bg-editorial: #070D14;
-      --text-editorial: #F3F4F6;
-      --card-editorial: #0E1722;
-      --border-hairline: rgba(255, 255, 255, 0.08);
-      --accent-warm: #E06D1B;
-    }
-
     body {
-      background-color: var(--bg-editorial);
-      color: var(--text-editorial);
+      background-color: #FAF9F5;
+      color: #121820;
       font-family: 'Inter', sans-serif;
-      transition: background-color 0.4s ease, color 0.4s ease;
-      overflow-x: hidden;
     }
-
-    /* Bordes Finos Editoriales */
-    .hairline-border { border: 1px solid var(--border-hairline); }
-    .hairline-b { border-bottom: 1px solid var(--border-hairline); }
-    .hairline-t { border-top: 1px solid var(--border-hairline); }
-    .hairline-r { border-right: 1px solid var(--border-hairline); }
-    .hairline-l { border-left: 1px solid var(--border-hairline); }
-
-    /* Animaciones Fluidas al Scroll & Carga */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    .font-serif-title { font-family: 'Cinzel', serif; }
+    .font-mono-num { font-family: 'JetBrains Mono', monospace; }
+    .hairline-border { border: 1px solid rgba(18, 24, 32, 0.08); }
+    .hairline-b { border-bottom: 1px solid rgba(18, 24, 32, 0.08); }
+    .hairline-t { border-top: 1px solid rgba(18, 24, 32, 0.08); }
+    .touch-press:active { transform: scale(0.975); }
+    
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.985); }
+      to { opacity: 1; transform: scale(1); }
     }
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Animación del Hero */
-    @keyframes heroFadeIn {
-      0% { opacity: 0; transform: translateY(24px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .animate-hero {
-      animation: heroFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Microinteracciones de Botones & Tacto Móvil */
-    .interactive-press {
-      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease;
-    }
-    .interactive-press:active {
-      transform: scale(0.97);
-    }
-    .touch-press:active {
-      transform: scale(0.975);
-    }
-
-    /* Animaciones exclusivas para la versión móvil */
-    @keyframes mobileCardEntrance {
-      0% { opacity: 0; transform: translateY(12px) scale(0.985); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .mobile-card-animate {
-      animation: mobileCardEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Barra de Scroll Personalizada */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(10, 25, 38, 0.15); border-radius: 999px; }
-    .dark ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); }
-
-    /* Efecto de Vidrio Esmerilado */
-    .glass-editorial {
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
+    .animate-editorial { animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
   </style>
 </head>
-<body class="min-h-screen antialiased selection:bg-[#0A1926] selection:text-white dark:selection:bg-neutral-200 dark:selection:text-black">
+<body class="min-h-screen antialiased selection:bg-[#0A1926] selection:text-white">
 
-  <!-- ========================================== -->
-  <!-- 1. GATEKEEPER DE SEGURIDAD (AUTENTICACIÓN) -->
-  <!-- ========================================== -->
-  <section id="loginGatekeeper" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#FAF9F5] dark:bg-[#070D14] transition-colors duration-500">
-    <div class="w-full max-w-md bg-white dark:bg-[#0E1722] rounded-3xl p-8 sm:p-10 hairline-border shadow-xl relative overflow-hidden transition-all duration-300">
-      
-      <!-- Detalle estético superior -->
-      <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#BD5307] to-transparent"></div>
-
-      <!-- Cabecera de Identidad y Logotipo Oficial -->
-      <div class="text-center">
-        <!-- Logotipo Institucional Enmarcado con Fallback Automático -->
-        <div class="w-16 h-16 mx-auto mb-5 rounded-2xl bg-neutral-50 dark:bg-[#070D14] p-2 hairline-border flex items-center justify-center overflow-hidden shadow-sm">
-          <img 
-            src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-            alt="Logo Enva Tours" 
-            class="w-full h-full object-contain"
-            onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-          />
+  <!-- 1. GATEKEEPER DE ACCESO OFICIAL -->
+  <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF9F5] p-4 transition-opacity duration-500">
+    <div class="w-full max-w-md bg-white rounded-3xl hairline-border p-8 md:p-10 shadow-2xl relative animate-editorial">
+      <div class="flex flex-col items-center text-center mb-8">
+        <div class="w-16 h-16 rounded-2xl hairline-border p-2 mb-4 bg-neutral-50 flex items-center justify-center">
+          <img src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
+               alt="Logo" 
+               class="max-h-full max-w-full object-contain"
+               onerror="this.src='https://beamazingcolors.github.io/Clearboat/Logo.png'">
         </div>
-        <span class="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#BD5307] block mb-1">Muelle Lighthouse Cancún</span>
-        <h1 class="font-serif text-2xl font-bold uppercase tracking-tight text-[#0A1926] dark:text-white">Enva Tours</h1>
-        <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light mt-1">Bitácora Operativa & Libro de Cupones</p>
+        <h2 class="font-serif-title text-xl font-bold tracking-wider text-[#0A1926] uppercase">Acceso Auditoría</h2>
+        <span class="text-[10px] font-mono-num uppercase tracking-widest text-neutral-400 mt-1">Lighthouse Cancún • Temporada 2026</span>
       </div>
 
-      <!-- Formulario Seguro de Validación -->
-      <form id="authForm" onsubmit="handleLoginSubmit(event)" class="mt-8 space-y-4">
+      <form id="authForm" onsubmit="handleLoginSubmit(event)" class="space-y-5">
         <div>
-          <label for="authUsername" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1.5">
-            Identificador de Usuario
-          </label>
-          <input 
-            type="text" 
-            id="authUsername" 
-            required 
-            autocomplete="username"
-            placeholder="" 
-            class="w-full px-4 py-3 rounded-xl text-xs font-mono bg-neutral-50 dark:bg-[#070D14] text-[#0A1926] dark:text-white hairline-border focus:outline-none focus:border-[#BD5307] dark:focus:border-[#BD5307] transition"
-          />
+          <label class="block text-[11px] font-mono-num uppercase tracking-widest text-neutral-500 mb-2">Identificador de Usuario</label>
+          <input type="text" id="userInput" required autocomplete="username"
+                 class="w-full px-4 py-3 rounded-xl bg-neutral-50 hairline-border text-sm focus:outline-none focus:ring-1 focus:ring-[#0A1926] font-mono-num transition">
         </div>
 
         <div>
-          <div class="flex items-center justify-between mb-1.5">
-            <label for="authPassword" class="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-              Contraseña de Validación
-            </label>
-            <button type="button" onclick="togglePasswordVisibility()" class="text-[10px] text-neutral-400 hover:text-[#BD5307] font-mono transition">
-              <span id="pwdToggleLabel">Mostrar</span>
-            </button>
+          <label class="block text-[11px] font-mono-num uppercase tracking-widest text-neutral-500 mb-2">Contraseña de Validación</label>
+          <div class="relative">
+            <input type="password" id="passInput" required autocomplete="current-password"
+                   class="w-full px-4 py-3 rounded-xl bg-neutral-50 hairline-border text-sm focus:outline-none focus:ring-1 focus:ring-[#0A1926] font-mono-num transition">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-3 text-neutral-400 hover:text-neutral-600 text-xs font-mono-num">VER</button>
           </div>
-          <input 
-            type="password" 
-            id="authPassword" 
-            required 
-            autocomplete="current-password"
-            placeholder="" 
-            class="w-full px-4 py-3 rounded-xl text-xs font-mono bg-neutral-50 dark:bg-[#070D14] text-[#0A1926] dark:text-white hairline-border focus:outline-none focus:border-[#BD5307] dark:focus:border-[#BD5307] transition"
-          />
         </div>
 
-        <!-- Mensaje de Error en Formulario -->
-        <div id="authErrorMessage" class="hidden p-3 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-600 dark:text-red-400 text-xs text-center font-mono">
-          <!-- Dinámico -->
+        <div id="loginErrorMsg" class="hidden text-xs text-rose-600 font-mono-num bg-rose-50 p-3 rounded-lg text-center hairline-border border-rose-200">
+          Credenciales inválidas. Verifica usuario y contraseña.
         </div>
 
-        <button 
-          type="submit" 
-          id="btnLoginSubmit"
-          class="w-full mt-2 py-3.5 px-6 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-[#0A1926] text-xs font-semibold tracking-wider uppercase interactive-press hover:bg-[#BD5307] dark:hover:bg-neutral-200 transition shadow-md"
-        >
-          Acceder al Sistema
+        <button type="submit" id="loginBtn" class="w-full py-3.5 rounded-xl bg-[#0A1926] text-white text-xs font-semibold uppercase tracking-widest hover:opacity-90 transition touch-press font-mono-num">
+          Ingresar al Sistema
         </button>
       </form>
-
-      <!-- Pie del Formulario -->
-      <div class="mt-6 pt-5 hairline-t text-center">
-        <span class="text-[10px] text-neutral-400 font-mono">Cifrado Bancario • Acceso Autorizado</span>
-      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ========================================== -->
-  <!-- 2. NAVEGACIÓN Y ENCABEZADO EDITORIAL       -->
-  <!-- ========================================== -->
-  <header class="w-full hairline-b bg-[#FAF9F5]/90 dark:bg-[#070D14]/90 glass-editorial sticky top-0 z-40 px-4 sm:px-8 py-3.5 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+  <!-- 2. NAVEGACIÓN Y CABECERA -->
+  <header class="w-full hairline-b bg-[#FAF9F5]/90 backdrop-blur-md sticky top-0 z-40 px-6 lg:px-12 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
       
-      <!-- Identidad Corporativa y Logotipo Oficial (Enlace directo a Inicio) -->
-      <a href="#resumen" class="flex items-center gap-3 cursor-pointer group" title="Ir a la página de inicio">
-        <div class="w-10 h-10 rounded-2xl bg-neutral-50 dark:bg-[#070D14] p-1.5 hairline-border flex items-center justify-center overflow-hidden shadow-sm group-hover:border-[#BD5307] transition">
-          <img 
-            src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-            alt="Logo Enva Tours" 
-            class="w-full h-full object-contain"
-            onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-          />
+      <a href="#resumen" onclick="navigateTo('resumen')" class="flex items-center gap-3 cursor-pointer group">
+        <div class="w-10 h-10 rounded-xl hairline-border p-1.5 bg-white flex items-center justify-center transition group-hover:scale-105">
+          <img src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
+               alt="Logo" class="max-h-full max-w-full object-contain"
+               onerror="this.src='https://beamazingcolors.github.io/Clearboat/Logo.png'">
         </div>
         <div>
-          <span class="text-[9px] sm:text-[10px] tracking-[0.2em] uppercase font-semibold text-[#BD5307] block font-mono">Lighthouse Cancún</span>
-          <span class="font-serif text-sm sm:text-base font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block group-hover:text-[#BD5307] transition">Enva Tours</span>
+          <span class="font-serif-title text-base font-bold tracking-wider text-[#0A1926] uppercase block">Enva Tours</span>
+          <span class="text-[9px] font-mono-num uppercase tracking-widest text-neutral-400">Auditoría Náutica & Fotográfica</span>
         </div>
       </a>
 
-      <!-- Navegación Central (Desktop) -->
-      <nav class="hidden md:flex items-center gap-1 bg-white dark:bg-[#0E1722] p-1 rounded-full hairline-border shadow-sm text-xs font-medium">
-        <a href="#resumen" id="navDesktopResumen" class="px-5 py-2 rounded-full text-white bg-[#0A1926] dark:bg-white dark:text-[#0A1926] transition">Resumen</a>
-        <a href="#cupones" id="navDesktopCupones" class="px-5 py-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition">Cupones</a>
+      <!-- Navegación Escritorio -->
+      <nav class="hidden md:flex items-center gap-2">
+        <div class="flex rounded-xl hairline-border bg-white p-1 text-xs font-mono-num">
+          <a href="#resumen" onclick="navigateTo('resumen')" id="desktop-nav-resumen" class="px-4 py-1.5 rounded-lg bg-[#0A1926] text-white transition">01 Resumen</a>
+          <a href="#cupones" onclick="navigateTo('cupones')" id="desktop-nav-cupones" class="px-4 py-1.5 rounded-lg text-neutral-500 hover:text-black transition">02 Cupones</a>
+        </div>
+
+        <button onclick="handleLogout()" class="px-3 py-1.5 rounded-xl hairline-border bg-white text-xs font-mono-num text-neutral-600 hover:text-black ml-2 transition">
+          Salir
+        </button>
       </nav>
 
-      <!-- Controles de Encabezado (Modo Oscuro, Sesión & Móvil) -->
-      <div class="flex items-center gap-2 sm:gap-3">
-        
-        <!-- Toggle Modo Oscuro -->
-        <button 
-          onclick="toggleThemeMode()" 
-          title="Cambiar tema visual"
-          class="w-9 h-9 rounded-xl hairline-border bg-white dark:bg-[#0E1722] flex items-center justify-center text-neutral-600 dark:text-neutral-300 hover:border-[#BD5307] interactive-press transition"
-        >
-          <svg id="themeIconSun" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-          <svg id="themeIconMoon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-        </button>
-
-        <!-- Indicador de Usuario y Salida -->
-        <div class="hidden sm:flex items-center gap-2.5 pl-3 hairline-l">
-          <span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">admin</span>
-          <button 
-            onclick="handleLogout()" 
-            title="Cerrar sesión" 
-            class="px-2.5 py-1 rounded-lg hairline-border bg-white dark:bg-[#0E1722] hover:bg-neutral-100 dark:hover:bg-neutral-800 text-[11px] font-mono text-neutral-600 dark:text-neutral-300 interactive-press transition"
-          >
-            Salir
-          </button>
-        </div>
-
-        <!-- Botón Menú Hamburguesa Móvil -->
-        <button 
-          id="btnMobileMenuToggle" 
-          onclick="toggleMobileMenu()" 
-          class="md:hidden w-9 h-9 rounded-xl hairline-border bg-white dark:bg-[#0E1722] flex items-center justify-center text-neutral-700 dark:text-neutral-200 interactive-press transition"
-          aria-label="Abrir menú"
-        >
-          <svg id="iconMobileOpen" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-          <svg id="iconMobileClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <!-- Botón Móvil -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu(event)" class="p-2 rounded-xl hairline-border bg-white text-[#0A1926]">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
 
-    </div>
-
-    <!-- Menú Desplegable Móvil -->
-    <div id="mobileDropdownMenu" class="md:hidden overflow-hidden transition-all duration-300 max-h-0 opacity-0 px-1 pt-0">
-      <div class="mt-3 p-4 sm:p-5 rounded-2xl bg-white dark:bg-[#0E1722] hairline-border shadow-xl space-y-4">
-        
-        <!-- Encabezado de Marca dentro del Menú -->
-        <div class="flex items-center justify-between pb-3 hairline-b">
-          <a href="#resumen" onclick="toggleMobileMenu(false)" class="flex items-center gap-2.5 cursor-pointer group" title="Ir a la página de inicio">
-            <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#070D14] p-1 hairline-border flex items-center justify-center overflow-hidden group-hover:border-[#BD5307] transition">
-              <img 
-                src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-                alt="Logo" 
-                class="w-full h-full object-contain" 
-                onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-              />
-            </div>
-            <div>
-              <span class="text-[9px] uppercase tracking-wider font-mono text-[#BD5307] block font-semibold">Lighthouse Cancún</span>
-              <span class="font-serif text-xs font-bold text-[#0A1926] dark:text-white uppercase tracking-tight block group-hover:text-[#BD5307] transition">Enva Tours</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- Enlaces Táctiles de Navegación -->
-        <div class="grid grid-cols-1 gap-2">
-          <a 
-            href="#resumen" 
-            onclick="toggleMobileMenu(false)" 
-            class="flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border hover:border-[#BD5307] touch-press transition"
-          >
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-[#BD5307]">01</span>
-              <div>
-                <span class="text-xs font-semibold text-[#0A1926] dark:text-white block">Resumen Ejecutivo</span>
-                <span class="text-[10px] text-neutral-400 font-light">Métricas, balance y gráficas</span>
-              </div>
-            </div>
-            <span class="text-neutral-400 text-xs">→</span>
-          </a>
-
-          <a 
-            href="#cupones" 
-            onclick="toggleMobileMenu(false)" 
-            class="flex items-center justify-between p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border hover:border-[#BD5307] touch-press transition"
-          >
-            <div class="flex items-center gap-3">
-              <span class="text-xs font-mono font-bold text-[#BD5307]">02</span>
-              <div>
-                <span class="text-xs font-semibold text-[#0A1926] dark:text-white block">Libro de Cupones</span>
-                <span class="text-[10px] text-neutral-400 font-light">9 registros auditados</span>
-              </div>
-            </div>
-            <span class="text-neutral-400 text-xs">→</span>
-          </a>
-        </div>
-
-        <!-- Mini Bento Informativo en Móvil -->
-        <div class="grid grid-cols-2 gap-2 pt-2 hairline-t text-center">
-          <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-            <span class="text-[9px] font-mono text-neutral-400 block uppercase">Operado Total</span>
-            <span class="text-xs font-mono font-bold text-[#0A1926] dark:text-white">$639.00 USD</span>
-          </div>
-          <div class="p-2.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-            <span class="text-[9px] font-mono text-neutral-400 block uppercase">Saldo Restante</span>
-            <span class="text-xs font-mono font-bold text-[#BD5307]">$139.00 USD</span>
-          </div>
-        </div>
-
-        <!-- Botón Salir Móvil Editorial -->
-        <button 
-          onclick="handleLogout()" 
-          class="w-full py-2.5 rounded-xl bg-neutral-50 hover:bg-neutral-100 dark:bg-[#070D14] dark:hover:bg-[#121c29] text-neutral-600 dark:text-neutral-300 text-xs font-mono font-medium hairline-border flex items-center justify-center gap-2 touch-press transition"
-        >
-          <svg class="w-3.5 h-3.5 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-          <span>Cerrar Sesión</span>
-        </button>
-      </div>
     </div>
   </header>
 
-  <!-- ========================================== -->
-  <!-- 3. CONTENIDO PRINCIPAL: VISTAS SPA        -->
-  <!-- ========================================== -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-6 sm:py-10 space-y-10 sm:space-y-12">
+  <!-- Menú Desplegable Móvil -->
+  <div id="mobileDrawer" class="hidden md:hidden fixed inset-x-4 top-20 z-40 bg-white rounded-2xl hairline-border p-5 shadow-2xl space-y-4 animate-editorial">
+    <div class="flex justify-between items-center hairline-b pb-3">
+      <span class="text-[10px] font-mono-num uppercase tracking-widest text-neutral-400">Navegación Móvil</span>
+      <button onclick="closeMobileMenu()" class="text-xs font-mono-num text-neutral-400">Cerrar</button>
+    </div>
+    <div class="space-y-2">
+      <a href="#resumen" onclick="navigateTo('resumen')" class="block p-3 rounded-xl bg-neutral-50 font-mono-num text-xs font-medium">01 Resumen Operativo</a>
+      <a href="#cupones" onclick="navigateTo('cupones')" class="block p-3 rounded-xl bg-neutral-50 font-mono-num text-xs font-medium">02 Cupones & Recuadros</a>
+    </div>
+    <div class="hairline-t pt-3 flex justify-between items-center">
+      <span class="text-[11px] font-mono-num text-neutral-500">Sesión: clearboat-admin</span>
+      <button onclick="handleLogout()" class="text-xs font-mono-num text-neutral-800">Cerrar Sesión</button>
+    </div>
+  </div>
 
-    <!-- ---------------------------------------------------- -->
-    <!-- VISTA A: RESUMEN EJECUTIVO (BENTO GRID & GRÁFICAS)  -->
-    <!-- ---------------------------------------------------- -->
-    <section id="viewResumen" class="space-y-8 sm:space-y-10 animate-hero">
+  <!-- 3. CUERPO PRINCIPAL -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-8 space-y-10">
 
-      <!-- Título de Sección y Selector de Divisas / Estatus -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 hairline-b">
-        <div>
-          <span class="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#BD5307] block mb-1">Auditoría Operativa</span>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0A1926] dark:text-white">
-            Resumen General de Liquidaciones
-          </h2>
-        </div>
-
-        <!-- Tarjeta de Moneda y Tipo de Cambio Homologado -->
-        <div class="grid grid-cols-2 sm:flex sm:items-center gap-3 bg-white dark:bg-[#0E1722] p-3 sm:p-3.5 rounded-2xl hairline-border text-xs shadow-sm">
-          <div class="sm:border-r sm:border-neutral-200 sm:dark:border-neutral-800 sm:pr-4">
-            <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Tipo de Cambio</span>
-            <span class="font-mono font-semibold text-[#0A1926] dark:text-white">$18.00 MXN / USD</span>
-          </div>
-          <div>
-            <span class="text-[10px] font-mono text-neutral-400 uppercase tracking-wider block">Servicios Activos</span>
-            <div class="flex items-center gap-2 mt-0.5">
-              <span class="w-3.5 h-[2px] bg-[#0A1926] dark:bg-white inline-block"></span>
-              <span class="text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Clear Boat</span>
-              <span class="w-3.5 h-[2px] bg-[#BD5307] inline-block ml-1"></span>
-              <span class="text-[11px] font-medium text-neutral-700 dark:text-neutral-300">Fotografía</span>
+    <!-- SECCIÓN 1: VISTA DE RESUMEN -->
+    <div id="view-resumen" class="space-y-8 animate-editorial">
+      
+      <!-- HERO KPIS EN RECUADROS INDEPENDIENTES -->
+      <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
+        
+        <!-- Recuadro A: CLEAR BOAT -->
+        <div class="md:col-span-5 bg-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-sky-700 font-semibold block mb-1">Recuadro 01</span>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-[#0A1926] uppercase">Clear Boat Náutico</h2>
+            </div>
+            
+            <!-- Etiqueta 8 Cupones Formato Editorial -->
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
+              <span class="w-2.5 h-[2px] bg-sky-700"></span>
+              <span>8 Cupones</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Bento Grid: Métricas Clave -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        
-        <!-- Tarjeta 01: Pasajeros Embarcados -->
-        <div class="bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:border-[#BD5307]">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-semibold">Pasajeros Embarcados</span>
-            <span class="text-xs font-mono text-[#BD5307] font-semibold">29 PAX</span>
-          </div>
-          <div class="my-5">
+          <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span class="font-serif text-5xl sm:text-6xl font-light tracking-tight text-[#0A1926] dark:text-white">29</span>
-              <span class="text-xs font-mono text-neutral-400">Total personas</span>
+              <span class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$625.00</span>
+              <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light mt-2 leading-relaxed">
-              26 adultos reportados en Clear Boat & Foto + 3 menores en reserva especial #894.
-            </p>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $11,250.00 MXN (TC: $18.00)</p>
           </div>
-          <div class="pt-4 hairline-t flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Adultos: 26</span>
-            <span>Niños: 3</span>
+
+          <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
+            <div>
+              <span class="text-[10px] text-neutral-400 block uppercase">Aforo Total</span>
+              <span class="font-semibold text-neutral-800">28 PAX (25A / 3N)</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-neutral-400 block uppercase">Tarifa Neta</span>
+              <span class="font-semibold text-neutral-800">$25.00 USD / PAX</span>
+            </div>
           </div>
         </div>
 
-        <!-- Tarjeta 02: Total Acumulado & Saldo Restante -->
-        <div class="bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:border-[#BD5307]">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-semibold">Total Acumulado & Saldo</span>
-            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Neto Operado</span>
-          </div>
-          <div class="my-5">
-            <div class="flex items-baseline gap-1">
-              <span class="text-sm font-mono text-neutral-400">$</span>
-              <span class="font-serif text-5xl sm:text-6xl font-light tracking-tight text-[#0A1926] dark:text-white">639</span>
-              <span class="text-sm font-mono text-neutral-400">.00 USD</span>
+        <!-- Recuadro B: FOTOGRAFÍA -->
+        <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden border-purple-200/50">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block mb-1">Recuadro 02</span>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-purple-950 uppercase">Fotografía</h2>
             </div>
-            <!-- Desglose de Deducción -->
-            <div class="mt-2.5 p-2.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border space-y-1 text-[11px] font-mono">
-              <div class="flex justify-between text-neutral-500 dark:text-neutral-400">
-                <span>(-) Pagos al proveedor:</span>
-                <span id="metricPaidDisplay" class="font-semibold text-emerald-700 dark:text-emerald-400">$500.00 USD</span>
-              </div>
-              <div class="flex justify-between font-bold text-[#BD5307] pt-1 border-t border-neutral-200 dark:border-neutral-800">
-                <span>(=) Saldo restante:</span>
-                <span id="metricRemainingDisplay">$139.00 USD</span>
-              </div>
+            
+            <!-- Etiqueta 1 Cupón Formato Editorial -->
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
+              <span class="w-2.5 h-[2px] bg-purple-700"></span>
+              <span>1 Cupón</span>
             </div>
           </div>
-          <div class="pt-4 hairline-t flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Tarifa Adulto: $25</span>
-            <span>Foto: $14</span>
+
+          <div class="my-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl lg:text-4xl font-light font-mono-num text-purple-950">$14.00</span>
+              <span class="text-xs font-mono-num text-purple-500">USD</span>
+            </div>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $252.00 MXN</p>
+          </div>
+
+          <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
+            <div>
+              <span class="text-[10px] text-neutral-400 block uppercase">Cupón Vinculado</span>
+              <span class="font-semibold text-purple-900">#895 (13/10)</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-neutral-400 block uppercase">Proveedor</span>
+              <span class="font-semibold text-purple-900">Fotorgrafia</span>
+            </div>
           </div>
         </div>
 
-        <!-- Tarjeta 03: Equivalente en Moneda Nacional -->
-        <div class="bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-2xl hairline-border flex flex-col justify-between shadow-sm transition hover:border-[#BD5307]">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 font-semibold">Equivalente Moneda Nacional</span>
-            <span class="text-xs font-mono text-neutral-400">T/C 18.00</span>
-          </div>
-          <div class="my-5">
-            <div class="flex items-baseline gap-1">
-              <span class="text-sm font-mono text-neutral-400">$</span>
-              <span class="font-serif text-5xl sm:text-6xl font-light tracking-tight text-[#0A1926] dark:text-white">11,502</span>
-              <span class="text-sm font-mono text-neutral-400">.00 MXN</span>
+        <!-- Recuadro C: LIQUIDACIÓN GLOBAL & SALDO -->
+        <div class="md:col-span-4 bg-[#0A1926] text-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-neutral-400 font-semibold block mb-1">Balance General</span>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-white uppercase">Estado de Cuenta</h2>
             </div>
-            <!-- Desglose en Pesos -->
-            <div class="mt-2.5 p-2.5 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border space-y-1 text-[11px] font-mono">
-              <div class="flex justify-between text-neutral-500 dark:text-neutral-400">
-                <span>Pagado MXN:</span>
-                <span id="metricPaidMxnDisplay" class="font-semibold text-emerald-700 dark:text-emerald-400">$9,000.00 MXN</span>
-              </div>
-              <div class="flex justify-between font-bold text-[#BD5307] pt-1 border-t border-neutral-200 dark:border-neutral-800">
-                <span>Saldo MXN:</span>
-                <span id="metricRemainingMxnDisplay">$2,502.00 MXN</span>
-              </div>
+            <span class="text-xs font-mono-num text-neutral-400">Total: $639 USD</span>
+          </div>
+
+          <div class="my-2 space-y-1">
+            <div class="flex justify-between text-xs font-mono-num text-neutral-300">
+              <span>Total Acumulado (9 Cupones)</span>
+              <span>$639.00 USD</span>
+            </div>
+            <div class="flex justify-between text-xs font-mono-num text-emerald-400">
+              <span>(-) Pagado Proveedor (Fijo)</span>
+              <span>-$500.00 USD</span>
+            </div>
+            <div class="hairline-t border-neutral-700 pt-2 flex justify-between items-baseline">
+              <span class="text-xs font-mono-num font-semibold text-white uppercase">Saldo Restante:</span>
+              <span class="text-2xl lg:text-3xl font-light font-mono-num text-amber-300">$139.00 USD</span>
             </div>
           </div>
-          <div class="pt-4 hairline-t flex items-center justify-between text-xs font-mono text-neutral-500 dark:text-neutral-400">
-            <span>Muelle: Lighthouse</span>
-            <span class="text-emerald-600 font-semibold">9 Cupones</span>
+
+          <div class="hairline-t border-neutral-700/80 pt-3 text-[10px] font-mono-num text-neutral-400 flex justify-between">
+            <span>Saldo en MXN: $2,502.00</span>
+            <span>29 PAX Global</span>
           </div>
         </div>
 
-      </div>
+      </section>
 
-      <!-- ==================================================== -->
-      <!-- RECUADRO CONCILIATORIO: DÍAS DE LIQUIDACIÓN & PAGOS -->
-      <!-- ==================================================== -->
-      <div class="bg-white dark:bg-[#0E1722] rounded-3xl p-6 sm:p-8 hairline-border shadow-sm space-y-6">
-        
-        <!-- Cabecera del Cuadro de Pagos -->
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 hairline-b">
+      <!-- CUADRO DE PAGOS SEPARADO POR COLUMNAS -->
+      <section class="bg-white rounded-3xl hairline-border p-6 md:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 hairline-b pb-4">
           <div>
-            <span class="text-[10px] tracking-[0.2em] uppercase font-mono text-[#BD5307] font-semibold block mb-1">Control de Egresos & Proveeduría</span>
-            <h3 class="font-serif text-lg sm:text-xl font-bold uppercase tracking-tight text-[#0A1926] dark:text-white">
-              Días de Liquidación & Pagos al Proveedor
-            </h3>
-            <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light mt-0.5">
-              Registro del día en que se liquidó cada servicio y abonos realizados directamente a Enva Tours.
-            </p>
+            <h3 class="font-serif-title text-lg font-bold text-[#0A1926] uppercase">Días de Liquidación & Desglose por Servicio</h3>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Bitácora cronológica con diferenciación estricta entre embarcación y fotos.</p>
           </div>
-
-          <!-- Módulo Consolidado de Pagos Realizados y Saldo (No editable) -->
-          <div class="flex flex-wrap items-center gap-3">
-            <div class="p-3 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border flex items-center gap-2">
-              <span class="text-[10px] font-mono uppercase text-neutral-400">Total Pagado:</span>
-              <span id="displayPaidAmount" class="text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">$500.00 USD</span>
-            </div>
-
-            <!-- Resumen de Saldo Rápido -->
-            <div class="p-3 rounded-2xl bg-[#0A1926] text-white dark:bg-white dark:text-[#0A1926] hairline-border flex items-center gap-2 shadow-sm">
-              <span class="text-[10px] font-mono uppercase tracking-wider opacity-70">Resta:</span>
-              <span id="quickRemainingBadge" class="text-xs font-mono font-bold">$139.00 USD</span>
-            </div>
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-700">
+              Total Liquidado: $500.00 USD
+            </span>
           </div>
         </div>
 
-        <!-- Selector Táctil Exclusivo para Móvil: Tarjetas vs Tabla -->
-        <div class="sm:hidden flex items-center justify-between p-1 bg-neutral-100 dark:bg-[#070D14] rounded-xl text-[11px] font-mono mb-2">
-          <span class="text-[10px] text-neutral-400 uppercase tracking-widest pl-2">Vista Móvil</span>
-          <div class="flex gap-1">
-            <button id="btnSettlementCards" onclick="setSettlementMobileView('cards')" class="px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs">Tarjetas</button>
-            <button id="btnSettlementTable" onclick="setSettlementMobileView('table')" class="px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white">Tabla</button>
-          </div>
-        </div>
-
-        <!-- VISTA MÓVIL MODULAR: TARJETAS CUADRADAS SIMÉTRICAS -->
-        <div id="settlementMobileCards" class="sm:hidden grid grid-cols-1 gap-3.5">
-          <!-- Tarjeta 29/09/2026 -->
-          <div onclick="openDateDetailModal('29/09/26')" class="p-4 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span class="font-mono text-xs font-bold text-[#0A1926] dark:text-white">29 Sep 2026</span>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white dark:bg-[#0E1722] text-[#BD5307] hairline-border font-semibold">1 Cupon</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <div>
-                <span class="text-[9px] text-neutral-400 block uppercase">Servicio</span>
-                <span class="text-neutral-800 dark:text-neutral-200 font-medium">⛵ Clear Boat</span>
-              </div>
-              <div class="text-right">
-                <span class="text-[9px] text-neutral-400 block uppercase">Liquidación</span>
-                <span class="font-bold text-[#0A1926] dark:text-white">$50.00 USD</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono text-neutral-400">
-              <span>Cupón #858 (2 PAX)</span>
-              <span class="text-neutral-600 dark:text-neutral-300 font-semibold">$900.00 MXN</span>
-            </div>
-          </div>
-
-          <!-- Tarjeta 30/09/2026 -->
-          <div onclick="openDateDetailModal('30/09/26')" class="p-4 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer" style="animation-delay: 0.05s;">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span class="font-mono text-xs font-bold text-[#0A1926] dark:text-white">30 Sep 2026</span>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white dark:bg-[#0E1722] text-[#BD5307] hairline-border font-semibold">2 Cupones</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <div>
-                <span class="text-[9px] text-neutral-400 block uppercase">Servicio</span>
-                <span class="text-neutral-800 dark:text-neutral-200 font-medium">⛵ Clear Boat</span>
-              </div>
-              <div class="text-right">
-                <span class="text-[9px] text-neutral-400 block uppercase">Liquidación</span>
-                <span class="font-bold text-[#0A1926] dark:text-white">$325.00 USD</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono text-neutral-400">
-              <span>Cupones #860, #856 (13 PAX)</span>
-              <span class="text-neutral-600 dark:text-neutral-300 font-semibold">$5,850.00 MXN</span>
-            </div>
-          </div>
-
-          <!-- Tarjeta 03/10/2026 -->
-          <div onclick="openDateDetailModal('03/10/26')" class="p-4 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer" style="animation-delay: 0.1s;">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span class="font-mono text-xs font-bold text-[#0A1926] dark:text-white">03 Oct 2026</span>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white dark:bg-[#0E1722] text-[#BD5307] hairline-border font-semibold">3 Cupones</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <div>
-                <span class="text-[9px] text-neutral-400 block uppercase">Servicio</span>
-                <span class="text-neutral-800 dark:text-neutral-200 font-medium">⛵ Clear Boat</span>
-              </div>
-              <div class="text-right">
-                <span class="text-[9px] text-neutral-400 block uppercase">Liquidación</span>
-                <span class="font-bold text-[#0A1926] dark:text-white">$125.00 USD</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono text-neutral-400">
-              <span>Cupones #864, #865, #867 (5 PAX)</span>
-              <span class="text-neutral-600 dark:text-neutral-300 font-semibold">$2,250.00 MXN</span>
-            </div>
-          </div>
-
-          <!-- Tarjeta 13/10/2026 -->
-          <div onclick="openDateDetailModal('13/10/26')" class="p-4 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer" style="animation-delay: 0.15s;">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span class="font-mono text-xs font-bold text-[#0A1926] dark:text-white">13 Oct 2026</span>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white dark:bg-[#0E1722] text-[#BD5307] hairline-border font-semibold">2 Cupones</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <div>
-                <span class="text-[9px] text-neutral-400 block uppercase">Servicio</span>
-                <span class="text-neutral-800 dark:text-neutral-200 font-medium">⛵ Clear + 📸 Foto</span>
-              </div>
-              <div class="text-right">
-                <span class="text-[9px] text-neutral-400 block uppercase">Liquidación</span>
-                <span class="font-bold text-[#0A1926] dark:text-white">$64.00 USD</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono text-neutral-400">
-              <span>Cupones #894, #895 (6 PAX)</span>
-              <span class="text-neutral-600 dark:text-neutral-300 font-semibold">$1,152.00 MXN</span>
-            </div>
-          </div>
-
-          <!-- Tarjeta 22/10/2026 -->
-          <div onclick="openDateDetailModal('22/10/26')" class="p-4 rounded-2xl bg-neutral-50 dark:bg-[#070D14] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer" style="animation-delay: 0.2s;">
-            <div class="flex items-center justify-between pb-2 border-b border-neutral-200/60 dark:border-neutral-800">
-              <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span class="font-mono text-xs font-bold text-[#0A1926] dark:text-white">22 Oct 2026</span>
-              </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white dark:bg-[#0E1722] text-[#BD5307] hairline-border font-semibold">1 Cupon</span>
-            </div>
-            <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-              <div>
-                <span class="text-[9px] text-neutral-400 block uppercase">Servicio</span>
-                <span class="text-neutral-800 dark:text-neutral-200 font-medium">⛵ Clear Boat</span>
-              </div>
-              <div class="text-right">
-                <span class="text-[9px] text-neutral-400 block uppercase">Liquidación</span>
-                <span class="font-bold text-[#0A1926] dark:text-white">$75.00 USD</span>
-              </div>
-            </div>
-            <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono text-neutral-400">
-              <span>Cupón #917 (3 PAX)</span>
-              <span class="text-neutral-600 dark:text-neutral-300 font-semibold">$1,350.00 MXN</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TABLA DESKTOP / MÓVIL ALTERNATIVO -->
-        <div id="settlementDesktopTable" class="hidden sm:block overflow-x-auto">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-neutral-50 dark:bg-[#070D14] text-neutral-400 uppercase tracking-widest text-[9px] font-mono font-semibold hairline-b">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono-num">
+            <thead class="bg-neutral-50 uppercase tracking-widest text-[9px] text-neutral-400 hairline-b">
               <tr>
-                <th class="px-5 py-3.5">Día de Liquidación</th>
-                <th class="px-5 py-3.5">Servicios Incluidos</th>
-                <th class="px-5 py-3.5 text-center">Cupones Asociados</th>
-                <th class="px-5 py-3.5 text-center">Aforo (PAX)</th>
-                <th class="px-5 py-3.5 text-right">Monto Liquidado (USD)</th>
-                <th class="px-5 py-3.5 text-right">Equivalente (MXN)</th>
-                <th class="px-5 py-3.5 text-center">Acción</th>
+                <th class="px-4 py-3">Fecha</th>
+                <th class="px-4 py-3">Servicio / Paquete</th>
+                <th class="px-4 py-3">Cupones</th>
+                <th class="px-4 py-3 text-center">PAX</th>
+                <th class="px-4 py-3 text-right">Importe USD</th>
+                <th class="px-4 py-3 text-right">Equivalente MXN</th>
+                <th class="px-4 py-3 text-center">Estatus</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-neutral-100 dark:divide-neutral-800/60 font-mono">
-              
-              <!-- Fila 1: 29/09/2026 -->
-              <tr class="hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 transition">
-                <td class="px-5 py-4 font-semibold text-[#0A1926] dark:text-white">29/09/2026</td>
-                <td class="px-5 py-4 font-sans text-neutral-700 dark:text-neutral-300">
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#0A1926] dark:bg-white"></span> Clear Boat</span>
-                </td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openCouponDetailModal('858')" class="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#858</button>
-                </td>
-                <td class="px-5 py-4 text-center text-neutral-600 dark:text-neutral-400">2 Adultos</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$50.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-600 dark:text-neutral-400">$900.00 MXN</td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openDateDetailModal('29/09/26')" class="text-[11px] text-[#BD5307] hover:underline">Ver Jornada</button>
-                </td>
+            <tbody class="divide-y divide-neutral-100 font-light">
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">29/09/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#858</td>
+                <td class="px-4 py-3 text-center">2</td>
+                <td class="px-4 py-3 text-right font-medium">$50.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
               </tr>
-
-              <!-- Fila 2: 30/09/2026 -->
-              <tr class="hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 transition">
-                <td class="px-5 py-4 font-semibold text-[#0A1926] dark:text-white">30/09/2026</td>
-                <td class="px-5 py-4 font-sans text-neutral-700 dark:text-neutral-300">
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#0A1926] dark:bg-white"></span> Clear Boat</span>
-                </td>
-                <td class="px-5 py-4 text-center space-x-1">
-                  <button onclick="openCouponDetailModal('860')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#860</button>
-                  <button onclick="openCouponDetailModal('856')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#856</button>
-                </td>
-                <td class="px-5 py-4 text-center text-neutral-600 dark:text-neutral-400">13 Adultos</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$325.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-600 dark:text-neutral-400">$5,850.00 MXN</td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openDateDetailModal('30/09/26')" class="text-[11px] text-[#BD5307] hover:underline">Ver Jornada</button>
-                </td>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">30/09/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#860, #856</td>
+                <td class="px-4 py-3 text-center">13</td>
+                <td class="px-4 py-3 text-right font-medium">$325.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$5,850.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
               </tr>
-
-              <!-- Fila 3: 03/10/2026 -->
-              <tr class="hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 transition">
-                <td class="px-5 py-4 font-semibold text-[#0A1926] dark:text-white">03/10/2026</td>
-                <td class="px-5 py-4 font-sans text-neutral-700 dark:text-neutral-300">
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#0A1926] dark:bg-white"></span> Clear Boat</span>
-                </td>
-                <td class="px-5 py-4 text-center space-x-1">
-                  <button onclick="openCouponDetailModal('864')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#864</button>
-                  <button onclick="openCouponDetailModal('865')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#865</button>
-                  <button onclick="openCouponDetailModal('867')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#867</button>
-                </td>
-                <td class="px-5 py-4 text-center text-neutral-600 dark:text-neutral-400">5 Adultos</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$125.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-600 dark:text-neutral-400">$2,250.00 MXN</td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openDateDetailModal('03/10/26')" class="text-[11px] text-[#BD5307] hover:underline">Ver Jornada</button>
-                </td>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">03/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#864, #865, #867</td>
+                <td class="px-4 py-3 text-center">5</td>
+                <td class="px-4 py-3 text-right font-medium">$125.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$2,250.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
               </tr>
-
-              <!-- Fila 4: 13/10/2026 -->
-              <tr class="hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 transition">
-                <td class="px-5 py-4 font-semibold text-[#0A1926] dark:text-white">13/10/2026</td>
-                <td class="px-5 py-4 font-sans text-neutral-700 dark:text-neutral-300">
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#0A1926] dark:bg-white"></span> Clear Boat</span>
-                  <span class="text-neutral-300 dark:text-neutral-700 mx-1">•</span>
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#BD5307]"></span> Fotografía</span>
-                </td>
-                <td class="px-5 py-4 text-center space-x-1">
-                  <button onclick="openCouponDetailModal('894')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#894</button>
-                  <button onclick="openCouponDetailModal('895')" class="px-2 py-0.5 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#895</button>
-                </td>
-                <td class="px-5 py-4 text-center text-neutral-600 dark:text-neutral-400">3 Ad + 3 Niños</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$64.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-600 dark:text-neutral-400">$1,152.00 MXN</td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openDateDetailModal('13/10/26')" class="text-[11px] text-[#BD5307] hover:underline">Ver Jornada</button>
-                </td>
+              <tr class="hover:bg-neutral-50/50 transition bg-sky-50/20">
+                <td class="px-4 py-3 font-medium">13/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-semibold">[Clear Boat]</span></td>
+                <td class="px-4 py-3 font-semibold">#894</td>
+                <td class="px-4 py-3 text-center font-semibold">5 (2A+3N)</td>
+                <td class="px-4 py-3 text-right font-semibold text-sky-900">$50.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
               </tr>
-
-              <!-- Fila 5: 22/10/2026 -->
-              <tr class="hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 transition">
-                <td class="px-5 py-4 font-semibold text-[#0A1926] dark:text-white">22/10/2026</td>
-                <td class="px-5 py-4 font-sans text-neutral-700 dark:text-neutral-300">
-                  <span class="inline-flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-[#0A1926] dark:bg-white"></span> Clear Boat</span>
-                </td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openCouponDetailModal('917')" class="px-2.5 py-1 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-[#BD5307] hover:text-white transition">#917</button>
-                </td>
-                <td class="px-5 py-4 text-center text-neutral-600 dark:text-neutral-400">3 Adultos</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$75.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-600 dark:text-neutral-400">$1,350.00 MXN</td>
-                <td class="px-5 py-4 text-center">
-                  <button onclick="openDateDetailModal('22/10/26')" class="text-[11px] text-[#BD5307] hover:underline">Ver Jornada</button>
-                </td>
+              <tr class="hover:bg-purple-50/40 transition bg-purple-50/20 border-l-2 border-purple-500">
+                <td class="px-4 py-3 font-medium">13/10/2026</td>
+                <td class="px-4 py-3"><span class="text-purple-800 font-semibold">[Fotografia]</span></td>
+                <td class="px-4 py-3 font-semibold text-purple-800">#895</td>
+                <td class="px-4 py-3 text-center font-semibold text-purple-800">1</td>
+                <td class="px-4 py-3 text-right font-semibold text-purple-900">$14.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$252.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
               </tr>
-
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">22/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#917</td>
+                <td class="px-4 py-3 text-center">3</td>
+                <td class="px-4 py-3 text-right font-medium">$75.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$1,350.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
+              </tr>
             </tbody>
-            <tfoot class="bg-neutral-50 dark:bg-[#070D14] hairline-t font-mono text-xs font-semibold">
+            <tfoot class="bg-neutral-50 hairline-t font-semibold">
               <tr>
-                <td colspan="4" class="px-5 py-4 uppercase text-[10px] text-neutral-500">Total Devengado en Muelle</td>
-                <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$639.00 USD</td>
-                <td class="px-5 py-4 text-right text-neutral-700 dark:text-neutral-300">$11,502.00 MXN</td>
-                <td></td>
-              </tr>
-              <tr class="text-emerald-700 dark:text-emerald-400 border-t border-neutral-200 dark:border-neutral-800">
-                <td colspan="4" class="px-5 py-3.5 uppercase text-[10px]">(-) Total Pagado / Abonado al Proveedor</td>
-                <td id="tableFooterPaid" class="px-5 py-3.5 text-right font-bold">-$500.00 USD</td>
-                <td id="tableFooterPaidMxn" class="px-5 py-3.5 text-right font-semibold">-$9,000.00 MXN</td>
-                <td></td>
-              </tr>
-              <tr class="text-[#BD5307] border-t border-neutral-200 dark:border-neutral-800 bg-[#FAF9F5] dark:bg-[#0E1722]">
-                <td colspan="4" class="px-5 py-4 uppercase text-[10px] font-bold">(=) Saldo Restante por Liquidar</td>
-                <td id="tableFooterRemaining" class="px-5 py-4 text-right font-bold text-sm">$139.00 USD</td>
-                <td id="tableFooterRemainingMxn" class="px-5 py-4 text-right font-bold text-sm">$2,502.00 MXN</td>
-                <td></td>
+                <td colspan="3" class="px-4 py-3 uppercase tracking-wider text-[10px]">Totales Generales</td>
+                <td class="px-4 py-3 text-center">29</td>
+                <td class="px-4 py-3 text-right text-[#0A1926]">$639.00 USD</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$11,502.00 MXN</td>
+                <td class="px-4 py-3 text-center text-amber-600">Resta: $139 USD</td>
               </tr>
             </tfoot>
           </table>
         </div>
+      </section>
 
-      </div>
-
-      <!-- Módulo de Gráficas Analíticas -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- VISUALIZACIÓN GRÁFICA -->
+      <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
-        <!-- Gráfica 01: Volumen Diario de Facturación (8 Cols) -->
-        <div class="lg:col-span-8 bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-3xl hairline-border shadow-sm space-y-4">
-          <div class="flex items-center justify-between pb-3 hairline-b">
-            <div>
-              <span class="text-[10px] font-mono uppercase tracking-widest text-[#BD5307] font-semibold block">Análisis Temporal</span>
-              <h3 class="font-serif text-base sm:text-lg font-bold uppercase text-[#0A1926] dark:text-white">Facturación por Jornada</h3>
-            </div>
-            <span class="text-xs font-mono text-neutral-400">Clic en barras para inspeccionar</span>
+        <div class="md:col-span-6 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Facturación por Jornada</h4>
+            <span class="text-[10px] font-mono-num text-neutral-400">USD</span>
           </div>
-          <div class="h-64 sm:h-72 w-full relative">
+          <div class="h-60">
             <canvas id="chartDailyBilling"></canvas>
           </div>
+          <div class="hairline-t pt-3 mt-2 text-[10px] font-mono-num text-neutral-400 text-center">
+            Consolidado por fecha de operación en muelle
+          </div>
         </div>
 
-        <!-- Gráfica 02: Demografía y Distribución de PAX (4 Cols) -->
-        <div class="lg:col-span-4 bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-3xl hairline-border shadow-sm space-y-4">
-          <div class="flex items-center justify-between pb-3 hairline-b">
-            <div>
-              <span class="text-[10px] font-mono uppercase tracking-widest text-[#BD5307] font-semibold block">Segmentación</span>
-              <h3 class="font-serif text-base sm:text-lg font-bold uppercase text-[#0A1926] dark:text-white">Aforo Consolidado</h3>
-            </div>
-            <span class="text-xs font-mono text-neutral-400">29 PAX</span>
+        <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Aforo Demográfico</h4>
+            <span class="text-[10px] font-mono-num text-neutral-400">29 PAX</span>
           </div>
-          <div class="h-64 sm:h-72 w-full relative flex items-center justify-center">
+          <div class="h-48 relative flex items-center justify-center">
             <canvas id="chartDemographics"></canvas>
           </div>
-        </div>
-
-        <!-- Gráfica 03: Dispersión por Cupón Individual (12 Cols) -->
-        <div class="lg:col-span-12 bg-white dark:bg-[#0E1722] p-6 sm:p-7 rounded-3xl hairline-border shadow-sm space-y-4">
-          <div class="flex items-center justify-between pb-3 hairline-b">
+          <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
-              <span class="text-[10px] font-mono uppercase tracking-widest text-[#BD5307] font-semibold block">Auditoría Individual</span>
-              <h3 class="font-serif text-base sm:text-lg font-bold uppercase text-[#0A1926] dark:text-white">Distribución Neta por Cupón</h3>
+              <span class="text-neutral-900 block font-semibold">Adultos (90%)</span>
+              <span class="text-neutral-400">26 PAX</span>
             </div>
-            <span class="text-xs font-mono text-neutral-400">9 Reservas Auditadas</span>
-          </div>
-          <div class="h-60 sm:h-64 w-full relative">
-            <canvas id="chartCouponBreakdown"></canvas>
+            <div>
+              <span class="text-amber-700 block font-semibold">Niños (10%)</span>
+              <span class="text-neutral-400">3 PAX</span>
+            </div>
           </div>
         </div>
 
-      </div>
+        <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-4">
+            <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Paquetes</h4>
+            <span class="text-[10px] font-mono-num text-neutral-400">USD</span>
+          </div>
+          <div class="h-48 relative flex items-center justify-center">
+            <canvas id="chartPackageShare"></canvas>
+          </div>
+          <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
+            <div>
+              <span class="text-sky-800 block font-semibold">Clear Boat</span>
+              <span class="text-neutral-400">$625.00</span>
+            </div>
+            <div>
+              <span class="text-purple-800 block font-semibold">Fotografía</span>
+              <span class="text-neutral-400">$14.00</span>
+            </div>
+          </div>
+        </div>
 
-    </section>
+      </section>
 
-    <!-- ---------------------------------------------------- -->
-    <!-- VISTA B: LIBRO DE CUPONES AUDITADOS                 -->
-    <!-- ---------------------------------------------------- -->
-    <section id="viewCupones" class="hidden space-y-8 animate-hero">
+    </div>
+
+    <!-- SECCIÓN 2: VISTA DE CUPONES A DOBLE RECUADRO -->
+    <div id="view-cupones" class="hidden space-y-8 animate-editorial">
       
-      <!-- Cabecera de Cupones -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 hairline-b">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span class="text-[10px] tracking-[0.25em] uppercase font-semibold text-[#BD5307] block mb-1">Libro Contable 2026</span>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0A1926] dark:text-white">
-            Registro Oficial de Cupones
-          </h2>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400 font-light mt-1">
-            Inspecciona cada folio para consultar sus 16 columnas oficiales de conciliación en Lighthouse.
-          </p>
+          <h2 class="font-serif-title text-xl font-bold text-[#0A1926] uppercase">Auditoría Individual de Cupones</h2>
+          <p class="text-xs font-mono-num text-neutral-500 mt-1">Disposición en columnas separadas para navegación e imagen digital.</p>
         </div>
+        <div class="text-xs font-mono-num text-neutral-400">
+          9 registros oficiales verificados
+        </div>
+      </div>
 
-        <!-- Controles y Filtros Rápidos -->
-        <div class="flex flex-wrap items-center gap-3">
-          <!-- Filtros de Paquete -->
-          <div class="flex rounded-xl p-1 bg-white dark:bg-[#0E1722] hairline-border text-[11px] font-mono">
-            <button onclick="filterCouponsByPackage('all')" id="btnFilterAll" class="px-3 py-1.5 rounded-lg bg-[#0A1926] text-white dark:bg-white dark:text-[#0A1926] font-semibold transition">Todos (9)</button>
-            <button onclick="filterCouponsByPackage('Clear Boat')" id="btnFilterClear" class="px-3 py-1.5 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition">Clear Boat (8)</button>
-            <button onclick="filterCouponsByPackage('Fotografia')" id="btnFilterFoto" class="px-3 py-1.5 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition">Fotografía (1)</button>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT -->
+        <div class="lg:col-span-8 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5">
+          <div class="flex justify-between items-center hairline-b pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
+                <h3 class="font-serif-title text-base font-bold text-[#0A1926] uppercase">Recuadro: Clear Boat Náutico</h3>
+              </div>
+              <span class="text-[10px] font-mono-num text-neutral-400 mt-0.5 block">Proveedor: Enva Tours • Tarifa fija: $25 USD / adulto</span>
+            </div>
+            
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
+              <span class="w-2.5 h-[2px] bg-sky-700"></span>
+              <span>Subtotal: $625.00 USD</span>
+            </div>
           </div>
 
-          <!-- Exportar CSV -->
-          <button 
-            onclick="exportCouponsToCSV()" 
-            class="px-4 py-2 rounded-xl bg-white dark:bg-[#0E1722] hairline-border text-xs font-mono text-neutral-700 dark:text-neutral-300 hover:border-[#BD5307] interactive-press transition shadow-sm"
-          >
-            Exportar CSV
-          </button>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs font-mono-num">
+              <thead class="bg-neutral-50 uppercase tracking-widest text-[9px] text-neutral-400 hairline-b">
+                <tr>
+                  <th class="px-3 py-3">Cupón</th>
+                  <th class="px-3 py-3">Fecha</th>
+                  <th class="px-3 py-3 text-center">Adultos</th>
+                  <th class="px-3 py-3 text-center">Niños</th>
+                  <th class="px-3 py-3 text-right">Depósito</th>
+                  <th class="px-3 py-3 text-right">Total USD</th>
+                  <th class="px-3 py-3 text-center">Acción</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-neutral-100 font-light">
+                <tr onclick="openCouponModal('858')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#858</td>
+                  <td class="px-3 py-3 text-neutral-600">29/09/2026</td>
+                  <td class="px-3 py-3 text-center">2</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('860')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#860</td>
+                  <td class="px-3 py-3 text-neutral-600">30/09/2026</td>
+                  <td class="px-3 py-3 text-center">7</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$175.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$175.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('856')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#856</td>
+                  <td class="px-3 py-3 text-neutral-600">30/09/2026</td>
+                  <td class="px-3 py-3 text-center">6</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$150.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$150.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('864')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#864</td>
+                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
+                  <td class="px-3 py-3 text-center">2</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('865')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#865</td>
+                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
+                  <td class="px-3 py-3 text-center">2</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('867')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#867</td>
+                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
+                  <td class="px-3 py-3 text-center">1</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$25.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$25.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('894')" class="hover:bg-neutral-50 transition cursor-pointer bg-sky-50/20">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#894</td>
+                  <td class="px-3 py-3 text-neutral-600">13/10/2026</td>
+                  <td class="px-3 py-3 text-center font-semibold">2</td>
+                  <td class="px-3 py-3 text-center font-semibold text-sky-700">3</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+                <tr onclick="openCouponModal('917')" class="hover:bg-neutral-50 transition cursor-pointer">
+                  <td class="px-3 py-3 font-semibold text-sky-800">#917</td>
+                  <td class="px-3 py-3 text-neutral-600">22/10/2026</td>
+                  <td class="px-3 py-3 text-center">3</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$75.00</td>
+                  <td class="px-3 py-3 text-right font-medium">$75.00</td>
+                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+                </tr>
+              </tbody>
+              <tfoot class="bg-neutral-50 hairline-t font-semibold">
+                <tr>
+                  <td colspan="2" class="px-3 py-3 uppercase tracking-wider text-[9px]">Subtotal Clear Boat</td>
+                  <td class="px-3 py-3 text-center">25</td>
+                  <td class="px-3 py-3 text-center">3</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$625.00</td>
+                  <td class="px-3 py-3 text-right text-[#0A1926]">$625.00 USD</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">8 Vouchers</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
-      </div>
 
-      <!-- Selector Táctil Exclusivo para Móvil: Tarjetas vs Tabla -->
-      <div class="sm:hidden flex items-center justify-between p-1 bg-neutral-100 dark:bg-[#070D14] rounded-xl text-[11px] font-mono">
-        <span class="text-[10px] text-neutral-400 uppercase tracking-widest pl-2">Vista Móvil</span>
-        <div class="flex gap-1">
-          <button id="btnCouponsCards" onclick="setCouponsMobileView('cards')" class="px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs">Tarjetas</button>
-          <button id="btnCouponsTable" onclick="setCouponsMobileView('table')" class="px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white">Tabla</button>
+        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA -->
+        <div class="lg:col-span-4 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5 border-purple-200/60">
+          <div class="flex justify-between items-center hairline-b pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+                <h3 class="font-serif-title text-base font-bold text-purple-950 uppercase">Recuadro: Fotografía</h3>
+              </div>
+              <span class="text-[10px] font-mono-num text-neutral-400 mt-0.5 block">Proveedor: Fotorgrafia • Paquete Especial</span>
+            </div>
+            
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
+              <span class="w-2.5 h-[2px] bg-purple-700"></span>
+              <span>1 Servicio</span>
+            </div>
+          </div>
+
+          <div onclick="openCouponModal('895')" class="p-5 rounded-2xl bg-purple-50/40 hairline-border border-purple-200/80 cursor-pointer hover:border-purple-500 transition group space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block">Folio Exclusivo</span>
+                <span class="text-xl font-bold font-mono-num text-purple-950">Cupón #895</span>
+              </div>
+              <span class="text-xs font-mono-num text-purple-600 group-hover:translate-x-1 transition duration-200">Ficha</span>
+            </div>
+
+            <div class="space-y-2 text-xs font-mono-num">
+              <div class="flex justify-between text-neutral-600">
+                <span>Fecha de Jornada:</span>
+                <span class="font-medium text-neutral-900">13/10/2026</span>
+              </div>
+              <div class="flex justify-between text-neutral-600">
+                <span>Aforo Cubierto:</span>
+                <span class="font-medium text-neutral-900">1 PAX</span>
+              </div>
+              <div class="flex justify-between text-neutral-600">
+                <span>Depósito Registrado:</span>
+                <span class="font-medium text-emerald-600">$14.00 USD</span>
+              </div>
+              <div class="flex justify-between text-neutral-600">
+                <span>Costo Neto Reporte:</span>
+                <span class="font-semibold text-purple-950">$14.00 USD</span>
+              </div>
+              <div class="flex justify-between text-neutral-600">
+                <span>Equivalente en MXN:</span>
+                <span class="font-medium text-neutral-900">$252.00 MXN</span>
+              </div>
+            </div>
+
+            <div class="hairline-t border-purple-200 pt-3 flex justify-between items-center text-[11px] font-mono-num">
+              <span class="text-purple-700 font-semibold">Balance: 0</span>
+              <span class="text-emerald-700 font-semibold">100% Pagado</span>
+            </div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-neutral-50 hairline-border text-[11px] font-mono-num text-neutral-500 leading-relaxed">
+            <strong class="text-neutral-800 block mb-1">Nota de Auditoría:</strong>
+            El cupón #895 corresponde exclusivamente a la sesión fotográfica del 13 de Octubre y se liquida en un rubro independiente a la tripulación náutica de Enva Tours.
+          </div>
         </div>
+
       </div>
 
-      <!-- VISTA MÓVIL MODULAR DE CUPONES: TARJETAS CUADRADAS -->
-      <div id="couponMobileCards" class="sm:hidden grid grid-cols-1 gap-3.5">
-        <!-- Render dinámico de tarjetas cuadradas móviles -->
-      </div>
-
-      <!-- TABLA DE CUPONES (DESKTOP & MÓVIL ALTERNATIVO) -->
-      <div id="couponDesktopTable" class="hidden sm:block bg-white dark:bg-[#0E1722] rounded-3xl hairline-border overflow-hidden shadow-sm">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs font-mono">
-            <thead class="bg-neutral-50 dark:bg-[#070D14] text-neutral-400 uppercase tracking-widest text-[9px] font-semibold hairline-b">
-              <tr>
-                <th class="px-5 py-4">Cupón</th>
-                <th class="px-5 py-4">Fecha</th>
-                <th class="px-5 py-4">Servicio / Paquete</th>
-                <th class="px-5 py-4 text-center">Adultos</th>
-                <th class="px-5 py-4 text-center">Niños</th>
-                <th class="px-5 py-4 text-right">Neto PAX</th>
-                <th class="px-5 py-4 text-right">Neto Total</th>
-                <th class="px-5 py-4 text-right">Depósito</th>
-                <th class="px-5 py-4 text-center">Balance</th>
-                <th class="px-5 py-4 text-right">Liquidación</th>
-              </tr>
-            </thead>
-            <tbody id="couponsTableBody" class="divide-y divide-neutral-100 dark:divide-neutral-800/60 font-light">
-              <!-- Render dinámico por JavaScript -->
-            </tbody>
-            <tfoot class="bg-neutral-50 dark:bg-[#070D14] hairline-t font-semibold text-neutral-800 dark:text-neutral-200">
-              <tr>
-                <td colspan="3" class="px-5 py-4 uppercase text-[10px]">Totales Consolidados</td>
-                <td id="tfootTotalAdults" class="px-5 py-4 text-center">26</td>
-                <td id="tfootTotalKids" class="px-5 py-4 text-center">3</td>
-                <td class="px-5 py-4 text-right text-neutral-400">—</td>
-                <td id="tfootTotalNeto" class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$639 USD</td>
-                <td id="tfootTotalDeposito" class="px-5 py-4 text-right font-bold text-emerald-700 dark:text-emerald-400">$639 USD</td>
-                <td class="px-5 py-4 text-center text-neutral-400">0</td>
-                <td id="tfootTotalLiquidacion" class="px-5 py-4 text-right font-bold text-[#BD5307]">$639 USD</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-
-    </section>
+    </div>
 
   </main>
 
-  <!-- ========================================== -->
-  <!-- 4. VENTANA MODAL: DETALLE DEL CUPÓN        -->
-  <!-- ========================================== -->
-  <div id="modalCouponDetail" onclick="if(event.target === this) closeCouponDetailModal()" class="fixed inset-0 z-50 bg-[#0A1926]/70 dark:bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
-    <div class="bg-white dark:bg-[#0E1722] rounded-3xl max-w-xl w-full max-h-[92vh] overflow-y-auto hairline-border p-6 sm:p-8 shadow-2xl relative space-y-6">
-      
-      <!-- Cabecera del Modal -->
-      <div class="flex items-start justify-between pb-3 sm:pb-4 border-b border-neutral-100 dark:border-neutral-800">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-neutral-50 dark:bg-[#070D14] p-1 hairline-border flex items-center justify-center overflow-hidden">
-            <img 
-              src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-              alt="Logo Enva" 
-              class="w-full h-full object-contain" 
-              onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-            />
-          </div>
-          <div>
-            <span id="modalProviderBadge" class="text-[9px] uppercase tracking-wider font-mono font-semibold text-[#BD5307] block">Enva Tours</span>
-            <div class="flex items-center gap-2 mt-0.5">
-              <h3 id="modalCouponTitle" class="font-serif text-lg sm:text-xl font-bold uppercase text-[#0A1926] dark:text-white">Cupón #858</h3>
-              <span id="modalPackageBadge" class="px-2 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300">Clear Boat</span>
-            </div>
-          </div>
-        </div>
-        <button onclick="closeCouponDetailModal()" class="w-8 h-8 rounded-full hairline-border flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white transition">
-          ✕
-        </button>
-      </div>
-
-      <!-- Matriz de las 16 Columnas del Google Sheet -->
-      <div class="grid grid-cols-2 gap-3 text-xs font-mono">
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Actividad</span>
-          <span id="modalFieldActividad" class="font-semibold text-neutral-800 dark:text-neutral-200">Clear Boat</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Servicio</span>
-          <span id="modalFieldServicio" class="font-semibold text-neutral-800 dark:text-neutral-200">Clear Boat</span>
-        </div>
-
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Fecha de Emisión</span>
-          <span id="modalFieldDia" class="font-semibold text-neutral-800 dark:text-neutral-200">29/09/2026</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Fecha Operación</span>
-          <span id="modalFieldDiaOperacion" class="font-semibold text-neutral-800 dark:text-neutral-200">29/09/2026</span>
-        </div>
-
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Adultos</span>
-          <span id="modalFieldAdultos" class="font-semibold text-neutral-800 dark:text-neutral-200">2</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Niños</span>
-          <span id="modalFieldNinos" class="font-semibold text-neutral-800 dark:text-neutral-200">—</span>
-        </div>
-
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Costo Neto / PAX</span>
-          <span id="modalFieldCostoPax" class="font-semibold text-neutral-800 dark:text-neutral-200">$25 USD</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Costo Neto / Reserva</span>
-          <span id="modalFieldCostoTotal" class="font-bold text-[#0A1926] dark:text-white">$50 USD</span>
-        </div>
-
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Moneda & T/C</span>
-          <span id="modalFieldMonedaTC" class="font-semibold text-neutral-800 dark:text-neutral-200">USD • T/C 18</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Depósito Recibido</span>
-          <span id="modalFieldDeposito" class="font-semibold text-emerald-700 dark:text-emerald-400">$50 USD</span>
-        </div>
-
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Balance Pendiente</span>
-          <span id="modalFieldBalance" class="font-semibold text-neutral-500">0</span>
-        </div>
-        <div class="p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border">
-          <span class="text-[9px] uppercase text-neutral-400 block mb-0.5">Total Liquidación</span>
-          <span id="modalFieldTotal" class="font-bold text-[#BD5307]">$50 USD</span>
-        </div>
-
-        <div class="col-span-2 p-3 rounded-xl bg-[#FAF9F5] dark:bg-[#070D14] hairline-border flex items-center justify-between">
-          <div>
-            <span class="text-[9px] uppercase text-neutral-400 block">Locación de Embarque</span>
-            <span id="modalFieldLocacion" class="font-semibold text-neutral-800 dark:text-neutral-200">Muelle Lighthouse Cancún</span>
-          </div>
-          <div class="text-right">
-            <span class="text-[9px] uppercase text-neutral-400 block">Proveedor Operativo</span>
-            <span id="modalFieldProvedor" class="font-semibold text-neutral-800 dark:text-neutral-200">Enva Tours</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pie del Modal -->
-      <div class="pt-2 flex items-center justify-end">
-        <button 
-          onclick="closeCouponDetailModal()" 
-          class="px-5 py-2.5 rounded-xl bg-[#0A1926] dark:bg-white text-white dark:text-[#0A1926] text-xs font-mono font-semibold uppercase tracking-wider interactive-press hover:bg-[#BD5307] dark:hover:bg-neutral-200 transition"
-        >
-          Cerrar Ficha
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- 5. VENTANA MODAL: DETALLE POR JORNADA      -->
-  <!-- ========================================== -->
-  <div id="modalDateDetail" onclick="if(event.target === this) closeDateDetailModal()" class="fixed inset-0 z-50 bg-[#0A1926]/70 dark:bg-black/80 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
-    <div class="bg-white dark:bg-[#0E1722] rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto hairline-border p-6 sm:p-8 shadow-2xl space-y-5">
-      <div class="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
+  <!-- 4. MODAL DETALLE DE CUPÓN -->
+  <div id="couponDetailModal" class="fixed inset-0 z-50 bg-[#0A1926]/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto hairline-border p-6 md:p-8 relative shadow-2xl animate-editorial">
+      <div class="flex justify-between items-start hairline-b pb-4 mb-6">
         <div>
-          <span class="text-[9px] font-mono uppercase text-[#BD5307] font-semibold block">Resumen de Operación</span>
-          <h3 id="modalDateTitle" class="font-serif text-lg sm:text-xl font-bold uppercase text-[#0A1926] dark:text-white">Jornada 30/09/2026</h3>
+          <span id="modalPackageBadge" class="text-[9px] font-mono-num uppercase tracking-widest font-semibold px-2.5 py-1 rounded-lg inline-block mb-1 hairline-border bg-neutral-50 text-neutral-700"></span>
+          <h3 id="modalCouponTitle" class="font-serif-title text-xl md:text-2xl font-bold text-[#0A1926]"></h3>
+          <span id="modalCouponSubtitle" class="text-xs font-mono-num text-neutral-400"></span>
         </div>
-        <button onclick="closeDateDetailModal()" class="w-8 h-8 rounded-full hairline-border flex items-center justify-center text-neutral-400 hover:text-black dark:hover:text-white transition">✕</button>
-      </div>
-      
-      <div id="modalDateCouponsList" class="space-y-3 font-mono text-xs">
-        <!-- Generado dinámicamente -->
+        <button onclick="closeCouponModal()" class="text-neutral-400 hover:text-black text-xs font-mono-num">Cerrar</button>
       </div>
 
-      <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex justify-between items-center text-xs font-mono">
-        <span class="text-neutral-400">Total Liquidado en Jornada:</span>
-        <span id="modalDateTotalAmount" class="font-bold text-[#BD5307]">$0.00 USD</span>
+      <div id="modalCouponBody" class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs font-mono-num"></div>
+
+      <div class="hairline-t pt-5 mt-6 flex justify-end">
+        <button onclick="closeCouponModal()" class="px-5 py-2.5 rounded-xl bg-neutral-100 text-xs font-mono-num text-neutral-700 hover:bg-neutral-200 transition">
+          Cerrar Detalle
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- ========================================== -->
-  <!-- 6. BOTÓN FLOTANTE "VOLVER ARRIBA"          -->
-  <!-- ========================================== -->
-  <button 
-    id="btnScrollToTop" 
-    onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-    title="Volver al inicio"
-    class="fixed bottom-6 right-6 z-30 opacity-0 pointer-events-none translate-y-4 px-3.5 py-3 rounded-2xl bg-white/90 dark:bg-[#0E1722]/90 text-[#0A1926] dark:text-white hairline-border shadow-xl backdrop-blur-md flex items-center gap-2 text-xs font-mono font-semibold touch-press transition-all duration-300"
-  >
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  <!-- Botón Volver Arriba -->
+  <button id="backToTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-30 p-3.5 rounded-2xl bg-white/90 backdrop-blur-md hairline-border shadow-lg hidden items-center gap-2 text-xs font-mono-num text-[#0A1926] touch-press transition">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
     <span class="hidden sm:inline">Arriba</span>
   </button>
 
-  <!-- ========================================== -->
-  <!-- 7. FOOTER EDITORIAL                        -->
-  <!-- ========================================== -->
-  <footer class="w-full hairline-t bg-white dark:bg-[#070D14] py-8 sm:py-10 px-4 sm:px-8 mt-12 transition-colors">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-400 font-mono">
-      <a href="#resumen" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-3 cursor-pointer group" title="Ir a la página de inicio">
-        <div class="w-8 h-8 rounded-xl bg-neutral-50 dark:bg-[#0E1722] p-1 hairline-border flex items-center justify-center overflow-hidden group-hover:border-[#BD5307] transition">
-          <img 
-            src="https://raw.githubusercontent.com/beamazingcolors/Clearboat/main/Logo.png" 
-            alt="Logo" 
-            class="w-full h-full object-contain" 
-            onerror="if(!this.dataset.retried){this.dataset.retried='1'; this.src='https://beamazingcolors.github.io/Clearboat/Logo.png';}else if(this.dataset.retried==='1'){this.dataset.retried='2'; this.src='https://raw.githubusercontent.com/beamazingcolors/Clearboat/master/Logo.png';}" 
-          />
-        </div>
-        <div>
-          <span class="font-serif font-bold text-[#0A1926] dark:text-white block text-sm group-hover:text-[#BD5307] transition">Enva Tours — Lighthouse Cancún</span>
-          <span class="text-[10px]">Libro de Cupones & Auditoría Financiera 2026</span>
-        </div>
-      </a>
-    </div>
-  </footer>
-
-  <!-- ========================================== -->
-  <!-- 8. LÓGICA JAVASCRIPT & MOTOR ANALÍTICO     -->
-  <!-- ========================================== -->
+  <!-- 5. LÓGICA DE DATOS Y GRÁFICOS -->
   <script>
-    // ESTADO MAESTRO DE LA APLICACIÓN
-    const AppState = {
-      isAuthenticated: false,
-      activeView: 'resumen',
-      isDarkMode: false,
-      paidAmount: 500, // Abono default de $500 USD
-      activeFilter: 'all',
-      settlementMobileView: 'cards',
-      couponsMobileView: 'cards',
-      charts: {
-        daily: null,
-        demographics: null,
-        breakdown: null
-      }
-    };
-
-    // BASE DE DATOS EXACTA DEL GOOGLE SHEET (16 COLUMNAS OFICIALES)
     const SHEET_DATA = [
-      {
-        Actividad: "Clear Boat",
-        Cupon: "858",
-        Servicio: "Clear Boat",
-        Adultos: 2,
-        Niños: 0,
-        Dia: "29/09/26",
-        DiaOperacion: "29/09/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 50,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 50,
-        Balance: 0,
-        Total: 50,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "860",
-        Servicio: "Clear Boat",
-        Adultos: 7,
-        Niños: 0,
-        Dia: "30/09/26",
-        DiaOperacion: "30/09/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 175,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 175,
-        Balance: 0,
-        Total: 175,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "856",
-        Servicio: "Clear Boat",
-        Adultos: 6,
-        Niños: 0,
-        Dia: "30/09/26",
-        DiaOperacion: "30/09/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 150,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 150,
-        Balance: 0,
-        Total: 150,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "864",
-        Servicio: "Clear Boat",
-        Adultos: 2,
-        Niños: 0,
-        Dia: "03/10/26",
-        DiaOperacion: "03/10/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 50,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 50,
-        Balance: 0,
-        Total: 50,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "865",
-        Servicio: "Clear Boat",
-        Adultos: 2,
-        Niños: 0,
-        Dia: "03/10/26",
-        DiaOperacion: "03/10/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 50,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 50,
-        Balance: 0,
-        Total: 50,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "867",
-        Servicio: "Clear Boat",
-        Adultos: 1,
-        Niños: 0,
-        Dia: "03/10/26",
-        DiaOperacion: "03/10/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 25,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 25,
-        Balance: 0,
-        Total: 25,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "894",
-        Servicio: "Clear Boat",
-        Adultos: 2,
-        Niños: 3,
-        Dia: "13/10/26",
-        DiaOperacion: "13/10/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 50,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 50,
-        Balance: 0,
-        Total: 50,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Fotografia",
-        Cupon: "895",
-        Servicio: "Fotografia",
-        Adultos: 1,
-        Niños: 0,
-        Dia: "13/10/26",
-        DiaOperacion: "13/10/26",
-        Provedor: "Fotorgrafia",
-        CostoPersona: 14,
-        CostoTotal: 14,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 14,
-        Balance: 0,
-        Total: 14,
-        Locacion: "Lighthouse"
-      },
-      {
-        Actividad: "Clear Boat",
-        Cupon: "917",
-        Servicio: "Clear Boat",
-        Adultos: 3,
-        Niños: 0,
-        Dia: "22/10/26",
-        DiaOperacion: "22/10/26",
-        Provedor: "Enva Tours",
-        CostoPersona: 25,
-        CostoTotal: 75,
-        Moneda: "USD",
-        TipoCambio: 18,
-        Deposito: 75,
-        Balance: 0,
-        Total: 75,
-        Locacion: "Lighthouse"
-      }
+      { Actividad: "Clear Boat", Cupon: "858", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "29/09/26", "Día de operación": "29/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "860", Servicio: "Clear Boat", Adultos: "7", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "175", Moneda: "USD", "Tipo de cambio": "18", Deposito: "175", Balance: "0", Total: "175", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "856", Servicio: "Clear Boat", Adultos: "6", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "150", Moneda: "USD", "Tipo de cambio": "18", Deposito: "150", Balance: "0", Total: "150", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "864", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "865", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "867", Servicio: "Clear Boat", Adultos: "1", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "25", Moneda: "USD", "Tipo de cambio": "18", Deposito: "25", Balance: "0", Total: "25", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "894", Servicio: "Clear Boat", Adultos: "2", Niños: "3", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Fotografia", Cupon: "895", Servicio: "Fotografia", Adultos: "1", Niños: "", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Fotorgrafia", "Costo Reporte neto por persona": "14", "Costo Reporte neto por total de reserva": "14", Moneda: "USD", "Tipo de cambio": "18", Deposito: "14", Balance: "0", Total: "14", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "917", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "22/10/26", "Día de operación": "22/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", Total: "75", Locación: "Lighthouse" }
     ];
 
-    // CONTROL DE AUTENTICACIÓN
+    let currentRoute = 'resumen';
+    let chartsInitialized = false;
+
     function handleLoginSubmit(event) {
       event.preventDefault();
-      const userField = document.getElementById('authUsername');
-      const pwdField = document.getElementById('authPassword');
-      const errBox = document.getElementById('authErrorMessage');
+      const u = document.getElementById('userInput').value.trim().toLowerCase();
+      const p = document.getElementById('passInput').value.trim();
 
-      const userVal = (userField.value || '').trim().toLowerCase();
-      const pwdVal = (pwdField.value || '').trim();
-
-      if (userVal === 'clearboat-admin' && pwdVal === 'Clearboat2026') {
-        errBox.classList.add('hidden');
-        sessionStorage.setItem('enva_auth_session', 'authenticated_2026');
+      if (u === 'clearboat-admin' && p === 'Clearboat2026') {
+        sessionStorage.setItem('clm_auth', 'true');
         unlockApp();
       } else {
-        errBox.textContent = 'Credenciales no reconocidas. Verifica usuario y contraseña.';
-        errBox.classList.remove('hidden');
+        const err = document.getElementById('loginErrorMsg');
+        err.classList.remove('hidden');
       }
     }
 
     function unlockApp() {
-      AppState.isAuthenticated = true;
-      const gatekeeper = document.getElementById('loginGatekeeper');
-      gatekeeper.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => {
-        gatekeeper.classList.add('hidden');
-      }, 500);
-
-      renderCouponsTable();
-      renderCouponsMobileCards();
+      const gate = document.getElementById('loginGatekeeper');
+      gate.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => gate.classList.add('hidden'), 400);
       initCharts();
-      updatePaymentCalculation(AppState.paidAmount);
-      handleHashRouting();
     }
 
     function checkAuthOnLoad() {
-      const activeSession = sessionStorage.getItem('enva_auth_session');
-      if (activeSession === 'authenticated_2026') {
+      if (sessionStorage.getItem('clm_auth') === 'true') {
         unlockApp();
       }
     }
 
     function handleLogout() {
-      sessionStorage.removeItem('enva_auth_session');
-      location.reload();
+      sessionStorage.removeItem('clm_auth');
+      window.location.reload();
     }
 
     function togglePasswordVisibility() {
-      const pwdInput = document.getElementById('authPassword');
-      const label = document.getElementById('pwdToggleLabel');
-      if (pwdInput.type === 'password') {
-        pwdInput.type = 'text';
-        label.textContent = 'Ocultar';
+      const p = document.getElementById('passInput');
+      p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    function navigateTo(route) {
+      currentRoute = route;
+      const vResumen = document.getElementById('view-resumen');
+      const vCupones = document.getElementById('view-cupones');
+
+      const btnResumen = document.getElementById('desktop-nav-resumen');
+      const btnCupones = document.getElementById('desktop-nav-cupones');
+
+      if (route === 'resumen') {
+        vResumen.classList.remove('hidden');
+        vCupones.classList.add('hidden');
+        btnResumen.classList.add('bg-[#0A1926]', 'text-white');
+        btnResumen.classList.remove('text-neutral-500');
+        btnCupones.classList.remove('bg-[#0A1926]', 'text-white');
+        btnCupones.classList.add('text-neutral-500');
       } else {
-        pwdInput.type = 'password';
-        label.textContent = 'Mostrar';
-      }
-    }
-
-    // TEMA VISUAL (MODO OSCURO / CLARO)
-    function toggleThemeMode() {
-      AppState.isDarkMode = !AppState.isDarkMode;
-      document.documentElement.classList.toggle('dark', AppState.isDarkMode);
-      localStorage.setItem('enva_theme', AppState.isDarkMode ? 'dark' : 'light');
-      updateChartsTheme();
-    }
-
-    function initThemeMode() {
-      const saved = localStorage.getItem('enva_theme');
-      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        AppState.isDarkMode = true;
-        document.documentElement.classList.add('dark');
-      }
-    }
-
-    // CÁLCULO CONSOLIDADO DE PAGOS & SALDO (INMUTABLE)
-    function updatePaymentCalculation(val = 500) {
-      const paid = parseFloat(val) || 500;
-      AppState.paidAmount = paid;
-
-      const totalAccumulated = 639.00;
-      const exchangeRate = 18.00;
-      const remaining = Math.max(0, totalAccumulated - paid);
-
-      const paidMxn = paid * exchangeRate;
-      const remainingMxn = remaining * exchangeRate;
-
-      // Actualizar tarjeta métrica
-      const elemPaid = document.getElementById('metricPaidDisplay');
-      if (elemPaid) elemPaid.textContent = `$${paid.toFixed(2)} USD`;
-
-      const elemRem = document.getElementById('metricRemainingDisplay');
-      if (elemRem) elemRem.textContent = `$${remaining.toFixed(2)} USD`;
-
-      const elemPaidMxn = document.getElementById('metricPaidMxnDisplay');
-      if (elemPaidMxn) elemPaidMxn.textContent = `$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-
-      const elemRemMxn = document.getElementById('metricRemainingMxnDisplay');
-      if (elemRemMxn) elemRemMxn.textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-
-      // Actualizar insignia rápida
-      const elemQuick = document.getElementById('quickRemainingBadge');
-      if (elemQuick) elemQuick.textContent = `$${remaining.toFixed(2)} USD`;
-
-      // Actualizar pie de tabla
-      const elemTablePaid = document.getElementById('tableFooterPaid');
-      if (elemTablePaid) elemTablePaid.textContent = `-$${paid.toFixed(2)} USD`;
-
-      const elemTablePaidMxn = document.getElementById('tableFooterPaidMxn');
-      if (elemTablePaidMxn) elemTablePaidMxn.textContent = `-$${paidMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-
-      const elemTableRem = document.getElementById('tableFooterRemaining');
-      if (elemTableRem) elemTableRem.textContent = `$${remaining.toFixed(2)} USD`;
-
-      const elemTableRemMxn = document.getElementById('tableFooterRemainingMxn');
-      if (elemTableRemMxn) elemTableRemMxn.textContent = `$${remainingMxn.toLocaleString('es-MX', {minimumFractionDigits: 2})} MXN`;
-    }
-
-    // VISTAS MÓVILES (TARJETAS VS TABLA)
-    function setSettlementMobileView(view) {
-      AppState.settlementMobileView = view;
-      const cards = document.getElementById('settlementMobileCards');
-      const table = document.getElementById('settlementDesktopTable');
-      const btnC = document.getElementById('btnSettlementCards');
-      const btnT = document.getElementById('btnSettlementTable');
-
-      if (view === 'cards') {
-        cards.classList.remove('hidden');
-        table.classList.add('hidden');
-        btnC.className = "px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs";
-        btnT.className = "px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white";
-      } else {
-        cards.classList.add('hidden');
-        table.classList.remove('hidden');
-        btnT.className = "px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs";
-        btnC.className = "px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white";
-      }
-    }
-
-    function setCouponsMobileView(view) {
-      AppState.couponsMobileView = view;
-      const cards = document.getElementById('couponMobileCards');
-      const table = document.getElementById('couponDesktopTable');
-      const btnC = document.getElementById('btnCouponsCards');
-      const btnT = document.getElementById('btnCouponsTable');
-
-      if (view === 'cards') {
-        cards.classList.remove('hidden');
-        table.classList.add('hidden');
-        btnC.className = "px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs";
-        btnT.className = "px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white";
-      } else {
-        cards.classList.add('hidden');
-        table.classList.remove('hidden');
-        btnT.className = "px-3 py-1 rounded-lg bg-white dark:bg-[#0E1722] text-[#0A1926] dark:text-white font-semibold shadow-xs";
-        btnC.className = "px-3 py-1 rounded-lg text-neutral-500 hover:text-black dark:hover:text-white";
-      }
-    }
-
-    // RENDERIZADO DE TABLA Y TARJETAS DE CUPONES
-    function renderCouponsTable() {
-      const tbody = document.getElementById('couponsTableBody');
-      tbody.innerHTML = '';
-
-      const filtered = SHEET_DATA.filter(item => {
-        if (AppState.activeFilter === 'all') return true;
-        return item.Servicio.toLowerCase().includes(AppState.activeFilter.toLowerCase());
-      });
-
-      filtered.forEach(item => {
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-neutral-50/70 dark:hover:bg-neutral-900/40 cursor-pointer transition";
-        tr.onclick = () => openCouponDetailModal(item.Cupon);
-
-        const isPhoto = item.Servicio.toLowerCase().includes('foto');
-        const pkgBadge = isPhoto 
-          ? `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-[#BD5307] dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900">📸 Fotografía</span>`
-          : `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200">⛵ Clear Boat</span>`;
-
-        tr.innerHTML = `
-          <td class="px-5 py-4 font-bold text-[#0A1926] dark:text-white">#${item.Cupon}</td>
-          <td class="px-5 py-4 text-neutral-600 dark:text-neutral-400">${item.Dia}</td>
-          <td class="px-5 py-4">${pkgBadge}</td>
-          <td class="px-5 py-4 text-center font-bold text-neutral-700 dark:text-neutral-300">${item.Adultos}</td>
-          <td class="px-5 py-4 text-center text-neutral-400">${item.Niños > 0 ? `<span class="font-bold text-[#BD5307]">${item.Niños}</span>` : '—'}</td>
-          <td class="px-5 py-4 text-right text-neutral-500">$${item.CostoPersona} USD</td>
-          <td class="px-5 py-4 text-right font-bold text-[#0A1926] dark:text-white">$${item.CostoTotal} USD</td>
-          <td class="px-5 py-4 text-right text-emerald-700 dark:text-emerald-400 font-semibold">$${item.Deposito} USD</td>
-          <td class="px-5 py-4 text-center text-neutral-400">0</td>
-          <td class="px-5 py-4 text-right font-bold text-[#BD5307]">$${item.Total} USD</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    function renderCouponsMobileCards() {
-      const container = document.getElementById('couponMobileCards');
-      container.innerHTML = '';
-
-      const filtered = SHEET_DATA.filter(item => {
-        if (AppState.activeFilter === 'all') return true;
-        return item.Servicio.toLowerCase().includes(AppState.activeFilter.toLowerCase());
-      });
-
-      filtered.forEach((item, index) => {
-        const isPhoto = item.Servicio.toLowerCase().includes('foto');
-        const card = document.createElement('div');
-        card.className = "p-4 rounded-2xl bg-white dark:bg-[#0E1722] hairline-border touch-press mobile-card-animate shadow-xs space-y-3 cursor-pointer";
-        card.style.animationDelay = `${index * 0.04}s`;
-        card.onclick = () => openCouponDetailModal(item.Cupon);
-
-        card.innerHTML = `
-          <div class="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800">
-            <div class="flex items-center gap-2">
-              <span class="font-mono text-sm font-bold text-[#0A1926] dark:text-white">#${item.Cupon}</span>
-              <span class="text-[10px] font-mono text-neutral-400">${item.Dia}</span>
-            </div>
-            <span class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full ${isPhoto ? 'bg-amber-50 text-[#BD5307] dark:bg-amber-950/40 border border-amber-200' : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300'}">
-              ${isPhoto ? '📸 Fotografía' : '⛵ Clear Boat'}
-            </span>
-          </div>
-
-          <div class="grid grid-cols-2 gap-2 text-[11px] font-mono">
-            <div>
-              <span class="text-[9px] text-neutral-400 block uppercase">Aforo</span>
-              <span class="font-semibold text-neutral-800 dark:text-neutral-200">
-                ${item.Adultos} Ad ${item.Niños > 0 ? `+ <strong class="text-[#BD5307]">${item.Niños} Niños</strong>` : ''}
-              </span>
-            </div>
-            <div class="text-right">
-              <span class="text-[9px] text-neutral-400 block uppercase">Importe Total</span>
-              <span class="font-bold text-base text-[#0A1926] dark:text-white">$${item.CostoTotal}.00 USD</span>
-            </div>
-          </div>
-
-          <div class="flex items-center justify-between pt-2 border-t border-dashed border-neutral-200 dark:border-neutral-800 text-[10px] font-mono">
-            <span class="text-neutral-400">Neto: $${item.CostoPersona} USD / PAX</span>
-            <span class="text-emerald-700 dark:text-emerald-400 font-semibold">Liquidado ($${item.Total} USD)</span>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function filterCouponsByPackage(pkg) {
-      AppState.activeFilter = pkg;
-      const bAll = document.getElementById('btnFilterAll');
-      const bClear = document.getElementById('btnFilterClear');
-      const bFoto = document.getElementById('btnFilterFoto');
-
-      [bAll, bClear, bFoto].forEach(b => {
-        b.className = "px-3 py-1.5 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition";
-      });
-
-      if (pkg === 'all') {
-        bAll.className = "px-3 py-1.5 rounded-lg bg-[#0A1926] text-white dark:bg-white dark:text-[#0A1926] font-semibold transition";
-      } else if (pkg.includes('Clear')) {
-        bClear.className = "px-3 py-1.5 rounded-lg bg-[#0A1926] text-white dark:bg-white dark:text-[#0A1926] font-semibold transition";
-      } else {
-        bFoto.className = "px-3 py-1.5 rounded-lg bg-[#0A1926] text-white dark:bg-white dark:text-[#0A1926] font-semibold transition";
+        vResumen.classList.add('hidden');
+        vCupones.classList.remove('hidden');
+        btnCupones.classList.add('bg-[#0A1926]', 'text-white');
+        btnCupones.classList.remove('text-neutral-500');
+        btnResumen.classList.remove('bg-[#0A1926]', 'text-white');
+        btnResumen.classList.add('text-neutral-500');
       }
 
-      renderCouponsTable();
-      renderCouponsMobileCards();
+      closeMobileMenu();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // MODAL DE DETALLE DE CUPÓN
-    function openCouponDetailModal(couponNumber) {
-      const item = SHEET_DATA.find(c => c.Cupon === String(couponNumber));
+    function openCouponModal(cuponId) {
+      const item = SHEET_DATA.find(r => r.Cupon === cuponId);
       if (!item) return;
 
-      document.getElementById('modalCouponTitle').textContent = `Cupón #${item.Cupon}`;
-      document.getElementById('modalFieldActividad').textContent = item.Actividad;
-      document.getElementById('modalFieldServicio').textContent = item.Servicio;
-      document.getElementById('modalFieldDia').textContent = item.Dia;
-      document.getElementById('modalFieldDiaOperacion').textContent = item.DiaOperacion;
-      document.getElementById('modalFieldAdultos').textContent = item.Adultos;
-      document.getElementById('modalFieldNinos').textContent = item.Niños > 0 ? `${item.Niños} Niños` : '—';
-      document.getElementById('modalFieldCostoPax').textContent = `$${item.CostoPersona} USD`;
-      document.getElementById('modalFieldCostoTotal').textContent = `$${item.CostoTotal} USD`;
-      document.getElementById('modalFieldMonedaTC').textContent = `${item.Moneda} • T/C ${item.TipoCambio}`;
-      document.getElementById('modalFieldDeposito').textContent = `$${item.Deposito} USD`;
-      document.getElementById('modalFieldBalance').textContent = item.Balance;
-      document.getElementById('modalFieldTotal').textContent = `$${item.Total} USD`;
-      document.getElementById('modalFieldLocacion').textContent = `${item.Locacion} Cancún`;
-      document.getElementById('modalFieldProvedor').textContent = item.Provedor;
-
-      const isPhoto = item.Servicio.toLowerCase().includes('foto');
+      const isPhoto = item.Actividad.toLowerCase().includes('foto');
       const badge = document.getElementById('modalPackageBadge');
-      badge.textContent = isPhoto ? '📸 Paquete Fotografía' : '⛵ Clear Boat Regular';
-      badge.className = isPhoto 
-        ? "px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-amber-50 text-[#BD5307] border border-amber-200"
-        : "px-2.5 py-0.5 rounded-full text-[9px] font-mono font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300";
+      
+      if (isPhoto) {
+        badge.innerText = "Fotografía";
+      } else {
+        badge.innerText = "Clear Boat";
+      }
 
-      const modal = document.getElementById('modalCouponDetail');
+      document.getElementById('modalCouponTitle').innerText = `Cupón Oficial #${item.Cupon}`;
+      document.getElementById('modalCouponSubtitle').innerText = `${item.Servicio} • Operado el ${item.Día}`;
+
+      const body = document.getElementById('modalCouponBody');
+      body.innerHTML = '';
+
+      const fields = [
+        ["Actividad", item.Actividad],
+        ["Servicio", item.Servicio],
+        ["Cupón", item.Cupon],
+        ["Adultos", item.Adultos],
+        ["Niños", item.Niños || "0"],
+        ["Fecha Captura", item.Día],
+        ["Fecha Operación", item["Día de operación"]],
+        ["Proveedor", item.Provedor],
+        ["Costo Neto Unitario", `$${item["Costo Reporte neto por persona"]} USD`],
+        ["Total Reserva", `$${item["Costo Reporte neto por total de reserva"]} USD`],
+        ["Moneda", item.Moneda],
+        ["Tipo de Cambio", `$${item["Tipo de cambio"]} MXN`],
+        ["Depósito Realizado", `$${item.Deposito} USD`],
+        ["Balance Pendiente", `$${item.Balance} USD`],
+        ["Liquidación Neta", `$${item.Total} USD`],
+        ["Locación Base", item.Locación]
+      ];
+
+      fields.forEach(([label, val]) => {
+        const div = document.createElement('div');
+        div.className = "p-3 rounded-xl bg-neutral-50 hairline-border";
+        div.innerHTML = `<span class="text-[9px] uppercase tracking-widest text-neutral-400 block">${label}</span><span class="font-semibold text-neutral-800 mt-0.5 block">${val}</span>`;
+        body.appendChild(div);
+      });
+
+      const modal = document.getElementById('couponDetailModal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
     }
 
-    function closeCouponDetailModal() {
-      const modal = document.getElementById('modalCouponDetail');
+    function closeCouponModal() {
+      const modal = document.getElementById('couponDetailModal');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
 
-    // MODAL DE DETALLE POR FECHA
-    function openDateDetailModal(dateStr) {
-      const items = SHEET_DATA.filter(c => c.Dia === dateStr);
-      if (!items.length) return;
+    window.addEventListener('click', (e) => {
+      const modal = document.getElementById('couponDetailModal');
+      if (e.target === modal) closeCouponModal();
 
-      document.getElementById('modalDateTitle').textContent = `Jornada ${dateStr}`;
-      const list = document.getElementById('modalDateCouponsList');
-      list.innerHTML = '';
+      const drawer = document.getElementById('mobileDrawer');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (!drawer.classList.contains('hidden') && !drawer.contains(e.target) && !btn.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
 
-      let totalDay = 0;
-      items.forEach(c => {
-        totalDay += c.CostoTotal;
-        const row = document.createElement('div');
-        row.className = "p-3 rounded-xl bg-neutral-50 dark:bg-[#070D14] hairline-border flex items-center justify-between";
-        row.innerHTML = `
-          <div>
-            <span class="font-bold text-[#0A1926] dark:text-white">Cupón #${c.Cupon}</span>
-            <span class="text-[10px] text-neutral-400 block">${c.Servicio} • ${c.Adultos} Ad ${c.Niños > 0 ? `+ ${c.Niños} Niños` : ''}</span>
-          </div>
-          <div class="text-right">
-            <span class="font-bold text-[#BD5307]">$${c.CostoTotal}.00 USD</span>
-            <button onclick="closeDateDetailModal(); openCouponDetailModal('${c.Cupon}')" class="text-[9px] text-neutral-400 hover:text-black dark:hover:text-white block underline">Ver Ficha</button>
-          </div>
-        `;
-        list.appendChild(row);
-      });
-
-      document.getElementById('modalDateTotalAmount').textContent = `$${totalDay}.00 USD ($${(totalDay * 18).toLocaleString('es-MX')} MXN)`;
-
-      const modal = document.getElementById('modalDateDetail');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+    function toggleMobileMenu(e) {
+      if (e) e.stopPropagation();
+      const d = document.getElementById('mobileDrawer');
+      d.classList.toggle('hidden');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileDrawer').classList.add('hidden');
     }
 
-    function closeDateDetailModal() {
-      const modal = document.getElementById('modalDateDetail');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('backToTopBtn');
+      if (window.scrollY > 220) {
+        btn.classList.remove('hidden');
+        btn.classList.add('flex');
+      } else {
+        btn.classList.add('hidden');
+        btn.classList.remove('flex');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // EXPORTADOR CSV
-    function exportCouponsToCSV() {
-      const headers = ["Actividad", "Cupon", "Servicio", "Adultos", "Ninos", "Dia", "DiaOperacion", "Provedor", "CostoPersona", "CostoTotal", "Moneda", "TipoCambio", "Deposito", "Balance", "Total", "Locacion"];
-      let csv = headers.join(",") + "\n";
+    // Gráficos
+    let chartDaily = null;
+    let chartDemo = null;
+    let chartShare = null;
 
-      SHEET_DATA.forEach(row => {
-        csv += [
-          `"${row.Actividad}"`,
-          `"${row.Cupon}"`,
-          `"${row.Servicio}"`,
-          row.Adultos,
-          row.Niños,
-          `"${row.Dia}"`,
-          `"${row.DiaOperacion}"`,
-          `"${row.Provedor}"`,
-          row.CostoPersona,
-          row.CostoTotal,
-          `"${row.Moneda}"`,
-          row.TipoCambio,
-          row.Deposito,
-          row.Balance,
-          row.Total,
-          `"${row.Locacion}"`
-        ].join(",") + "\n";
-      });
-
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Enva_Tours_Cupones_Lighthouse_${new Date().toISOString().slice(0,10)}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
-
-    // INICIALIZACIÓN DE CHART.JS
     function initCharts() {
-      const textColor = AppState.isDarkMode ? '#A1A1AA' : '#52525B';
-      const gridColor = AppState.isDarkMode ? 'rgba(255,255,255,0.06)' : 'rgba(10,25,38,0.06)';
+      const textColor = '#4A5568';
+      const gridColor = 'rgba(0,0,0,0.06)';
 
-      // 1. Facturación por Jornada
       const ctxDaily = document.getElementById('chartDailyBilling')?.getContext('2d');
       if (ctxDaily) {
-        if (AppState.charts.daily) AppState.charts.daily.destroy();
-        AppState.charts.daily = new Chart(ctxDaily, {
+        chartDaily = new Chart(ctxDaily, {
           type: 'bar',
           data: {
             labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct', '22 Oct'],
             datasets: [
               {
-                label: 'Facturación Neta (USD)',
-                data: [50, 325, 125, 64, 75],
-                backgroundColor: '#0A1926',
-                borderRadius: 8,
-                barPercentage: 0.55
+                label: 'Clear Boat (USD)',
+                data: [50, 325, 125, 50, 75],
+                backgroundColor: '#0284C7',
+                borderRadius: 4
               },
               {
-                label: 'Pasajeros (PAX)',
-                data: [2, 13, 5, 6, 3],
-                type: 'line',
-                borderColor: '#BD5307',
-                borderWidth: 2,
-                pointBackgroundColor: '#BD5307',
-                pointRadius: 4,
-                yAxisID: 'y1'
+                label: 'Fotografía (USD)',
+                data: [0, 0, 0, 14, 0],
+                backgroundColor: '#9333EA',
+                borderRadius: 4
               }
             ]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            onClick: (e, elements) => {
-              if (elements.length > 0) {
-                const idx = elements[0].index;
-                const dates = ['29/09/26', '30/09/26', '03/10/26', '13/10/26', '22/10/26'];
-                openDateDetailModal(dates[idx]);
-              }
-            },
             scales: {
-              x: { grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } },
-              y: { 
-                grid: { color: gridColor }, 
-                ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 }, callback: v => '$' + v }
-              },
-              y1: {
-                position: 'right',
-                grid: { drawOnChartArea: false },
-                ticks: { color: '#BD5307', font: { family: 'JetBrains Mono', size: 10 } }
-              }
+              x: { stacked: true, grid: { display: false }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } },
+              y: { stacked: true, grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } }
             },
             plugins: {
-              legend: { labels: { color: textColor, font: { family: 'Inter', size: 11 } } }
+              legend: { labels: { color: textColor, font: { family: 'JetBrains Mono', size: 11 } } }
             }
           }
         });
       }
 
-      // 2. Demografía
       const ctxDemo = document.getElementById('chartDemographics')?.getContext('2d');
       if (ctxDemo) {
-        if (AppState.charts.demographics) AppState.charts.demographics.destroy();
-        AppState.charts.demographics = new Chart(ctxDemo, {
+        chartDemo = new Chart(ctxDemo, {
           type: 'doughnut',
           data: {
-            labels: ['Adultos Clear Boat', 'Niños Clear Boat', 'Foto'],
+            labels: ['Adultos (26)', 'Niños (3)'],
             datasets: [{
-              data: [25, 3, 1],
-              backgroundColor: ['#0A1926', '#BD5307', '#D97706'],
-              borderWidth: 0,
-              hoverOffset: 6
+              data: [26, 3],
+              backgroundColor: ['#0A1926', '#D97706'],
+              borderWidth: 0
             }]
           },
           options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: { color: textColor, font: { family: 'Inter', size: 10 }, boxWidth: 10 }
-              }
-            }
-          }
-        });
-      }
-
-      // 3. Dispersión por Cupón
-      const ctxBreak = document.getElementById('chartCouponBreakdown')?.getContext('2d');
-      if (ctxBreak) {
-        if (AppState.charts.breakdown) AppState.charts.breakdown.destroy();
-        AppState.charts.breakdown = new Chart(ctxBreak, {
-          type: 'bar',
-          data: {
-            labels: ['#860', '#856', '#917', '#858', '#864', '#865', '#894', '#867', '#895'],
-            datasets: [{
-              label: 'Importe Neto USD',
-              data: [175, 150, 75, 50, 50, 50, 50, 25, 14],
-              backgroundColor: ['#0A1926', '#0A1926', '#0A1926', '#0A1926', '#0A1926', '#0A1926', '#0A1926', '#0A1926', '#BD5307'],
-              borderRadius: 6,
-              barPercentage: 0.6
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            onClick: (e, elements) => {
-              if (elements.length > 0) {
-                const idx = elements[0].index;
-                const coupons = ['860', '856', '917', '858', '864', '865', '894', '867', '895'];
-                openCouponDetailModal(coupons[idx]);
-              }
-            },
-            scales: {
-              x: { grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } },
-              y: { grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 }, callback: v => '$' + v } }
-            },
+            cutout: '72%',
             plugins: {
               legend: { display: false }
             }
           }
         });
       }
+
+      const ctxShare = document.getElementById('chartPackageShare')?.getContext('2d');
+      if (ctxShare) {
+        chartShare = new Chart(ctxShare, {
+          type: 'doughnut',
+          data: {
+            labels: ['Clear Boat ($625)', 'Fotografía ($14)'],
+            datasets: [{
+              data: [625, 14],
+              backgroundColor: ['#0284C7', '#9333EA'],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '72%',
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+      }
+
+      chartsInitialized = true;
     }
 
-    function updateChartsTheme() {
-      if (!AppState.charts.daily) return;
-      initCharts();
-    }
-
-    // ENRUTAMIENTO SPA POR HASH
-    function handleHashRouting() {
-      const hash = (window.location.hash || '#resumen').toLowerCase();
-      const vResumen = document.getElementById('viewResumen');
-      const vCupones = document.getElementById('viewCupones');
-
-      const dResumen = document.getElementById('navDesktopResumen');
-      const dCupones = document.getElementById('navDesktopCupones');
-
-      if (hash.includes('cupon')) {
-        vResumen.classList.add('hidden');
-        vCupones.classList.remove('hidden');
-
-        dCupones.className = "px-5 py-2 rounded-full text-white bg-[#0A1926] dark:bg-white dark:text-[#0A1926] transition font-semibold";
-        dResumen.className = "px-5 py-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition";
-      } else {
-        vCupones.classList.add('hidden');
-        vResumen.classList.remove('hidden');
-
-        dResumen.className = "px-5 py-2 rounded-full text-white bg-[#0A1926] dark:bg-white dark:text-[#0A1926] transition font-semibold";
-        dCupones.className = "px-5 py-2 rounded-full text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition";
-      }
-    }
-
-    window.addEventListener('hashchange', handleHashRouting);
-
-    // MENÚ MÓVIL
-    function toggleMobileMenu(forcedState) {
-      const menu = document.getElementById('mobileDropdownMenu');
-      const iconO = document.getElementById('iconMobileOpen');
-      const iconC = document.getElementById('iconMobileClose');
-
-      const shouldOpen = typeof forcedState === 'boolean' ? forcedState : menu.classList.contains('max-h-0');
-
-      if (shouldOpen) {
-        menu.classList.remove('max-h-0', 'opacity-0');
-        menu.classList.add('max-h-[500px]', 'opacity-100');
-        iconO.classList.add('hidden');
-        iconC.classList.remove('hidden');
-      } else {
-        menu.classList.remove('max-h-[500px]', 'opacity-100');
-        menu.classList.add('max-h-0', 'opacity-0');
-        iconO.classList.remove('hidden');
-        iconC.classList.add('hidden');
-      }
-    }
-
-    // CIERRE AL VACÍO / CLIC FUERA
-    document.addEventListener('click', (e) => {
-      const menu = document.getElementById('mobileDropdownMenu');
-      const toggleBtn = document.getElementById('btnMobileMenuToggle');
-      if (!menu || !toggleBtn) return;
-      const isMenuOpen = !menu.classList.contains('max-h-0');
-      // Si el menú está abierto y el clic fue fuera del menú y del botón hamburguesa
-      if (isMenuOpen && !menu.contains(e.target) && !toggleBtn.contains(e.target)) {
-        toggleMobileMenu(false);
-      }
-    });
-
-    // CIERRE CON TECLA ESCAPE
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        toggleMobileMenu(false);
-        closeCouponDetailModal();
-        closeDateDetailModal();
-      }
-    });
-
-    // BOTÓN VOLVER ARRIBA
-    window.addEventListener('scroll', () => {
-      const btn = document.getElementById('btnScrollToTop');
-      if (window.scrollY > 180) {
-        btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-        btn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-      } else {
-        btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-        btn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-      }
-    });
-
-    // INICIALIZACIÓN GLOBAL
-    window.addEventListener('DOMContentLoaded', () => {
-      initThemeMode();
-      checkAuthOnLoad();
-    });
+    window.addEventListener('DOMContentLoaded', checkAuthOnLoad);
   </script>
 </body>
 </html>
