@@ -29,7 +29,7 @@
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -56,7 +56,7 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-[#0A1926] selection:text-white">
 
-  <!-- 1. GATEKEEPER DE ACCESO OFICIAL -->
+  <!-- 1. GATEKEEPER DE ACCESO -->
   <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF9F5] p-4 transition-opacity duration-500">
     <div class="w-full max-w-md bg-white rounded-3xl hairline-border p-8 md:p-10 shadow-2xl relative animate-editorial">
       <div class="flex flex-col items-center text-center mb-8">
@@ -157,36 +157,73 @@
     <!-- SECCIÓN 1: VISTA DE RESUMEN -->
     <div id="view-resumen" class="space-y-8 animate-editorial">
       
-      <!-- HERO KPIS EN RECUADROS INDEPENDIENTES -->
+      <!-- HERO KPIS: RECUADRO 1 (RESTA DEL CUADRO) + RECUADROS DE SERVICIOS -->
       <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
-        <!-- Recuadro A: CLEAR BOAT -->
-        <div class="md:col-span-5 bg-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden">
+        <!-- RECUADRO 1: RESTA DE TOTAL PAGADO MENOS SUMA DEL TOTAL -->
+        <div class="md:col-span-5 bg-[#0A1926] text-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden">
           <div class="flex justify-between items-start mb-4">
             <div>
-              <span class="text-[9px] font-mono-num uppercase tracking-widest text-sky-700 font-semibold block mb-1">Recuadro 01</span>
-              <h2 class="font-serif-title text-base md:text-lg font-bold text-[#0A1926] uppercase">Clear Boat Náutico</h2>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-amber-300 font-semibold block mb-1">Recuadro 01</span>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-white uppercase">Saldo por Liquidar</h2>
             </div>
             
-            <!-- Etiqueta 8 Cupones Formato Editorial -->
-            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
-              <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span>8 Cupones</span>
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 text-[10px] font-mono-num uppercase tracking-wider text-neutral-300">
+              <span class="w-2.5 h-[2px] bg-amber-400"></span>
+              <span>Resta de Cuadro</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$625.00</span>
+              <span class="text-3xl lg:text-4xl font-light font-mono-num text-amber-300">$664.00</span>
               <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $11,250.00 MXN (TC: $18.00)</p>
+            <p class="text-xs font-mono-num text-neutral-300 mt-1">Equivalente: $11,952.00 MXN (TC: $18.00)</p>
+          </div>
+
+          <div class="hairline-t border-white/10 pt-4 space-y-2 text-xs font-mono-num">
+            <div class="flex justify-between text-neutral-300">
+              <span>Suma Total Generada (15 Cupones):</span>
+              <span class="font-medium text-white">$1,164.00 USD</span>
+            </div>
+            <div class="flex justify-between text-emerald-400">
+              <span>(-) Total Pagado Proveedor:</span>
+              <span class="font-medium">-$500.00 USD</span>
+            </div>
+            <div class="hairline-t border-white/10 pt-2 flex justify-between text-[11px] text-neutral-400">
+              <span>Aforo Global: 50 PAX</span>
+              <span>10 Jornadas Operadas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECUADRO 2: CLEAR BOAT -->
+        <div class="md:col-span-4 bg-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-sky-700 font-semibold block mb-1">Recuadro 02</span>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-[#0A1926] uppercase">Clear Boat Náutico</h2>
+            </div>
+            
+            <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
+              <span class="w-2.5 h-[2px] bg-sky-700"></span>
+              <span>14 Cupones</span>
+            </div>
+          </div>
+
+          <div class="my-3">
+            <div class="flex items-baseline gap-2">
+              <span class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$1,150.00</span>
+              <span class="text-xs font-mono-num text-neutral-400">USD</span>
+            </div>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $20,700.00 MXN</p>
           </div>
 
           <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
             <div>
-              <span class="text-[10px] text-neutral-400 block uppercase">Aforo Total</span>
-              <span class="font-semibold text-neutral-800">28 PAX (25A / 3N)</span>
+              <span class="text-[10px] text-neutral-400 block uppercase">Aforo Cubierto</span>
+              <span class="font-semibold text-neutral-800">49 PAX (46A / 3N)</span>
             </div>
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Tarifa Neta</span>
@@ -195,15 +232,14 @@
           </div>
         </div>
 
-        <!-- Recuadro B: FOTOGRAFÍA -->
+        <!-- RECUADRO 3: FOTOGRAFÍA -->
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden border-purple-200/50">
           <div class="flex justify-between items-start mb-4">
             <div>
-              <span class="text-[9px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block mb-1">Recuadro 02</span>
+              <span class="text-[9px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block mb-1">Recuadro 03</span>
               <h2 class="font-serif-title text-base md:text-lg font-bold text-purple-950 uppercase">Fotografía</h2>
             </div>
             
-            <!-- Etiqueta 1 Cupón Formato Editorial -->
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-purple-700"></span>
               <span>1 Cupón</span>
@@ -230,49 +266,18 @@
           </div>
         </div>
 
-        <!-- Recuadro C: LIQUIDACIÓN GLOBAL & SALDO -->
-        <div class="md:col-span-4 bg-[#0A1926] text-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm">
-          <div class="flex justify-between items-start mb-4">
-            <div>
-              <span class="text-[9px] font-mono-num uppercase tracking-widest text-neutral-400 font-semibold block mb-1">Balance General</span>
-              <h2 class="font-serif-title text-base md:text-lg font-bold text-white uppercase">Estado de Cuenta</h2>
-            </div>
-            <span class="text-xs font-mono-num text-neutral-400">Total: $639 USD</span>
-          </div>
-
-          <div class="my-2 space-y-1">
-            <div class="flex justify-between text-xs font-mono-num text-neutral-300">
-              <span>Total Acumulado (9 Cupones)</span>
-              <span>$639.00 USD</span>
-            </div>
-            <div class="flex justify-between text-xs font-mono-num text-emerald-400">
-              <span>(-) Pagado Proveedor (Fijo)</span>
-              <span>-$500.00 USD</span>
-            </div>
-            <div class="hairline-t border-neutral-700 pt-2 flex justify-between items-baseline">
-              <span class="text-xs font-mono-num font-semibold text-white uppercase">Saldo Restante:</span>
-              <span class="text-2xl lg:text-3xl font-light font-mono-num text-amber-300">$139.00 USD</span>
-            </div>
-          </div>
-
-          <div class="hairline-t border-neutral-700/80 pt-3 text-[10px] font-mono-num text-neutral-400 flex justify-between">
-            <span>Saldo en MXN: $2,502.00</span>
-            <span>29 PAX Global</span>
-          </div>
-        </div>
-
       </section>
 
-      <!-- CUADRO DE PAGOS SEPARADO POR COLUMNAS -->
+      <!-- CUADRO DE PAGOS Y DÍAS DE LIQUIDACIÓN -->
       <section class="bg-white rounded-3xl hairline-border p-6 md:p-8 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 hairline-b pb-4">
           <div>
-            <h3 class="font-serif-title text-lg font-bold text-[#0A1926] uppercase">Días de Liquidación & Desglose por Servicio</h3>
-            <p class="text-xs font-mono-num text-neutral-500 mt-1">Bitácora cronológica con diferenciación estricta entre embarcación y fotos.</p>
+            <h3 class="font-serif-title text-lg font-bold text-[#0A1926] uppercase">Días de Liquidación & Control de Muelle</h3>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Auditoría cronológica de servicios operados frente al pago registrado de $500.00 USD.</p>
           </div>
           <div class="flex items-center gap-3">
             <span class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-700">
-              Total Liquidado: $500.00 USD
+              Total Pagado Proveedor: $500.00 USD
             </span>
           </div>
         </div>
@@ -345,14 +350,50 @@
                 <td class="px-4 py-3 text-right text-neutral-500">$1,350.00</td>
                 <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
               </tr>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">24/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#925, #926</td>
+                <td class="px-4 py-3 text-center">13</td>
+                <td class="px-4 py-3 text-right font-medium">$325.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$5,850.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
+              </tr>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">26/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#937</td>
+                <td class="px-4 py-3 text-center">2</td>
+                <td class="px-4 py-3 text-right font-medium">$50.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
+              </tr>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">27/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">#945, #948</td>
+                <td class="px-4 py-3 text-center">4</td>
+                <td class="px-4 py-3 text-right font-medium">$100.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$1,800.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
+              </tr>
+              <tr class="hover:bg-neutral-50/50 transition">
+                <td class="px-4 py-3 font-medium">28/10/2026</td>
+                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
+                <td class="px-4 py-3">ACT-261028-2</td>
+                <td class="px-4 py-3 text-center">2</td>
+                <td class="px-4 py-3 text-right font-medium">$50.00</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
+                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
+              </tr>
             </tbody>
             <tfoot class="bg-neutral-50 hairline-t font-semibold">
               <tr>
                 <td colspan="3" class="px-4 py-3 uppercase tracking-wider text-[10px]">Totales Generales</td>
-                <td class="px-4 py-3 text-center">29</td>
-                <td class="px-4 py-3 text-right text-[#0A1926]">$639.00 USD</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$11,502.00 MXN</td>
-                <td class="px-4 py-3 text-center text-amber-600">Resta: $139 USD</td>
+                <td class="px-4 py-3 text-center">50</td>
+                <td class="px-4 py-3 text-right text-[#0A1926]">$1,164.00 USD</td>
+                <td class="px-4 py-3 text-right text-neutral-500">$20,952.00 MXN</td>
+                <td class="px-4 py-3 text-center text-amber-600">Resta: $664 USD</td>
               </tr>
             </tfoot>
           </table>
@@ -362,42 +403,45 @@
       <!-- VISUALIZACIÓN GRÁFICA -->
       <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
+        <!-- Facturación Diaria -->
         <div class="md:col-span-6 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Facturación por Jornada</h4>
             <span class="text-[10px] font-mono-num text-neutral-400">USD</span>
           </div>
-          <div class="h-60">
+          <div class="h-64">
             <canvas id="chartDailyBilling"></canvas>
           </div>
           <div class="hairline-t pt-3 mt-2 text-[10px] font-mono-num text-neutral-400 text-center">
-            Consolidado por fecha de operación en muelle
+            Desglose cronológico por fecha de operación en muelle
           </div>
         </div>
 
+        <!-- Demografía: Adultos vs Niños -->
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Aforo Demográfico</h4>
-            <span class="text-[10px] font-mono-num text-neutral-400">29 PAX</span>
+            <span class="text-[10px] font-mono-num text-neutral-400">50 PAX</span>
           </div>
           <div class="h-48 relative flex items-center justify-center">
             <canvas id="chartDemographics"></canvas>
           </div>
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
-              <span class="text-neutral-900 block font-semibold">Adultos (90%)</span>
-              <span class="text-neutral-400">26 PAX</span>
+              <span class="text-neutral-900 block font-semibold">Adultos (94%)</span>
+              <span class="text-neutral-400">47 PAX</span>
             </div>
             <div>
-              <span class="text-amber-700 block font-semibold">Niños (10%)</span>
+              <span class="text-amber-700 block font-semibold">Niños (6%)</span>
               <span class="text-neutral-400">3 PAX</span>
             </div>
           </div>
         </div>
 
+        <!-- Proporción Paquetes -->
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
-            <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Paquetes</h4>
+            <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Proporción Paquetes</h4>
             <span class="text-[10px] font-mono-num text-neutral-400">USD</span>
           </div>
           <div class="h-48 relative flex items-center justify-center">
@@ -406,7 +450,7 @@
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
               <span class="text-sky-800 block font-semibold">Clear Boat</span>
-              <span class="text-neutral-400">$625.00</span>
+              <span class="text-neutral-400">$1,150.00</span>
             </div>
             <div>
               <span class="text-purple-800 block font-semibold">Fotografía</span>
@@ -428,13 +472,13 @@
           <p class="text-xs font-mono-num text-neutral-500 mt-1">Disposición en columnas separadas para navegación e imagen digital.</p>
         </div>
         <div class="text-xs font-mono-num text-neutral-400">
-          9 registros oficiales verificados
+          15 registros oficiales verificados
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
-        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT -->
+        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT (14 CUPONES) -->
         <div class="lg:col-span-8 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -447,7 +491,7 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span>Subtotal: $625.00 USD</span>
+              <span>Subtotal: $1,150.00 USD</span>
             </div>
           </div>
 
@@ -464,95 +508,24 @@
                   <th class="px-3 py-3 text-center">Acción</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-neutral-100 font-light">
-                <tr onclick="openCouponModal('858')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#858</td>
-                  <td class="px-3 py-3 text-neutral-600">29/09/2026</td>
-                  <td class="px-3 py-3 text-center">2</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('860')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#860</td>
-                  <td class="px-3 py-3 text-neutral-600">30/09/2026</td>
-                  <td class="px-3 py-3 text-center">7</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$175.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$175.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('856')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#856</td>
-                  <td class="px-3 py-3 text-neutral-600">30/09/2026</td>
-                  <td class="px-3 py-3 text-center">6</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$150.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$150.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('864')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#864</td>
-                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
-                  <td class="px-3 py-3 text-center">2</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('865')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#865</td>
-                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
-                  <td class="px-3 py-3 text-center">2</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('867')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#867</td>
-                  <td class="px-3 py-3 text-neutral-600">03/10/2026</td>
-                  <td class="px-3 py-3 text-center">1</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$25.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$25.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('894')" class="hover:bg-neutral-50 transition cursor-pointer bg-sky-50/20">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#894</td>
-                  <td class="px-3 py-3 text-neutral-600">13/10/2026</td>
-                  <td class="px-3 py-3 text-center font-semibold">2</td>
-                  <td class="px-3 py-3 text-center font-semibold text-sky-700">3</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$50.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$50.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
-                <tr onclick="openCouponModal('917')" class="hover:bg-neutral-50 transition cursor-pointer">
-                  <td class="px-3 py-3 font-semibold text-sky-800">#917</td>
-                  <td class="px-3 py-3 text-neutral-600">22/10/2026</td>
-                  <td class="px-3 py-3 text-center">3</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">—</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$75.00</td>
-                  <td class="px-3 py-3 text-right font-medium">$75.00</td>
-                  <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
-                </tr>
+              <tbody id="clearboatTableBody" class="divide-y divide-neutral-100 font-light">
+                <!-- Se inyecta dinámicamente -->
               </tbody>
               <tfoot class="bg-neutral-50 hairline-t font-semibold">
                 <tr>
                   <td colspan="2" class="px-3 py-3 uppercase tracking-wider text-[9px]">Subtotal Clear Boat</td>
-                  <td class="px-3 py-3 text-center">25</td>
+                  <td class="px-3 py-3 text-center">46</td>
                   <td class="px-3 py-3 text-center">3</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$625.00</td>
-                  <td class="px-3 py-3 text-right text-[#0A1926]">$625.00 USD</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">8 Vouchers</td>
+                  <td class="px-3 py-3 text-right text-emerald-600">$1,150.00</td>
+                  <td class="px-3 py-3 text-right text-[#0A1926]">$1,150.00 USD</td>
+                  <td class="px-3 py-3 text-center text-neutral-400">14 Vouchers</td>
                 </tr>
               </tfoot>
             </table>
           </div>
         </div>
 
-        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA -->
+        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA (1 CUPÓN) -->
         <div class="lg:col-span-4 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5 border-purple-200/60">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -649,6 +622,7 @@
 
   <!-- 5. LÓGICA DE DATOS Y GRÁFICOS -->
   <script>
+    // 15 REGISTROS OFICIALES DEL GOOGLE SHEET
     const SHEET_DATA = [
       { Actividad: "Clear Boat", Cupon: "858", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "29/09/26", "Día de operación": "29/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
       { Actividad: "Clear Boat", Cupon: "860", Servicio: "Clear Boat", Adultos: "7", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "175", Moneda: "USD", "Tipo de cambio": "18", Deposito: "175", Balance: "0", Total: "175", Locación: "Lighthouse" },
@@ -658,7 +632,13 @@
       { Actividad: "Clear Boat", Cupon: "867", Servicio: "Clear Boat", Adultos: "1", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "25", Moneda: "USD", "Tipo de cambio": "18", Deposito: "25", Balance: "0", Total: "25", Locación: "Lighthouse" },
       { Actividad: "Clear Boat", Cupon: "894", Servicio: "Clear Boat", Adultos: "2", Niños: "3", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
       { Actividad: "Fotografia", Cupon: "895", Servicio: "Fotografia", Adultos: "1", Niños: "", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Fotorgrafia", "Costo Reporte neto por persona": "14", "Costo Reporte neto por total de reserva": "14", Moneda: "USD", "Tipo de cambio": "18", Deposito: "14", Balance: "0", Total: "14", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "917", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "22/10/26", "Día de operación": "22/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", Total: "75", Locación: "Lighthouse" }
+      { Actividad: "Clear Boat", Cupon: "917", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "22/10/26", "Día de operación": "22/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", Total: "75", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "925", Servicio: "Clear Boat", Adultos: "11", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "275", Moneda: "USD", "Tipo de cambio": "18", Deposito: "275", Balance: "0", Total: "275", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "926", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "937", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "26/10/26", "Día de operación": "26/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "945", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "948", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "ACT-261028-2", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "28/10/26", "Día de operación": "28/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" }
     ];
 
     let currentRoute = 'resumen';
@@ -682,6 +662,7 @@
       const gate = document.getElementById('loginGatekeeper');
       gate.classList.add('opacity-0', 'pointer-events-none');
       setTimeout(() => gate.classList.add('hidden'), 400);
+      renderClearboatTable();
       initCharts();
     }
 
@@ -727,6 +708,29 @@
 
       closeMobileMenu();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderClearboatTable() {
+      const tbody = document.getElementById('clearboatTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      const clearboatRows = SHEET_DATA.filter(r => !r.Actividad.toLowerCase().includes('foto'));
+      clearboatRows.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-neutral-50 transition cursor-pointer";
+        tr.onclick = () => openCouponModal(item.Cupon);
+        tr.innerHTML = `
+          <td class="px-3 py-3 font-semibold text-sky-800">#${item.Cupon}</td>
+          <td class="px-3 py-3 text-neutral-600">${item.Día}</td>
+          <td class="px-3 py-3 text-center">${item.Adultos}</td>
+          <td class="px-3 py-3 text-center text-neutral-400">${item.Niños || '—'}</td>
+          <td class="px-3 py-3 text-right text-emerald-600">$${item.Deposito}.00</td>
+          <td class="px-3 py-3 text-right font-medium">$${item.Total}.00</td>
+          <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
     function openCouponModal(cuponId) {
@@ -829,22 +833,23 @@
       const textColor = '#4A5568';
       const gridColor = 'rgba(0,0,0,0.06)';
 
+      // 1. Facturación Diaria (10 Jornadas)
       const ctxDaily = document.getElementById('chartDailyBilling')?.getContext('2d');
       if (ctxDaily) {
         chartDaily = new Chart(ctxDaily, {
           type: 'bar',
           data: {
-            labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct', '22 Oct'],
+            labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct', '22 Oct', '24 Oct', '26 Oct', '27 Oct', '28 Oct'],
             datasets: [
               {
                 label: 'Clear Boat (USD)',
-                data: [50, 325, 125, 50, 75],
+                data: [50, 325, 125, 50, 75, 325, 50, 100, 50],
                 backgroundColor: '#0284C7',
                 borderRadius: 4
               },
               {
                 label: 'Fotografía (USD)',
-                data: [0, 0, 0, 14, 0],
+                data: [0, 0, 0, 14, 0, 0, 0, 0, 0],
                 backgroundColor: '#9333EA',
                 borderRadius: 4
               }
@@ -864,14 +869,15 @@
         });
       }
 
+      // 2. Demografía (Adultos 47 vs Niños 3)
       const ctxDemo = document.getElementById('chartDemographics')?.getContext('2d');
       if (ctxDemo) {
         chartDemo = new Chart(ctxDemo, {
           type: 'doughnut',
           data: {
-            labels: ['Adultos (26)', 'Niños (3)'],
+            labels: ['Adultos (47)', 'Niños (3)'],
             datasets: [{
-              data: [26, 3],
+              data: [47, 3],
               backgroundColor: ['#0A1926', '#D97706'],
               borderWidth: 0
             }]
@@ -887,14 +893,15 @@
         });
       }
 
+      // 3. Proporción Paquetes ($1,150 vs $14)
       const ctxShare = document.getElementById('chartPackageShare')?.getContext('2d');
       if (ctxShare) {
         chartShare = new Chart(ctxShare, {
           type: 'doughnut',
           data: {
-            labels: ['Clear Boat ($625)', 'Fotografía ($14)'],
+            labels: ['Clear Boat ($1,150)', 'Fotografía ($14)'],
             datasets: [{
-              data: [625, 14],
+              data: [1150, 14],
               backgroundColor: ['#0284C7', '#9333EA'],
               borderWidth: 0
             }]
