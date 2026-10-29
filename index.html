@@ -56,7 +56,7 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-[#0A1926] selection:text-white">
 
-  <!-- 1. GATEKEEPER DE ACCESO -->
+  <!-- 1. GATEKEEPER DE ACCESO OFICIAL -->
   <div id="loginGatekeeper" class="fixed inset-0 z-50 flex items-center justify-center bg-[#FAF9F5] p-4 transition-opacity duration-500">
     <div class="w-full max-w-md bg-white rounded-3xl hairline-border p-8 md:p-10 shadow-2xl relative animate-editorial">
       <div class="flex flex-col items-center text-center mb-8">
@@ -176,24 +176,24 @@
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl lg:text-4xl font-light font-mono-num text-amber-300">$664.00</span>
+              <span id="kpiSaldoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-amber-300">$664.00</span>
               <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p class="text-xs font-mono-num text-neutral-300 mt-1">Equivalente: $11,952.00 MXN (TC: $18.00)</p>
+            <p id="kpiSaldoMXN" class="text-xs font-mono-num text-neutral-300 mt-1">Equivalente: $11,952.00 MXN (TC: $18.00)</p>
           </div>
 
           <div class="hairline-t border-white/10 pt-4 space-y-2 text-xs font-mono-num">
             <div class="flex justify-between text-neutral-300">
-              <span>Suma Total Generada (15 Cupones):</span>
-              <span class="font-medium text-white">$1,164.00 USD</span>
+              <span>Suma Total Generada:</span>
+              <span id="kpiTotalAcumulado" class="font-medium text-white">$1,164.00 USD</span>
             </div>
             <div class="flex justify-between text-emerald-400">
               <span>(-) Total Pagado Proveedor:</span>
-              <span class="font-medium">-$500.00 USD</span>
+              <span id="kpiTotalPagado" class="font-medium">-$500.00 USD</span>
             </div>
             <div class="hairline-t border-white/10 pt-2 flex justify-between text-[11px] text-neutral-400">
-              <span>Aforo Global: 50 PAX</span>
-              <span>10 Jornadas Operadas</span>
+              <span id="kpiTotalPax">Aforo Global: 50 PAX</span>
+              <span id="kpiTotalJornadas">10 Jornadas</span>
             </div>
           </div>
         </div>
@@ -208,22 +208,22 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span>14 Cupones</span>
+              <span id="badgeClearboatCount">14 Cupones</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$1,150.00</span>
+              <span id="kpiClearboatUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$1,150.00</span>
               <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $20,700.00 MXN</p>
+            <p id="kpiClearboatMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $20,700.00 MXN</p>
           </div>
 
           <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Aforo Cubierto</span>
-              <span class="font-semibold text-neutral-800">49 PAX (46A / 3N)</span>
+              <span id="kpiClearboatPax" class="font-semibold text-neutral-800">49 PAX (46A / 3N)</span>
             </div>
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Tarifa Neta</span>
@@ -242,22 +242,22 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-purple-700"></span>
-              <span>1 Cupón</span>
+              <span id="badgePhotoCount">1 Cupón</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span class="text-3xl lg:text-4xl font-light font-mono-num text-purple-950">$14.00</span>
+              <span id="kpiPhotoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-purple-950">$14.00</span>
               <span class="text-xs font-mono-num text-purple-500">USD</span>
             </div>
-            <p class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $252.00 MXN</p>
+            <p id="kpiPhotoMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $252.00 MXN</p>
           </div>
 
           <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Cupón Vinculado</span>
-              <span class="font-semibold text-purple-900">#895 (13/10)</span>
+              <span id="kpiPhotoCupon" class="font-semibold text-purple-900">#895 (13/10)</span>
             </div>
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Proveedor</span>
@@ -276,7 +276,7 @@
             <p class="text-xs font-mono-num text-neutral-500 mt-1">Auditoría cronológica de servicios operados frente al pago registrado de $500.00 USD.</p>
           </div>
           <div class="flex items-center gap-3">
-            <span class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-700">
+            <span id="cuadroPagosBadge" class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-700">
               Total Pagado Proveedor: $500.00 USD
             </span>
           </div>
@@ -295,105 +295,16 @@
                 <th class="px-4 py-3 text-center">Estatus</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-neutral-100 font-light">
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">29/09/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#858</td>
-                <td class="px-4 py-3 text-center">2</td>
-                <td class="px-4 py-3 text-right font-medium">$50.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">30/09/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#860, #856</td>
-                <td class="px-4 py-3 text-center">13</td>
-                <td class="px-4 py-3 text-right font-medium">$325.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$5,850.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">03/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#864, #865, #867</td>
-                <td class="px-4 py-3 text-center">5</td>
-                <td class="px-4 py-3 text-right font-medium">$125.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$2,250.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-emerald-600">Liquidado</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition bg-sky-50/20">
-                <td class="px-4 py-3 font-medium">13/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-semibold">[Clear Boat]</span></td>
-                <td class="px-4 py-3 font-semibold">#894</td>
-                <td class="px-4 py-3 text-center font-semibold">5 (2A+3N)</td>
-                <td class="px-4 py-3 text-right font-semibold text-sky-900">$50.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-purple-50/40 transition bg-purple-50/20 border-l-2 border-purple-500">
-                <td class="px-4 py-3 font-medium">13/10/2026</td>
-                <td class="px-4 py-3"><span class="text-purple-800 font-semibold">[Fotografia]</span></td>
-                <td class="px-4 py-3 font-semibold text-purple-800">#895</td>
-                <td class="px-4 py-3 text-center font-semibold text-purple-800">1</td>
-                <td class="px-4 py-3 text-right font-semibold text-purple-900">$14.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$252.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">22/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#917</td>
-                <td class="px-4 py-3 text-center">3</td>
-                <td class="px-4 py-3 text-right font-medium">$75.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$1,350.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">24/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#925, #926</td>
-                <td class="px-4 py-3 text-center">13</td>
-                <td class="px-4 py-3 text-right font-medium">$325.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$5,850.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">26/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#937</td>
-                <td class="px-4 py-3 text-center">2</td>
-                <td class="px-4 py-3 text-right font-medium">$50.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">27/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">#945, #948</td>
-                <td class="px-4 py-3 text-center">4</td>
-                <td class="px-4 py-3 text-right font-medium">$100.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$1,800.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
-              <tr class="hover:bg-neutral-50/50 transition">
-                <td class="px-4 py-3 font-medium">28/10/2026</td>
-                <td class="px-4 py-3"><span class="text-sky-800 font-medium">[Clear Boat]</span></td>
-                <td class="px-4 py-3">ACT-261028-2</td>
-                <td class="px-4 py-3 text-center">2</td>
-                <td class="px-4 py-3 text-right font-medium">$50.00</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$900.00</td>
-                <td class="px-4 py-3 text-center"><span class="text-[10px] text-amber-600">En Saldo</span></td>
-              </tr>
+            <tbody id="settlementTableBody" class="divide-y divide-neutral-100 font-light">
+              <!-- Se renderiza dinámicamente -->
             </tbody>
             <tfoot class="bg-neutral-50 hairline-t font-semibold">
               <tr>
                 <td colspan="3" class="px-4 py-3 uppercase tracking-wider text-[10px]">Totales Generales</td>
-                <td class="px-4 py-3 text-center">50</td>
-                <td class="px-4 py-3 text-right text-[#0A1926]">$1,164.00 USD</td>
-                <td class="px-4 py-3 text-right text-neutral-500">$20,952.00 MXN</td>
-                <td class="px-4 py-3 text-center text-amber-600">Resta: $664 USD</td>
+                <td id="tfootPax" class="px-4 py-3 text-center">50</td>
+                <td id="tfootTotalUSD" class="px-4 py-3 text-right text-[#0A1926]">$1,164.00 USD</td>
+                <td id="tfootTotalMXN" class="px-4 py-3 text-right text-neutral-500">$20,952.00 MXN</td>
+                <td id="tfootSaldoResta" class="px-4 py-3 text-center text-amber-600">Resta: $664 USD</td>
               </tr>
             </tfoot>
           </table>
@@ -403,7 +314,6 @@
       <!-- VISUALIZACIÓN GRÁFICA -->
       <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
-        <!-- Facturación Diaria -->
         <div class="md:col-span-6 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Facturación por Jornada</h4>
@@ -417,28 +327,26 @@
           </div>
         </div>
 
-        <!-- Demografía: Adultos vs Niños -->
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Aforo Demográfico</h4>
-            <span class="text-[10px] font-mono-num text-neutral-400">50 PAX</span>
+            <span id="chartDemoSubtitle" class="text-[10px] font-mono-num text-neutral-400">50 PAX</span>
           </div>
           <div class="h-48 relative flex items-center justify-center">
             <canvas id="chartDemographics"></canvas>
           </div>
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
-              <span class="text-neutral-900 block font-semibold">Adultos (94%)</span>
-              <span class="text-neutral-400">47 PAX</span>
+              <span id="chartLabelAdultos" class="text-neutral-900 block font-semibold">Adultos (94%)</span>
+              <span id="chartPaxAdultos" class="text-neutral-400">47 PAX</span>
             </div>
             <div>
-              <span class="text-amber-700 block font-semibold">Niños (6%)</span>
-              <span class="text-neutral-400">3 PAX</span>
+              <span id="chartLabelNinos" class="text-amber-700 block font-semibold">Niños (6%)</span>
+              <span id="chartPaxNinos" class="text-neutral-400">3 PAX</span>
             </div>
           </div>
         </div>
 
-        <!-- Proporción Paquetes -->
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Proporción Paquetes</h4>
@@ -450,11 +358,11 @@
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
               <span class="text-sky-800 block font-semibold">Clear Boat</span>
-              <span class="text-neutral-400">$1,150.00</span>
+              <span id="chartValClearboat" class="text-neutral-400">$1,150.00</span>
             </div>
             <div>
               <span class="text-purple-800 block font-semibold">Fotografía</span>
-              <span class="text-neutral-400">$14.00</span>
+              <span id="chartValPhoto" class="text-neutral-400">$14.00</span>
             </div>
           </div>
         </div>
@@ -471,14 +379,14 @@
           <h2 class="font-serif-title text-xl font-bold text-[#0A1926] uppercase">Auditoría Individual de Cupones</h2>
           <p class="text-xs font-mono-num text-neutral-500 mt-1">Disposición en columnas separadas para navegación e imagen digital.</p>
         </div>
-        <div class="text-xs font-mono-num text-neutral-400">
+        <div id="verifiedRecordsCount" class="text-xs font-mono-num text-neutral-400">
           15 registros oficiales verificados
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
-        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT (14 CUPONES) -->
+        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT -->
         <div class="lg:col-span-8 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -491,7 +399,7 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span>Subtotal: $1,150.00 USD</span>
+              <span id="cuponesSubtotalClearboat">Subtotal: $1,150.00 USD</span>
             </div>
           </div>
 
@@ -514,18 +422,18 @@
               <tfoot class="bg-neutral-50 hairline-t font-semibold">
                 <tr>
                   <td colspan="2" class="px-3 py-3 uppercase tracking-wider text-[9px]">Subtotal Clear Boat</td>
-                  <td class="px-3 py-3 text-center">46</td>
-                  <td class="px-3 py-3 text-center">3</td>
-                  <td class="px-3 py-3 text-right text-emerald-600">$1,150.00</td>
-                  <td class="px-3 py-3 text-right text-[#0A1926]">$1,150.00 USD</td>
-                  <td class="px-3 py-3 text-center text-neutral-400">14 Vouchers</td>
+                  <td id="tfootClearboatAdultos" class="px-3 py-3 text-center">46</td>
+                  <td id="tfootClearboatNinos" class="px-3 py-3 text-center">3</td>
+                  <td id="tfootClearboatDeposito" class="px-3 py-3 text-right text-emerald-600">$1,150.00</td>
+                  <td id="tfootClearboatTotal" class="px-3 py-3 text-right text-[#0A1926]">$1,150.00 USD</td>
+                  <td id="tfootClearboatCount" class="px-3 py-3 text-center text-neutral-400">14 Vouchers</td>
                 </tr>
               </tfoot>
             </table>
           </div>
         </div>
 
-        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA (1 CUPÓN) -->
+        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA -->
         <div class="lg:col-span-4 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5 border-purple-200/60">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -538,46 +446,12 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-purple-700"></span>
-              <span>1 Servicio</span>
+              <span id="cuponesSubtotalPhoto">1 Servicio</span>
             </div>
           </div>
 
-          <div onclick="openCouponModal('895')" class="p-5 rounded-2xl bg-purple-50/40 hairline-border border-purple-200/80 cursor-pointer hover:border-purple-500 transition group space-y-4">
-            <div class="flex justify-between items-start">
-              <div>
-                <span class="text-[10px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block">Folio Exclusivo</span>
-                <span class="text-xl font-bold font-mono-num text-purple-950">Cupón #895</span>
-              </div>
-              <span class="text-xs font-mono-num text-purple-600 group-hover:translate-x-1 transition duration-200">Ficha</span>
-            </div>
-
-            <div class="space-y-2 text-xs font-mono-num">
-              <div class="flex justify-between text-neutral-600">
-                <span>Fecha de Jornada:</span>
-                <span class="font-medium text-neutral-900">13/10/2026</span>
-              </div>
-              <div class="flex justify-between text-neutral-600">
-                <span>Aforo Cubierto:</span>
-                <span class="font-medium text-neutral-900">1 PAX</span>
-              </div>
-              <div class="flex justify-between text-neutral-600">
-                <span>Depósito Registrado:</span>
-                <span class="font-medium text-emerald-600">$14.00 USD</span>
-              </div>
-              <div class="flex justify-between text-neutral-600">
-                <span>Costo Neto Reporte:</span>
-                <span class="font-semibold text-purple-950">$14.00 USD</span>
-              </div>
-              <div class="flex justify-between text-neutral-600">
-                <span>Equivalente en MXN:</span>
-                <span class="font-medium text-neutral-900">$252.00 MXN</span>
-              </div>
-            </div>
-
-            <div class="hairline-t border-purple-200 pt-3 flex justify-between items-center text-[11px] font-mono-num">
-              <span class="text-purple-700 font-semibold">Balance: 0</span>
-              <span class="text-emerald-700 font-semibold">100% Pagado</span>
-            </div>
+          <div id="photoCardsContainer" class="space-y-4">
+            <!-- Se inyectan fichas fotográficas dinámicamente -->
           </div>
 
           <div class="p-4 rounded-2xl bg-neutral-50 hairline-border text-[11px] font-mono-num text-neutral-500 leading-relaxed">
@@ -590,9 +464,33 @@
 
     </div>
 
+    <!-- ========================================== -->
+    <!-- 4. BOTÓN ABAJO PARA ACTUALIZAR GOOGLE SHEET-->
+    <!-- ========================================== -->
+    <section class="p-5 md:p-6 rounded-3xl hairline-border bg-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-2xl hairline-border bg-neutral-50 flex items-center justify-center text-neutral-700">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xs font-mono-num font-semibold text-[#0A1926] uppercase block">Conexión con Google Sheets</span>
+          <span id="syncStatusLabel" class="text-[10px] font-mono-num text-neutral-400 block mt-0.5">Sincronizado vía TSV oficial • Última comprobación al iniciar</span>
+        </div>
+      </div>
+
+      <button id="syncSheetBtn" onclick="syncFromGoogleSheet()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-[#0A1926] text-white text-xs font-mono-num uppercase tracking-wider hover:opacity-90 transition touch-press flex items-center justify-center gap-2.5">
+        <svg id="syncSpinner" class="w-4 h-4 transition-transform duration-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+        </svg>
+        <span id="syncBtnText">Actualizar Datos</span>
+      </button>
+    </section>
+
   </main>
 
-  <!-- 4. MODAL DETALLE DE CUPÓN -->
+  <!-- 5. MODAL DETALLE DE CUPÓN -->
   <div id="couponDetailModal" class="fixed inset-0 z-50 bg-[#0A1926]/70 backdrop-blur-sm hidden items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto hairline-border p-6 md:p-8 relative shadow-2xl animate-editorial">
       <div class="flex justify-between items-start hairline-b pb-4 mb-6">
@@ -620,10 +518,13 @@
     <span class="hidden sm:inline">Arriba</span>
   </button>
 
-  <!-- 5. LÓGICA DE DATOS Y GRÁFICOS -->
+  <!-- 6. LÓGICA DE DATOS, SINCRONIZACIÓN Y GRÁFICOS -->
   <script>
-    // 15 REGISTROS OFICIALES DEL GOOGLE SHEET
-    const SHEET_DATA = [
+    // URL OFICIAL DEL GOOGLE SHEET PUBLICADO EN TSV
+    const TSV_ENDPOINT = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRCjHLZnyYx6iVukzsUYGPD-AB5J_r8ly86mNzBqBYZ9Qks_-etXgQ6UUtLViSRJNQlWlYhEWj7put/pub?output=tsv";
+
+    // 15 REGISTROS BASE DE RESPALDO (EN CASO DE TRABAJAR FUERA DE LÍNEA)
+    let CURRENT_RECORDS = [
       { Actividad: "Clear Boat", Cupon: "858", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "29/09/26", "Día de operación": "29/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
       { Actividad: "Clear Boat", Cupon: "860", Servicio: "Clear Boat", Adultos: "7", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "175", Moneda: "USD", "Tipo de cambio": "18", Deposito: "175", Balance: "0", Total: "175", Locación: "Lighthouse" },
       { Actividad: "Clear Boat", Cupon: "856", Servicio: "Clear Boat", Adultos: "6", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "150", Moneda: "USD", "Tipo de cambio": "18", Deposito: "150", Balance: "0", Total: "150", Locación: "Lighthouse" },
@@ -641,81 +542,276 @@
       { Actividad: "Clear Boat", Cupon: "ACT-261028-2", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "28/10/26", "Día de operación": "28/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" }
     ];
 
+    let TOTAL_PAGADO_PROVEEDOR = 500.00;
     let currentRoute = 'resumen';
     let chartsInitialized = false;
 
-    function handleLoginSubmit(event) {
-      event.preventDefault();
-      const u = document.getElementById('userInput').value.trim().toLowerCase();
-      const p = document.getElementById('passInput').value.trim();
+    // Utilidades numéricas
+    function numVal(v) {
+      if (!v) return 0;
+      if (typeof v === 'number') return v;
+      const clean = String(v).replace(/[^0-9.-]+/g, '');
+      return parseFloat(clean) || 0;
+    }
 
-      if (u === 'clearboat-admin' && p === 'Clearboat2026') {
-        sessionStorage.setItem('clm_auth', 'true');
-        unlockApp();
-      } else {
-        const err = document.getElementById('loginErrorMsg');
-        err.classList.remove('hidden');
+    function formatUSD(v) {
+      return `$${numVal(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    function formatMXN(v) {
+      return `$${(numVal(v) * 18).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    }
+
+    // Parseador de TSV de Google Sheets
+    function parseGoogleSheetTSV(tsvText) {
+      const lines = tsvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
+      if (lines.length < 2) return null;
+
+      const headers = lines[0].split('\t').map(h => h.trim());
+      const parsedRecords = [];
+      let parsedPago = 500;
+      let inPaymentSection = false;
+
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split('\t').map(c => c.trim());
+        const col0 = (cols[0] || '').toLowerCase();
+        const col1 = (cols[1] || '').toLowerCase();
+
+        if (col0.includes('cuadro de pagos') || col1.includes('cuadro de pagos')) {
+          inPaymentSection = true;
+          continue;
+        }
+
+        if (inPaymentSection) {
+          if (col0.includes('pago') || col1.includes('pago')) {
+            for (let c of cols) {
+              const n = numVal(c);
+              if (n > 0) { parsedPago = n; break; }
+            }
+          }
+          continue;
+        }
+
+        const cupon = cols[1];
+        const actividad = cols[0];
+        if (!cupon && !actividad) continue;
+        if (col0 === 'total' || col0.startsWith('suma')) continue;
+
+        let rowObj = {};
+        headers.forEach((h, idx) => {
+          rowObj[h] = cols[idx] !== undefined ? cols[idx] : '';
+        });
+        parsedRecords.push(rowObj);
+      }
+
+      return { records: parsedRecords, totalPagado: parsedPago };
+    }
+
+    // Función de Sincronización con el botón
+    async function syncFromGoogleSheet(isSilent = false) {
+      const btn = document.getElementById('syncSheetBtn');
+      const spinner = document.getElementById('syncSpinner');
+      const btnText = document.getElementById('syncBtnText');
+      const statusLabel = document.getElementById('syncStatusLabel');
+
+      if (!isSilent) {
+        spinner.classList.add('animate-spin');
+        btnText.innerText = "Sincronizando...";
+        btn.disabled = true;
+      }
+
+      try {
+        const res = await fetch(`${TSV_ENDPOINT}&nocache=${Date.now()}`);
+        if (!res.ok) throw new Error("Respuesta no satisfactoria de Google Sheets");
+        const tsvText = await res.text();
+        const parsed = parseGoogleSheetTSV(tsvText);
+
+        if (parsed && parsed.records.length > 0) {
+          CURRENT_RECORDS = parsed.records;
+          TOTAL_PAGADO_PROVEEDOR = parsed.totalPagado || 500;
+          renderAllDashboard();
+
+          const now = new Date();
+          const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+          statusLabel.innerText = `Sincronizado vía TSV oficial • Última actualización: ${timeStr}`;
+
+          if (!isSilent) {
+            btnText.innerText = "Actualizado";
+            setTimeout(() => {
+              btnText.innerText = "Actualizar Datos";
+              spinner.classList.remove('animate-spin');
+              btn.disabled = false;
+            }, 1800);
+          }
+        } else {
+          throw new Error("Formato de hoja no compatible");
+        }
+      } catch (err) {
+        console.warn("Fallo en sincronización directa de Google Sheet, usando datos en memoria:", err);
+        renderAllDashboard();
+        statusLabel.innerText = "Modo sin conexión activa • Datos en memoria local";
+        if (!isSilent) {
+          btnText.innerText = "Error • Reintentar";
+          spinner.classList.remove('animate-spin');
+          btn.disabled = false;
+          setTimeout(() => { btnText.innerText = "Actualizar Datos"; }, 2500);
+        }
       }
     }
 
-    function unlockApp() {
-      const gate = document.getElementById('loginGatekeeper');
-      gate.classList.add('opacity-0', 'pointer-events-none');
-      setTimeout(() => gate.classList.add('hidden'), 400);
-      renderClearboatTable();
-      initCharts();
-    }
+    // Renderizado Maestro de Todas las Vistas
+    function renderAllDashboard() {
+      const clearboatRows = CURRENT_RECORDS.filter(r => !String(r.Actividad || '').toLowerCase().includes('foto'));
+      const photoRows = CURRENT_RECORDS.filter(r => String(r.Actividad || '').toLowerCase().includes('foto'));
 
-    function checkAuthOnLoad() {
-      if (sessionStorage.getItem('clm_auth') === 'true') {
-        unlockApp();
+      let sumTotal = 0;
+      let totalPax = 0;
+      let totalAdultos = 0;
+      let totalNinos = 0;
+
+      let clearboatTotal = 0;
+      let clearboatAdultos = 0;
+      let clearboatNinos = 0;
+
+      CURRENT_RECORDS.forEach(r => {
+        const t = numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        const a = numVal(r.Adultos);
+        const n = numVal(r.Niños);
+        sumTotal += t;
+        totalAdultos += a;
+        totalNinos += n;
+        totalPax += (a + n);
+      });
+
+      clearboatRows.forEach(r => {
+        clearboatTotal += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        clearboatAdultos += numVal(r.Adultos);
+        clearboatNinos += numVal(r.Niños);
+      });
+
+      let photoTotal = 0;
+      photoRows.forEach(r => {
+        photoTotal += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+      });
+
+      // Recuadro 1: Resta (Total Pagado del Cuadro menos la Suma del Total)
+      const saldoResta = sumTotal - TOTAL_PAGADO_PROVEEDOR;
+
+      // Inyección en Recuadro 1
+      document.getElementById('kpiSaldoUSD').innerText = formatUSD(saldoResta);
+      document.getElementById('kpiSaldoMXN').innerText = `Equivalente: ${formatMXN(saldoResta)} (TC: $18.00)`;
+      document.getElementById('kpiTotalAcumulado').innerText = `${formatUSD(sumTotal)} USD`;
+      document.getElementById('kpiTotalPagado').innerText = `-${formatUSD(TOTAL_PAGADO_PROVEEDOR)} USD`;
+      document.getElementById('kpiTotalPax').innerText = `Aforo Global: ${totalPax} PAX`;
+
+      // Inyección en Recuadro 2 (Clear Boat)
+      document.getElementById('badgeClearboatCount').innerText = `${clearboatRows.length} Cupones`;
+      document.getElementById('kpiClearboatUSD').innerText = formatUSD(clearboatTotal);
+      document.getElementById('kpiClearboatMXN').innerText = `Equivalente: ${formatMXN(clearboatTotal)}`;
+      document.getElementById('kpiClearboatPax').innerText = `${clearboatAdultos + clearboatNinos} PAX (${clearboatAdultos}A / ${clearboatNinos}N)`;
+
+      // Inyección en Recuadro 3 (Fotografía)
+      document.getElementById('badgePhotoCount').innerText = `${photoRows.length} Cupón${photoRows.length > 1 ? 'es' : ''}`;
+      document.getElementById('kpiPhotoUSD').innerText = formatUSD(photoTotal);
+      document.getElementById('kpiPhotoMXN').innerText = `Equivalente: ${formatMXN(photoTotal)}`;
+      if (photoRows.length > 0) {
+        document.getElementById('kpiPhotoCupon').innerText = `#${photoRows[0].Cupon} (${photoRows[0].Día})`;
       }
+
+      // Footers
+      document.getElementById('cuadroPagosBadge').innerText = `Total Pagado Proveedor: ${formatUSD(TOTAL_PAGADO_PROVEEDOR)} USD`;
+      document.getElementById('tfootPax').innerText = totalPax;
+      document.getElementById('tfootTotalUSD').innerText = `${formatUSD(sumTotal)} USD`;
+      document.getElementById('tfootTotalMXN').innerText = `${formatMXN(sumTotal)} MXN`;
+      document.getElementById('tfootSaldoResta').innerText = `Resta: $${saldoResta.toFixed(0)} USD`;
+
+      document.getElementById('verifiedRecordsCount').innerText = `${CURRENT_RECORDS.length} registros oficiales verificados`;
+      document.getElementById('cuponesSubtotalClearboat').innerText = `Subtotal: ${formatUSD(clearboatTotal)} USD`;
+      document.getElementById('cuponesSubtotalPhoto').innerText = `${photoRows.length} Servicio${photoRows.length > 1 ? 's' : ''}`;
+
+      document.getElementById('tfootClearboatAdultos').innerText = clearboatAdultos;
+      document.getElementById('tfootClearboatNinos').innerText = clearboatNinos;
+      document.getElementById('tfootClearboatDeposito').innerText = formatUSD(clearboatTotal);
+      document.getElementById('tfootClearboatTotal').innerText = `${formatUSD(clearboatTotal)} USD`;
+      document.getElementById('tfootClearboatCount').innerText = `${clearboatRows.length} Vouchers`;
+
+      // Render Tablas
+      renderSettlementSchedule(CURRENT_RECORDS, TOTAL_PAGADO_PROVEEDOR);
+      renderClearboatTable(clearboatRows);
+      renderPhotoCards(photoRows);
+
+      // Render Gráficos
+      updateCharts(CURRENT_RECORDS, totalAdultos, totalNinos, clearboatTotal, photoTotal);
     }
 
-    function handleLogout() {
-      sessionStorage.removeItem('clm_auth');
-      window.location.reload();
+    // Tabla de Liquidación agrupada por fecha y servicio
+    function renderSettlementSchedule(records, totalPagado) {
+      const tbody = document.getElementById('settlementTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      // Agrupación por Día y Tipo
+      const groups = {};
+      records.forEach(r => {
+        const fecha = r["Día de operación"] || r.Día || "S/F";
+        const isPhoto = String(r.Actividad || '').toLowerCase().includes('foto');
+        const key = `${fecha}_${isPhoto ? 'FOTO' : 'BOAT'}`;
+
+        if (!groups[key]) {
+          groups[key] = {
+            fecha: fecha,
+            isPhoto: isPhoto,
+            cupones: [],
+            adultos: 0,
+            ninos: 0,
+            totalUSD: 0
+          };
+        }
+        groups[key].cupones.push(`#${r.Cupon}`);
+        groups[key].adultos += numVal(r.Adultos);
+        groups[key].ninos += numVal(r.Niños);
+        groups[key].totalUSD += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+      });
+
+      let runningAccum = 0;
+      const groupKeys = Object.keys(groups);
+      document.getElementById('kpiTotalJornadas').innerText = `${groupKeys.length} Jornadas`;
+
+      groupKeys.forEach(k => {
+        const g = groups[k];
+        runningAccum += g.totalUSD;
+        const isLiquidado = runningAccum <= (totalPagado + 0.01);
+
+        const tr = document.createElement('tr');
+        if (g.isPhoto) {
+          tr.className = "hover:bg-purple-50/40 transition bg-purple-50/20 border-l-2 border-purple-500";
+        } else {
+          tr.className = "hover:bg-neutral-50/50 transition";
+        }
+
+        const paxText = g.ninos > 0 ? `${g.adultos + g.ninos} (${g.adultos}A+${g.ninos}N)` : `${g.adultos + g.ninos}`;
+        const serviceBadge = g.isPhoto ? `<span class="text-purple-800 font-semibold">[Fotografia]</span>` : `<span class="text-sky-800 font-medium">[Clear Boat]</span>`;
+        const statusBadge = isLiquidado ? `<span class="text-[10px] text-emerald-600">Liquidado</span>` : `<span class="text-[10px] text-amber-600">En Saldo</span>`;
+
+        tr.innerHTML = `
+          <td class="px-4 py-3 font-medium">${g.fecha}</td>
+          <td class="px-4 py-3">${serviceBadge}</td>
+          <td class="px-4 py-3 font-semibold">${g.cupones.join(', ')}</td>
+          <td class="px-4 py-3 text-center font-semibold">${paxText}</td>
+          <td class="px-4 py-3 text-right font-medium">${formatUSD(g.totalUSD)}</td>
+          <td class="px-4 py-3 text-right text-neutral-500">${formatMXN(g.totalUSD)}</td>
+          <td class="px-4 py-3 text-center">${statusBadge}</td>
+        `;
+        tbody.appendChild(tr);
+      });
     }
 
-    function togglePasswordVisibility() {
-      const p = document.getElementById('passInput');
-      p.type = p.type === 'password' ? 'text' : 'password';
-    }
-
-    function navigateTo(route) {
-      currentRoute = route;
-      const vResumen = document.getElementById('view-resumen');
-      const vCupones = document.getElementById('view-cupones');
-
-      const btnResumen = document.getElementById('desktop-nav-resumen');
-      const btnCupones = document.getElementById('desktop-nav-cupones');
-
-      if (route === 'resumen') {
-        vResumen.classList.remove('hidden');
-        vCupones.classList.add('hidden');
-        btnResumen.classList.add('bg-[#0A1926]', 'text-white');
-        btnResumen.classList.remove('text-neutral-500');
-        btnCupones.classList.remove('bg-[#0A1926]', 'text-white');
-        btnCupones.classList.add('text-neutral-500');
-      } else {
-        vResumen.classList.add('hidden');
-        vCupones.classList.remove('hidden');
-        btnCupones.classList.add('bg-[#0A1926]', 'text-white');
-        btnCupones.classList.remove('text-neutral-500');
-        btnResumen.classList.remove('bg-[#0A1926]', 'text-white');
-        btnResumen.classList.add('text-neutral-500');
-      }
-
-      closeMobileMenu();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function renderClearboatTable() {
+    // Tabla de Cupones Clear Boat
+    function renderClearboatTable(clearboatRows) {
       const tbody = document.getElementById('clearboatTableBody');
       if (!tbody) return;
       tbody.innerHTML = '';
 
-      const clearboatRows = SHEET_DATA.filter(r => !r.Actividad.toLowerCase().includes('foto'));
       clearboatRows.forEach(item => {
         const tr = document.createElement('tr');
         tr.className = "hover:bg-neutral-50 transition cursor-pointer";
@@ -725,27 +821,74 @@
           <td class="px-3 py-3 text-neutral-600">${item.Día}</td>
           <td class="px-3 py-3 text-center">${item.Adultos}</td>
           <td class="px-3 py-3 text-center text-neutral-400">${item.Niños || '—'}</td>
-          <td class="px-3 py-3 text-right text-emerald-600">$${item.Deposito}.00</td>
-          <td class="px-3 py-3 text-right font-medium">$${item.Total}.00</td>
+          <td class="px-3 py-3 text-right text-emerald-600">${formatUSD(item.Deposito || item.Total)}</td>
+          <td class="px-3 py-3 text-right font-medium">${formatUSD(item.Total)}</td>
           <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
         `;
         tbody.appendChild(tr);
       });
     }
 
+    // Fichas de Fotografía
+    function renderPhotoCards(photoRows) {
+      const container = document.getElementById('photoCardsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+
+      photoRows.forEach(item => {
+        const div = document.createElement('div');
+        div.onclick = () => openCouponModal(item.Cupon);
+        div.className = "p-5 rounded-2xl bg-purple-50/40 hairline-border border-purple-200/80 cursor-pointer hover:border-purple-500 transition group space-y-4";
+        div.innerHTML = `
+          <div class="flex justify-between items-start">
+            <div>
+              <span class="text-[10px] font-mono-num uppercase tracking-widest text-purple-700 font-semibold block">Folio Exclusivo</span>
+              <span class="text-xl font-bold font-mono-num text-purple-950">Cupón #${item.Cupon}</span>
+            </div>
+            <span class="text-xs font-mono-num text-purple-600 group-hover:translate-x-1 transition duration-200">Ficha</span>
+          </div>
+
+          <div class="space-y-2 text-xs font-mono-num">
+            <div class="flex justify-between text-neutral-600">
+              <span>Fecha de Jornada:</span>
+              <span class="font-medium text-neutral-900">${item.Día}</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>Aforo Cubierto:</span>
+              <span class="font-medium text-neutral-900">${item.Adultos || 1} PAX</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>Depósito Registrado:</span>
+              <span class="font-medium text-emerald-600">${formatUSD(item.Deposito || 14)}</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>Costo Neto Reporte:</span>
+              <span class="font-semibold text-purple-950">${formatUSD(item.Total || 14)}</span>
+            </div>
+            <div class="flex justify-between text-neutral-600">
+              <span>Equivalente en MXN:</span>
+              <span class="font-medium text-neutral-900">${formatMXN(item.Total || 14)}</span>
+            </div>
+          </div>
+
+          <div class="hairline-t border-purple-200 pt-3 flex justify-between items-center text-[11px] font-mono-num">
+            <span class="text-purple-700 font-semibold">Balance: 0</span>
+            <span class="text-emerald-700 font-semibold">100% Pagado</span>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Modal de Detalle de Cupón
     function openCouponModal(cuponId) {
-      const item = SHEET_DATA.find(r => r.Cupon === cuponId);
+      const item = CURRENT_RECORDS.find(r => String(r.Cupon).trim() === String(cuponId).trim());
       if (!item) return;
 
-      const isPhoto = item.Actividad.toLowerCase().includes('foto');
+      const isPhoto = String(item.Actividad || '').toLowerCase().includes('foto');
       const badge = document.getElementById('modalPackageBadge');
       
-      if (isPhoto) {
-        badge.innerText = "Fotografía";
-      } else {
-        badge.innerText = "Clear Boat";
-      }
-
+      badge.innerText = isPhoto ? "Fotografía" : "Clear Boat";
       document.getElementById('modalCouponTitle').innerText = `Cupón Oficial #${item.Cupon}`;
       document.getElementById('modalCouponSubtitle').innerText = `${item.Servicio} • Operado el ${item.Día}`;
 
@@ -800,15 +943,16 @@
       }
     });
 
+    // Menú Móvil
     function toggleMobileMenu(e) {
       if (e) e.stopPropagation();
-      const d = document.getElementById('mobileDrawer');
-      d.classList.toggle('hidden');
+      document.getElementById('mobileDrawer').classList.toggle('hidden');
     }
     function closeMobileMenu() {
       document.getElementById('mobileDrawer').classList.add('hidden');
     }
 
+    // Scroll Arriba
     window.addEventListener('scroll', () => {
       const btn = document.getElementById('backToTopBtn');
       if (window.scrollY > 220) {
@@ -824,97 +968,196 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Gráficos
+    // Enrutador
+    function navigateTo(route) {
+      currentRoute = route;
+      const vResumen = document.getElementById('view-resumen');
+      const vCupones = document.getElementById('view-cupones');
+
+      const btnResumen = document.getElementById('desktop-nav-resumen');
+      const btnCupones = document.getElementById('desktop-nav-cupones');
+
+      if (route === 'resumen') {
+        vResumen.classList.remove('hidden');
+        vCupones.classList.add('hidden');
+        btnResumen.classList.add('bg-[#0A1926]', 'text-white');
+        btnResumen.classList.remove('text-neutral-500');
+        btnCupones.classList.remove('bg-[#0A1926]', 'text-white');
+        btnCupones.classList.add('text-neutral-500');
+      } else {
+        vResumen.classList.add('hidden');
+        vCupones.classList.remove('hidden');
+        btnCupones.classList.add('bg-[#0A1926]', 'text-white');
+        btnCupones.classList.remove('text-neutral-500');
+        btnResumen.classList.remove('bg-[#0A1926]', 'text-white');
+        btnResumen.classList.add('text-neutral-500');
+      }
+
+      closeMobileMenu();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Autenticación
+    function handleLoginSubmit(event) {
+      event.preventDefault();
+      const u = document.getElementById('userInput').value.trim().toLowerCase();
+      const p = document.getElementById('passInput').value.trim();
+
+      if (u === 'clearboat-admin' && p === 'Clearboat2026') {
+        sessionStorage.setItem('clm_auth', 'true');
+        unlockApp();
+      } else {
+        document.getElementById('loginErrorMsg').classList.remove('hidden');
+      }
+    }
+
+    function unlockApp() {
+      const gate = document.getElementById('loginGatekeeper');
+      gate.classList.add('opacity-0', 'pointer-events-none');
+      setTimeout(() => gate.classList.add('hidden'), 400);
+      renderAllDashboard();
+      // Sincronización silenciosa automática al ingresar
+      syncFromGoogleSheet(true);
+    }
+
+    function checkAuthOnLoad() {
+      if (sessionStorage.getItem('clm_auth') === 'true') {
+        unlockApp();
+      }
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('clm_auth');
+      window.location.reload();
+    }
+
+    function togglePasswordVisibility() {
+      const p = document.getElementById('passInput');
+      p.type = p.type === 'password' ? 'text' : 'password';
+    }
+
+    // Gráficos con Chart.js
     let chartDaily = null;
     let chartDemo = null;
     let chartShare = null;
 
-    function initCharts() {
+    function updateCharts(records, adultos, ninos, clearboatTotal, photoTotal) {
       const textColor = '#4A5568';
       const gridColor = 'rgba(0,0,0,0.06)';
 
-      // 1. Facturación Diaria (10 Jornadas)
+      // 1. Agrupar facturación por día
+      const datesMap = {};
+      records.forEach(r => {
+        const d = r["Día de operación"] || r.Día;
+        if (!datesMap[d]) datesMap[d] = { boat: 0, photo: 0 };
+        const isPhoto = String(r.Actividad || '').toLowerCase().includes('foto');
+        const tot = numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        if (isPhoto) datesMap[d].photo += tot;
+        else datesMap[d].boat += tot;
+      });
+
+      const labels = Object.keys(datesMap);
+      const dataBoat = labels.map(l => datesMap[l].boat);
+      const dataPhoto = labels.map(l => datesMap[l].photo);
+
+      // Gráfica de Barras Diarias
       const ctxDaily = document.getElementById('chartDailyBilling')?.getContext('2d');
       if (ctxDaily) {
-        chartDaily = new Chart(ctxDaily, {
-          type: 'bar',
-          data: {
-            labels: ['29 Sep', '30 Sep', '03 Oct', '13 Oct', '22 Oct', '24 Oct', '26 Oct', '27 Oct', '28 Oct'],
-            datasets: [
-              {
-                label: 'Clear Boat (USD)',
-                data: [50, 325, 125, 50, 75, 325, 50, 100, 50],
-                backgroundColor: '#0284C7',
-                borderRadius: 4
-              },
-              {
-                label: 'Fotografía (USD)',
-                data: [0, 0, 0, 14, 0, 0, 0, 0, 0],
-                backgroundColor: '#9333EA',
-                borderRadius: 4
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              x: { stacked: true, grid: { display: false }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } },
-              y: { stacked: true, grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } }
+        if (chartDaily) {
+          chartDaily.data.labels = labels;
+          chartDaily.data.datasets[0].data = dataBoat;
+          chartDaily.data.datasets[1].data = dataPhoto;
+          chartDaily.update();
+        } else {
+          chartDaily = new Chart(ctxDaily, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [
+                { label: 'Clear Boat (USD)', data: dataBoat, backgroundColor: '#0284C7', borderRadius: 4 },
+                { label: 'Fotografía (USD)', data: dataPhoto, backgroundColor: '#9333EA', borderRadius: 4 }
+              ]
             },
-            plugins: {
-              legend: { labels: { color: textColor, font: { family: 'JetBrains Mono', size: 11 } } }
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                x: { stacked: true, grid: { display: false }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } },
+                y: { stacked: true, grid: { color: gridColor }, ticks: { color: textColor, font: { family: 'JetBrains Mono', size: 10 } } }
+              },
+              plugins: {
+                legend: { labels: { color: textColor, font: { family: 'JetBrains Mono', size: 11 } } }
+              }
             }
-          }
-        });
+          });
+        }
       }
 
-      // 2. Demografía (Adultos 47 vs Niños 3)
+      // 2. Gráfica Demográfica
+      const totalPax = adultos + ninos;
+      const pctAdultos = totalPax > 0 ? Math.round((adultos / totalPax) * 100) : 0;
+      const pctNinos = totalPax > 0 ? Math.round((ninos / totalPax) * 100) : 0;
+
+      document.getElementById('chartDemoSubtitle').innerText = `${totalPax} PAX`;
+      document.getElementById('chartLabelAdultos').innerText = `Adultos (${pctAdultos}%)`;
+      document.getElementById('chartPaxAdultos').innerText = `${adultos} PAX`;
+      document.getElementById('chartLabelNinos').innerText = `Niños (${pctNinos}%)`;
+      document.getElementById('chartPaxNinos').innerText = `${ninos} PAX`;
+
       const ctxDemo = document.getElementById('chartDemographics')?.getContext('2d');
       if (ctxDemo) {
-        chartDemo = new Chart(ctxDemo, {
-          type: 'doughnut',
-          data: {
-            labels: ['Adultos (47)', 'Niños (3)'],
-            datasets: [{
-              data: [47, 3],
-              backgroundColor: ['#0A1926', '#D97706'],
-              borderWidth: 0
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '72%',
-            plugins: {
-              legend: { display: false }
+        if (chartDemo) {
+          chartDemo.data.datasets[0].data = [adultos, ninos];
+          chartDemo.update();
+        } else {
+          chartDemo = new Chart(ctxDemo, {
+            type: 'doughnut',
+            data: {
+              labels: ['Adultos', 'Niños'],
+              datasets: [{
+                data: [adultos, ninos],
+                backgroundColor: ['#0A1926', '#D97706'],
+                borderWidth: 0
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              cutout: '72%',
+              plugins: { legend: { display: false } }
             }
-          }
-        });
+          });
+        }
       }
 
-      // 3. Proporción Paquetes ($1,150 vs $14)
+      // 3. Proporción Paquetes
+      document.getElementById('chartValClearboat').innerText = formatUSD(clearboatTotal);
+      document.getElementById('chartValPhoto').innerText = formatUSD(photoTotal);
+
       const ctxShare = document.getElementById('chartPackageShare')?.getContext('2d');
       if (ctxShare) {
-        chartShare = new Chart(ctxShare, {
-          type: 'doughnut',
-          data: {
-            labels: ['Clear Boat ($1,150)', 'Fotografía ($14)'],
-            datasets: [{
-              data: [1150, 14],
-              backgroundColor: ['#0284C7', '#9333EA'],
-              borderWidth: 0
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '72%',
-            plugins: {
-              legend: { display: false }
+        if (chartShare) {
+          chartShare.data.datasets[0].data = [clearboatTotal, photoTotal];
+          chartShare.update();
+        } else {
+          chartShare = new Chart(ctxShare, {
+            type: 'doughnut',
+            data: {
+              labels: ['Clear Boat', 'Fotografía'],
+              datasets: [{
+                data: [clearboatTotal, photoTotal],
+                backgroundColor: ['#0284C7', '#9333EA'],
+                borderWidth: 0
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              cutout: '72%',
+              plugins: { legend: { display: false } }
             }
-          }
-        });
+          });
+        }
       }
 
       chartsInitialized = true;
