@@ -157,43 +157,43 @@
     <!-- SECCIÓN 1: VISTA DE RESUMEN -->
     <div id="view-resumen" class="space-y-8 animate-editorial">
       
-      <!-- HERO KPIS: RECUADRO 1 (RESTA DEL CUADRO) + RECUADROS DE SERVICIOS -->
+      <!-- HERO KPIS: RECUADRO 1 (SALDO PENDIENTE EXACTO) + RECUADROS POR SERVICIO -->
       <section class="grid grid-cols-1 md:grid-cols-12 gap-5">
         
-        <!-- RECUADRO 1: RESTA DE TOTAL PAGADO MENOS SUMA DEL TOTAL -->
+        <!-- RECUADRO 1: SALDO PENDIENTE (TOTAL DEL TOUR MENOS TOTAL DE PAGOS) -->
         <div class="md:col-span-5 bg-[#0A1926] text-white p-6 rounded-3xl hairline-border flex flex-col justify-between shadow-sm relative overflow-hidden">
           <div class="flex justify-between items-start mb-4">
             <div>
               <span class="text-[9px] font-mono-num uppercase tracking-widest text-amber-300 font-semibold block mb-1">Recuadro 01</span>
-              <h2 class="font-serif-title text-base md:text-lg font-bold text-white uppercase">Saldo por Liquidar</h2>
+              <h2 class="font-serif-title text-base md:text-lg font-bold text-white uppercase">Saldo Pendiente a Liquidar</h2>
             </div>
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 text-[10px] font-mono-num uppercase tracking-wider text-neutral-300">
               <span class="w-2.5 h-[2px] bg-amber-400"></span>
-              <span>Resta de Cuadro</span>
+              <span>Resta de Pagos</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span id="kpiSaldoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-amber-300">$664.00</span>
+              <span id="kpiSaldoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-amber-300">$258.00</span>
               <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p id="kpiSaldoMXN" class="text-xs font-mono-num text-neutral-300 mt-1">Equivalente: $11,952.00 MXN (TC: $18.00)</p>
+            <p id="kpiSaldoMXN" class="text-xs font-mono-num text-neutral-300 mt-1">Equivalente: $4,644.00 MXN (TC: $18.00)</p>
           </div>
 
           <div class="hairline-t border-white/10 pt-4 space-y-2 text-xs font-mono-num">
             <div class="flex justify-between text-neutral-300">
-              <span>Suma Total Generada:</span>
-              <span id="kpiTotalAcumulado" class="font-medium text-white">$1,164.00 USD</span>
+              <span>Total del Tour (Columna O):</span>
+              <span id="kpiTotalAcumulado" class="font-medium text-white">$1,472.00 USD</span>
             </div>
             <div class="flex justify-between text-emerald-400">
-              <span>(-) Total Pagado Proveedor:</span>
-              <span id="kpiTotalPagado" class="font-medium">-$500.00 USD</span>
+              <span>(-) Total de Pagos Realizados:</span>
+              <span id="kpiTotalPagado" class="font-medium">-$1,214.00 USD</span>
             </div>
             <div class="hairline-t border-white/10 pt-2 flex justify-between text-[11px] text-neutral-400">
-              <span id="kpiTotalPax">Aforo Global: 50 PAX</span>
-              <span id="kpiTotalJornadas">10 Jornadas</span>
+              <span id="kpiTotalPax">Aforo Global: 62 PAX</span>
+              <span id="kpiTotalJornadas">12 Jornadas Operadas</span>
             </div>
           </div>
         </div>
@@ -208,22 +208,22 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span id="badgeClearboatCount">14 Cupones</span>
+              <span id="badgeClearboatCount">19 Cupones</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span id="kpiClearboatUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$1,150.00</span>
+              <span id="kpiClearboatUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-[#0A1926]">$1,450.00</span>
               <span class="text-xs font-mono-num text-neutral-400">USD</span>
             </div>
-            <p id="kpiClearboatMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $20,700.00 MXN</p>
+            <p id="kpiClearboatMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $26,100.00 MXN</p>
           </div>
 
           <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Aforo Cubierto</span>
-              <span id="kpiClearboatPax" class="font-semibold text-neutral-800">49 PAX (46A / 3N)</span>
+              <span id="kpiClearboatPax" class="font-semibold text-neutral-800">60 PAX (57A / 3N)</span>
             </div>
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Tarifa Neta</span>
@@ -242,26 +242,26 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-purple-700"></span>
-              <span id="badgePhotoCount">1 Cupón</span>
+              <span id="badgePhotoCount">2 Cupones</span>
             </div>
           </div>
 
           <div class="my-3">
             <div class="flex items-baseline gap-2">
-              <span id="kpiPhotoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-purple-950">$14.00</span>
+              <span id="kpiPhotoUSD" class="text-3xl lg:text-4xl font-light font-mono-num text-purple-950">$22.00</span>
               <span class="text-xs font-mono-num text-purple-500">USD</span>
             </div>
-            <p id="kpiPhotoMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $252.00 MXN</p>
+            <p id="kpiPhotoMXN" class="text-xs font-mono-num text-neutral-500 mt-1">Equivalente: $396.00 MXN</p>
           </div>
 
           <div class="hairline-t pt-4 grid grid-cols-2 gap-2 text-xs font-mono-num">
             <div>
-              <span class="text-[10px] text-neutral-400 block uppercase">Cupón Vinculado</span>
-              <span id="kpiPhotoCupon" class="font-semibold text-purple-900">#895 (13/10)</span>
+              <span class="text-[10px] text-neutral-400 block uppercase">Cupones Registrados</span>
+              <span id="kpiPhotoCupon" class="font-semibold text-purple-900">#895, #830</span>
             </div>
             <div>
               <span class="text-[10px] text-neutral-400 block uppercase">Proveedor</span>
-              <span class="font-semibold text-purple-900">Fotorgrafia</span>
+              <span class="font-semibold text-purple-900">Fotografia</span>
             </div>
           </div>
         </div>
@@ -273,11 +273,17 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 hairline-b pb-4">
           <div>
             <h3 class="font-serif-title text-lg font-bold text-[#0A1926] uppercase">Días de Liquidación & Control de Muelle</h3>
-            <p class="text-xs font-mono-num text-neutral-500 mt-1">Auditoría cronológica de servicios operados frente al pago registrado de $500.00 USD.</p>
+            <p class="text-xs font-mono-num text-neutral-500 mt-1">Auditoría cronológica de servicios operados frente a los abonos del Cuadro de Pagos.</p>
           </div>
-          <div class="flex items-center gap-3">
-            <span id="cuadroPagosBadge" class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-700">
-              Total Pagado Proveedor: $500.00 USD
+          <div class="flex flex-wrap items-center gap-2.5">
+            <span class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-600">
+              Pago 1: $500.00 USD
+            </span>
+            <span class="px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[11px] font-mono-num text-neutral-600">
+              Pago 2: $714.00 USD
+            </span>
+            <span id="cuadroPagosBadge" class="px-3 py-1.5 rounded-xl hairline-border bg-emerald-50 text-[11px] font-mono-num text-emerald-800 font-semibold border-emerald-200">
+              Total Pagado: $1,214.00 USD
             </span>
           </div>
         </div>
@@ -301,10 +307,10 @@
             <tfoot class="bg-neutral-50 hairline-t font-semibold">
               <tr>
                 <td colspan="3" class="px-4 py-3 uppercase tracking-wider text-[10px]">Totales Generales</td>
-                <td id="tfootPax" class="px-4 py-3 text-center">50</td>
-                <td id="tfootTotalUSD" class="px-4 py-3 text-right text-[#0A1926]">$1,164.00 USD</td>
-                <td id="tfootTotalMXN" class="px-4 py-3 text-right text-neutral-500">$20,952.00 MXN</td>
-                <td id="tfootSaldoResta" class="px-4 py-3 text-center text-amber-600">Resta: $664 USD</td>
+                <td id="tfootPax" class="px-4 py-3 text-center">62</td>
+                <td id="tfootTotalUSD" class="px-4 py-3 text-right text-[#0A1926]">$1,472.00 USD</td>
+                <td id="tfootTotalMXN" class="px-4 py-3 text-right text-neutral-500">$26,496.00 MXN</td>
+                <td id="tfootSaldoResta" class="px-4 py-3 text-center text-amber-600">Resta: $258 USD</td>
               </tr>
             </tfoot>
           </table>
@@ -330,18 +336,18 @@
         <div class="md:col-span-3 bg-white p-6 rounded-3xl hairline-border shadow-sm flex flex-col justify-between">
           <div class="flex justify-between items-center mb-4">
             <h4 class="font-serif-title text-sm font-bold text-[#0A1926] uppercase">Aforo Demográfico</h4>
-            <span id="chartDemoSubtitle" class="text-[10px] font-mono-num text-neutral-400">50 PAX</span>
+            <span id="chartDemoSubtitle" class="text-[10px] font-mono-num text-neutral-400">62 PAX</span>
           </div>
           <div class="h-48 relative flex items-center justify-center">
             <canvas id="chartDemographics"></canvas>
           </div>
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
-              <span id="chartLabelAdultos" class="text-neutral-900 block font-semibold">Adultos (94%)</span>
-              <span id="chartPaxAdultos" class="text-neutral-400">47 PAX</span>
+              <span id="chartLabelAdultos" class="text-neutral-900 block font-semibold">Adultos (95%)</span>
+              <span id="chartPaxAdultos" class="text-neutral-400">59 PAX</span>
             </div>
             <div>
-              <span id="chartLabelNinos" class="text-amber-700 block font-semibold">Niños (6%)</span>
+              <span id="chartLabelNinos" class="text-amber-700 block font-semibold">Niños (5%)</span>
               <span id="chartPaxNinos" class="text-neutral-400">3 PAX</span>
             </div>
           </div>
@@ -358,11 +364,11 @@
           <div class="hairline-t pt-3 grid grid-cols-2 text-center text-[10px] font-mono-num">
             <div>
               <span class="text-sky-800 block font-semibold">Clear Boat</span>
-              <span id="chartValClearboat" class="text-neutral-400">$1,150.00</span>
+              <span id="chartValClearboat" class="text-neutral-400">$1,450.00</span>
             </div>
             <div>
               <span class="text-purple-800 block font-semibold">Fotografía</span>
-              <span id="chartValPhoto" class="text-neutral-400">$14.00</span>
+              <span id="chartValPhoto" class="text-neutral-400">$22.00</span>
             </div>
           </div>
         </div>
@@ -380,13 +386,13 @@
           <p class="text-xs font-mono-num text-neutral-500 mt-1">Disposición en columnas separadas para navegación e imagen digital.</p>
         </div>
         <div id="verifiedRecordsCount" class="text-xs font-mono-num text-neutral-400">
-          15 registros oficiales verificados
+          21 registros oficiales verificados
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
-        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT -->
+        <!-- COLUMNA IZQUIERDA: RECUADRO CLEAR BOAT (19 CUPONES) -->
         <div class="lg:col-span-8 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -399,7 +405,7 @@
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-sky-700"></span>
-              <span id="cuponesSubtotalClearboat">Subtotal: $1,150.00 USD</span>
+              <span id="cuponesSubtotalClearboat">Subtotal: $1,450.00 USD</span>
             </div>
           </div>
 
@@ -422,18 +428,18 @@
               <tfoot class="bg-neutral-50 hairline-t font-semibold">
                 <tr>
                   <td colspan="2" class="px-3 py-3 uppercase tracking-wider text-[9px]">Subtotal Clear Boat</td>
-                  <td id="tfootClearboatAdultos" class="px-3 py-3 text-center">46</td>
+                  <td id="tfootClearboatAdultos" class="px-3 py-3 text-center">57</td>
                   <td id="tfootClearboatNinos" class="px-3 py-3 text-center">3</td>
-                  <td id="tfootClearboatDeposito" class="px-3 py-3 text-right text-emerald-600">$1,150.00</td>
-                  <td id="tfootClearboatTotal" class="px-3 py-3 text-right text-[#0A1926]">$1,150.00 USD</td>
-                  <td id="tfootClearboatCount" class="px-3 py-3 text-center text-neutral-400">14 Vouchers</td>
+                  <td id="tfootClearboatDeposito" class="px-3 py-3 text-right text-emerald-600">$1,450.00</td>
+                  <td id="tfootClearboatTotal" class="px-3 py-3 text-right text-[#0A1926]">$1,450.00 USD</td>
+                  <td id="tfootClearboatCount" class="px-3 py-3 text-center text-neutral-400">19 Vouchers</td>
                 </tr>
               </tfoot>
             </table>
           </div>
         </div>
 
-        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA -->
+        <!-- COLUMNA DERECHA: RECUADRO FOTOGRAFÍA (2 CUPONES) -->
         <div class="lg:col-span-4 bg-white rounded-3xl hairline-border p-6 shadow-sm space-y-5 border-purple-200/60">
           <div class="flex justify-between items-center hairline-b pb-4">
             <div>
@@ -441,12 +447,12 @@
                 <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
                 <h3 class="font-serif-title text-base font-bold text-purple-950 uppercase">Recuadro: Fotografía</h3>
               </div>
-              <span class="text-[10px] font-mono-num text-neutral-400 mt-0.5 block">Proveedor: Fotorgrafia • Paquete Especial</span>
+              <span class="text-[10px] font-mono-num text-neutral-400 mt-0.5 block">Proveedor: Fotografia • Paquetes Especiales</span>
             </div>
             
             <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl hairline-border bg-neutral-50 text-[10px] font-mono-num uppercase tracking-wider text-neutral-600">
               <span class="w-2.5 h-[2px] bg-purple-700"></span>
-              <span id="cuponesSubtotalPhoto">1 Servicio</span>
+              <span id="cuponesSubtotalPhoto">2 Servicios</span>
             </div>
           </div>
 
@@ -456,7 +462,7 @@
 
           <div class="p-4 rounded-2xl bg-neutral-50 hairline-border text-[11px] font-mono-num text-neutral-500 leading-relaxed">
             <strong class="text-neutral-800 block mb-1">Nota de Auditoría:</strong>
-            El cupón #895 corresponde exclusivamente a la sesión fotográfica del 13 de Octubre y se liquida en un rubro independiente a la tripulación náutica de Enva Tours.
+            Los cupones de fotografía (#895 de $14 USD y #830 de $8 USD) corresponden exclusivamente al servicio fotográfico digital y se auditan de forma independiente a la embarcación de Enva Tours.
           </div>
         </div>
 
@@ -464,9 +470,7 @@
 
     </div>
 
-    <!-- ========================================== -->
-    <!-- 4. BOTÓN ABAJO PARA ACTUALIZAR GOOGLE SHEET-->
-    <!-- ========================================== -->
+    <!-- 4. BOTÓN ABAJO PARA ACTUALIZAR GOOGLE SHEET -->
     <section class="p-5 md:p-6 rounded-3xl hairline-border bg-white shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3.5">
         <div class="w-10 h-10 rounded-2xl hairline-border bg-neutral-50 flex items-center justify-center text-neutral-700">
@@ -520,33 +524,36 @@
 
   <!-- 6. LÓGICA DE DATOS, SINCRONIZACIÓN Y GRÁFICOS -->
   <script>
-    // URL OFICIAL DEL GOOGLE SHEET PUBLICADO EN TSV
     const TSV_ENDPOINT = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRCjHLZnyYx6iVukzsUYGPD-AB5J_r8ly86mNzBqBYZ9Qks_-etXgQ6UUtLViSRJNQlWlYhEWj7put/pub?output=tsv";
 
-    // 15 REGISTROS BASE DE RESPALDO (EN CASO DE TRABAJAR FUERA DE LÍNEA)
+    // 21 REGISTROS OFICIALES EN MEMORIA DE RESPALDO
     let CURRENT_RECORDS = [
-      { Actividad: "Clear Boat", Cupon: "858", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "29/09/26", "Día de operación": "29/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "860", Servicio: "Clear Boat", Adultos: "7", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "175", Moneda: "USD", "Tipo de cambio": "18", Deposito: "175", Balance: "0", Total: "175", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "856", Servicio: "Clear Boat", Adultos: "6", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "150", Moneda: "USD", "Tipo de cambio": "18", Deposito: "150", Balance: "0", Total: "150", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "864", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "865", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "867", Servicio: "Clear Boat", Adultos: "1", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "25", Moneda: "USD", "Tipo de cambio": "18", Deposito: "25", Balance: "0", Total: "25", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "894", Servicio: "Clear Boat", Adultos: "2", Niños: "3", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Fotografia", Cupon: "895", Servicio: "Fotografia", Adultos: "1", Niños: "", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Fotorgrafia", "Costo Reporte neto por persona": "14", "Costo Reporte neto por total de reserva": "14", Moneda: "USD", "Tipo de cambio": "18", Deposito: "14", Balance: "0", Total: "14", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "917", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "22/10/26", "Día de operación": "22/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", Total: "75", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "925", Servicio: "Clear Boat", Adultos: "11", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "275", Moneda: "USD", "Tipo de cambio": "18", Deposito: "275", Balance: "0", Total: "275", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "926", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "937", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "26/10/26", "Día de operación": "26/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "945", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "948", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" },
-      { Actividad: "Clear Boat", Cupon: "ACT-261028-2", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "28/10/26", "Día de operación": "28/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", Total: "50", Locación: "Lighthouse" }
+      { Actividad: "Clear Boat", Cupon: "858", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "29/09/26", "Día de operación": "29/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "860", Servicio: "Clear Boat", Adultos: "7", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "175", Moneda: "USD", "Tipo de cambio": "18", Deposito: "175", Balance: "0", "Total Del Tour": "175", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "856", Servicio: "Clear Boat", Adultos: "6", Niños: "", Día: "30/09/26", "Día de operación": "30/09/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "150", Moneda: "USD", "Tipo de cambio": "18", Deposito: "150", Balance: "0", "Total Del Tour": "150", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "864", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "865", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "867", Servicio: "Clear Boat", Adultos: "1", Niños: "", Día: "03/10/26", "Día de operación": "03/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "25", Moneda: "USD", "Tipo de cambio": "18", Deposito: "25", Balance: "0", "Total Del Tour": "25", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "894", Servicio: "Clear Boat", Adultos: "2", Niños: "3", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Fotografia", Cupon: "895", Servicio: "Fotografia", Adultos: "1", Niños: "", Día: "13/10/26", "Día de operación": "13/10/26", Provedor: "Fotorgrafia", "Costo Reporte neto por persona": "14", "Costo Reporte neto por total de reserva": "14", Moneda: "USD", "Tipo de cambio": "18", Deposito: "14", Balance: "0", "Total Del Tour": "14", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "917", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "22/10/26", "Día de operación": "22/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", "Total Del Tour": "75", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "925", Servicio: "Clear Boat", Adultos: "11", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "275", Moneda: "USD", "Tipo de cambio": "18", Deposito: "275", Balance: "0", "Total Del Tour": "275", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "926", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "24/10/26", "Día de operación": "24/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "937", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "26/10/26", "Día de operación": "26/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "945", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "948", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "27/10/26", "Día de operación": "27/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "977", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "28/10/26", "Día de operación": "28/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "976", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "28/10/26", "Día de operación": "28/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "828", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "30/10/26", "Día de operación": "30/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" },
+      { Actividad: "Fotografia", Cupon: "830", Servicio: "Fotografia", Adultos: "1", Niños: "", Día: "30/10/26", "Día de operación": "30/10/26", Provedor: "Fotografia", "Costo Reporte neto por persona": "8", "Costo Reporte neto por total de reserva": "8", Moneda: "USD", "Tipo de cambio": "18", Deposito: "8", Balance: "0", "Total Del Tour": "8", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "831", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "30/10/26", "Día de operación": "30/10/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", "Total Del Tour": "75", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "845", Servicio: "Clear Boat", Adultos: "3", Niños: "", Día: "06/11/26", "Día de operación": "06/11/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "75", Moneda: "USD", "Tipo de cambio": "18", Deposito: "75", Balance: "0", "Total Del Tour": "75", Locación: "Lighthouse" },
+      { Actividad: "Clear Boat", Cupon: "842", Servicio: "Clear Boat", Adultos: "2", Niños: "", Día: "07/11/26", "Día de operación": "07/11/26", Provedor: "Enva Tours", "Costo Reporte neto por persona": "25", "Costo Reporte neto por total de reserva": "50", Moneda: "USD", "Tipo de cambio": "18", Deposito: "50", Balance: "0", "Total Del Tour": "50", Locación: "Lighthouse" }
     ];
 
-    let TOTAL_PAGADO_PROVEEDOR = 500.00;
+    let TOTAL_PAGOS_ACUMULADOS = 1214.00;
     let currentRoute = 'resumen';
-    let chartsInitialized = false;
 
-    // Utilidades numéricas
     function numVal(v) {
       if (!v) return 0;
       if (typeof v === 'number') return v;
@@ -562,14 +569,14 @@
       return `$${(numVal(v) * 18).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
     }
 
-    // Parseador de TSV de Google Sheets
+    // Parseador dinámico que lee filas de tours y pagos
     function parseGoogleSheetTSV(tsvText) {
       const lines = tsvText.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
       if (lines.length < 2) return null;
 
       const headers = lines[0].split('\t').map(h => h.trim());
       const parsedRecords = [];
-      let parsedPago = 500;
+      let totalPagosDetectados = 0;
       let inPaymentSection = false;
 
       for (let i = 1; i < lines.length; i++) {
@@ -583,10 +590,10 @@
         }
 
         if (inPaymentSection) {
-          if (col0.includes('pago') || col1.includes('pago')) {
+          if (col0.startsWith('pago') || col1.startsWith('pago')) {
             for (let c of cols) {
               const n = numVal(c);
-              if (n > 0) { parsedPago = n; break; }
+              if (n > 0) { totalPagosDetectados += n; break; }
             }
           }
           continue;
@@ -604,10 +611,12 @@
         parsedRecords.push(rowObj);
       }
 
-      return { records: parsedRecords, totalPagado: parsedPago };
+      return {
+        records: parsedRecords,
+        totalPagos: totalPagosDetectados > 0 ? totalPagosDetectados : 1214.00
+      };
     }
 
-    // Función de Sincronización con el botón
     async function syncFromGoogleSheet(isSilent = false) {
       const btn = document.getElementById('syncSheetBtn');
       const spinner = document.getElementById('syncSpinner');
@@ -622,18 +631,18 @@
 
       try {
         const res = await fetch(`${TSV_ENDPOINT}&nocache=${Date.now()}`);
-        if (!res.ok) throw new Error("Respuesta no satisfactoria de Google Sheets");
+        if (!res.ok) throw new Error("Fallo de conexión con Google Sheets");
         const tsvText = await res.text();
         const parsed = parseGoogleSheetTSV(tsvText);
 
         if (parsed && parsed.records.length > 0) {
           CURRENT_RECORDS = parsed.records;
-          TOTAL_PAGADO_PROVEEDOR = parsed.totalPagado || 500;
+          TOTAL_PAGOS_ACUMULADOS = parsed.totalPagos;
           renderAllDashboard();
 
           const now = new Date();
           const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-          statusLabel.innerText = `Sincronizado vía TSV oficial • Última actualización: ${timeStr}`;
+          statusLabel.innerText = `Sincronizado vía TSV oficial • Última comprobación: ${timeStr}`;
 
           if (!isSilent) {
             btnText.innerText = "Actualizado";
@@ -644,10 +653,10 @@
             }, 1800);
           }
         } else {
-          throw new Error("Formato de hoja no compatible");
+          throw new Error("Estructura de hoja no reconocida");
         }
       } catch (err) {
-        console.warn("Fallo en sincronización directa de Google Sheet, usando datos en memoria:", err);
+        console.warn("Usando base de datos en memoria:", err);
         renderAllDashboard();
         statusLabel.innerText = "Modo sin conexión activa • Datos en memoria local";
         if (!isSilent) {
@@ -659,12 +668,11 @@
       }
     }
 
-    // Renderizado Maestro de Todas las Vistas
     function renderAllDashboard() {
       const clearboatRows = CURRENT_RECORDS.filter(r => !String(r.Actividad || '').toLowerCase().includes('foto'));
       const photoRows = CURRENT_RECORDS.filter(r => String(r.Actividad || '').toLowerCase().includes('foto'));
 
-      let sumTotal = 0;
+      let sumTotalTour = 0;
       let totalPax = 0;
       let totalAdultos = 0;
       let totalNinos = 0;
@@ -674,60 +682,60 @@
       let clearboatNinos = 0;
 
       CURRENT_RECORDS.forEach(r => {
-        const t = numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        const t = numVal(r["Total Del Tour"] || r.Total || r["Costo Reporte neto por total de reserva"]);
         const a = numVal(r.Adultos);
         const n = numVal(r.Niños);
-        sumTotal += t;
+        sumTotalTour += t;
         totalAdultos += a;
         totalNinos += n;
         totalPax += (a + n);
       });
 
       clearboatRows.forEach(r => {
-        clearboatTotal += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        clearboatTotal += numVal(r["Total Del Tour"] || r.Total || r["Costo Reporte neto por total de reserva"]);
         clearboatAdultos += numVal(r.Adultos);
         clearboatNinos += numVal(r.Niños);
       });
 
       let photoTotal = 0;
       photoRows.forEach(r => {
-        photoTotal += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        photoTotal += numVal(r["Total Del Tour"] || r.Total || r["Costo Reporte neto por total de reserva"]);
       });
 
-      // Recuadro 1: Resta (Total Pagado del Cuadro menos la Suma del Total)
-      const saldoResta = sumTotal - TOTAL_PAGADO_PROVEEDOR;
+      // Precisión exacta solicitada: Saldo Pendiente = Suma Total Del Tour (Columna O) - Suma Total de Pagos
+      const saldoPendiente = sumTotalTour - TOTAL_PAGOS_ACUMULADOS;
 
-      // Inyección en Recuadro 1
-      document.getElementById('kpiSaldoUSD').innerText = formatUSD(saldoResta);
-      document.getElementById('kpiSaldoMXN').innerText = `Equivalente: ${formatMXN(saldoResta)} (TC: $18.00)`;
-      document.getElementById('kpiTotalAcumulado').innerText = `${formatUSD(sumTotal)} USD`;
-      document.getElementById('kpiTotalPagado').innerText = `-${formatUSD(TOTAL_PAGADO_PROVEEDOR)} USD`;
+      // Recuadro 1: Saldo Pendiente a Liquidar
+      document.getElementById('kpiSaldoUSD').innerText = formatUSD(saldoPendiente);
+      document.getElementById('kpiSaldoMXN').innerText = `Equivalente: ${formatMXN(saldoPendiente)} (TC: $18.00)`;
+      document.getElementById('kpiTotalAcumulado').innerText = `${formatUSD(sumTotalTour)} USD`;
+      document.getElementById('kpiTotalPagado').innerText = `-${formatUSD(TOTAL_PAGOS_ACUMULADOS)} USD`;
       document.getElementById('kpiTotalPax').innerText = `Aforo Global: ${totalPax} PAX`;
 
-      // Inyección en Recuadro 2 (Clear Boat)
+      // Recuadro 2: Clear Boat
       document.getElementById('badgeClearboatCount').innerText = `${clearboatRows.length} Cupones`;
       document.getElementById('kpiClearboatUSD').innerText = formatUSD(clearboatTotal);
       document.getElementById('kpiClearboatMXN').innerText = `Equivalente: ${formatMXN(clearboatTotal)}`;
       document.getElementById('kpiClearboatPax').innerText = `${clearboatAdultos + clearboatNinos} PAX (${clearboatAdultos}A / ${clearboatNinos}N)`;
 
-      // Inyección en Recuadro 3 (Fotografía)
-      document.getElementById('badgePhotoCount').innerText = `${photoRows.length} Cupón${photoRows.length > 1 ? 'es' : ''}`;
+      // Recuadro 3: Fotografía
+      document.getElementById('badgePhotoCount').innerText = `${photoRows.length} Cupones`;
       document.getElementById('kpiPhotoUSD').innerText = formatUSD(photoTotal);
       document.getElementById('kpiPhotoMXN').innerText = `Equivalente: ${formatMXN(photoTotal)}`;
       if (photoRows.length > 0) {
-        document.getElementById('kpiPhotoCupon').innerText = `#${photoRows[0].Cupon} (${photoRows[0].Día})`;
+        document.getElementById('kpiPhotoCupon').innerText = photoRows.map(p => `#${p.Cupon}`).join(', ');
       }
 
       // Footers
-      document.getElementById('cuadroPagosBadge').innerText = `Total Pagado Proveedor: ${formatUSD(TOTAL_PAGADO_PROVEEDOR)} USD`;
+      document.getElementById('cuadroPagosBadge').innerText = `Total Pagado: ${formatUSD(TOTAL_PAGOS_ACUMULADOS)} USD`;
       document.getElementById('tfootPax').innerText = totalPax;
-      document.getElementById('tfootTotalUSD').innerText = `${formatUSD(sumTotal)} USD`;
-      document.getElementById('tfootTotalMXN').innerText = `${formatMXN(sumTotal)} MXN`;
-      document.getElementById('tfootSaldoResta').innerText = `Resta: $${saldoResta.toFixed(0)} USD`;
+      document.getElementById('tfootTotalUSD').innerText = `${formatUSD(sumTotalTour)} USD`;
+      document.getElementById('tfootTotalMXN').innerText = `${formatMXN(sumTotalTour)} MXN`;
+      document.getElementById('tfootSaldoResta').innerText = `Resta: $${saldoPendiente.toFixed(0)} USD`;
 
       document.getElementById('verifiedRecordsCount').innerText = `${CURRENT_RECORDS.length} registros oficiales verificados`;
       document.getElementById('cuponesSubtotalClearboat').innerText = `Subtotal: ${formatUSD(clearboatTotal)} USD`;
-      document.getElementById('cuponesSubtotalPhoto').innerText = `${photoRows.length} Servicio${photoRows.length > 1 ? 's' : ''}`;
+      document.getElementById('cuponesSubtotalPhoto').innerText = `${photoRows.length} Servicios`;
 
       document.getElementById('tfootClearboatAdultos').innerText = clearboatAdultos;
       document.getElementById('tfootClearboatNinos').innerText = clearboatNinos;
@@ -736,7 +744,7 @@
       document.getElementById('tfootClearboatCount').innerText = `${clearboatRows.length} Vouchers`;
 
       // Render Tablas
-      renderSettlementSchedule(CURRENT_RECORDS, TOTAL_PAGADO_PROVEEDOR);
+      renderSettlementSchedule(CURRENT_RECORDS, TOTAL_PAGOS_ACUMULADOS);
       renderClearboatTable(clearboatRows);
       renderPhotoCards(photoRows);
 
@@ -744,13 +752,11 @@
       updateCharts(CURRENT_RECORDS, totalAdultos, totalNinos, clearboatTotal, photoTotal);
     }
 
-    // Tabla de Liquidación agrupada por fecha y servicio
     function renderSettlementSchedule(records, totalPagado) {
       const tbody = document.getElementById('settlementTableBody');
       if (!tbody) return;
       tbody.innerHTML = '';
 
-      // Agrupación por Día y Tipo
       const groups = {};
       records.forEach(r => {
         const fecha = r["Día de operación"] || r.Día || "S/F";
@@ -770,12 +776,12 @@
         groups[key].cupones.push(`#${r.Cupon}`);
         groups[key].adultos += numVal(r.Adultos);
         groups[key].ninos += numVal(r.Niños);
-        groups[key].totalUSD += numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        groups[key].totalUSD += numVal(r["Total Del Tour"] || r.Total || r["Costo Reporte neto por total de reserva"]);
       });
 
       let runningAccum = 0;
       const groupKeys = Object.keys(groups);
-      document.getElementById('kpiTotalJornadas').innerText = `${groupKeys.length} Jornadas`;
+      document.getElementById('kpiTotalJornadas').innerText = `${groupKeys.length} Jornadas Operadas`;
 
       groupKeys.forEach(k => {
         const g = groups[k];
@@ -806,7 +812,6 @@
       });
     }
 
-    // Tabla de Cupones Clear Boat
     function renderClearboatTable(clearboatRows) {
       const tbody = document.getElementById('clearboatTableBody');
       if (!tbody) return;
@@ -821,21 +826,21 @@
           <td class="px-3 py-3 text-neutral-600">${item.Día}</td>
           <td class="px-3 py-3 text-center">${item.Adultos}</td>
           <td class="px-3 py-3 text-center text-neutral-400">${item.Niños || '—'}</td>
-          <td class="px-3 py-3 text-right text-emerald-600">${formatUSD(item.Deposito || item.Total)}</td>
-          <td class="px-3 py-3 text-right font-medium">${formatUSD(item.Total)}</td>
+          <td class="px-3 py-3 text-right text-emerald-600">${formatUSD(item.Deposito || item["Total Del Tour"] || item.Total)}</td>
+          <td class="px-3 py-3 text-right font-medium">${formatUSD(item["Total Del Tour"] || item.Total)}</td>
           <td class="px-3 py-3 text-center text-neutral-400 hover:text-black">Ver</td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    // Fichas de Fotografía
     function renderPhotoCards(photoRows) {
       const container = document.getElementById('photoCardsContainer');
       if (!container) return;
       container.innerHTML = '';
 
       photoRows.forEach(item => {
+        const valUSD = numVal(item["Total Del Tour"] || item.Total || 14);
         const div = document.createElement('div');
         div.onclick = () => openCouponModal(item.Cupon);
         div.className = "p-5 rounded-2xl bg-purple-50/40 hairline-border border-purple-200/80 cursor-pointer hover:border-purple-500 transition group space-y-4";
@@ -859,15 +864,15 @@
             </div>
             <div class="flex justify-between text-neutral-600">
               <span>Depósito Registrado:</span>
-              <span class="font-medium text-emerald-600">${formatUSD(item.Deposito || 14)}</span>
+              <span class="font-medium text-emerald-600">${formatUSD(item.Deposito || valUSD)}</span>
             </div>
             <div class="flex justify-between text-neutral-600">
               <span>Costo Neto Reporte:</span>
-              <span class="font-semibold text-purple-950">${formatUSD(item.Total || 14)}</span>
+              <span class="font-semibold text-purple-950">${formatUSD(valUSD)}</span>
             </div>
             <div class="flex justify-between text-neutral-600">
               <span>Equivalente en MXN:</span>
-              <span class="font-medium text-neutral-900">${formatMXN(item.Total || 14)}</span>
+              <span class="font-medium text-neutral-900">${formatMXN(valUSD)}</span>
             </div>
           </div>
 
@@ -880,7 +885,6 @@
       });
     }
 
-    // Modal de Detalle de Cupón
     function openCouponModal(cuponId) {
       const item = CURRENT_RECORDS.find(r => String(r.Cupon).trim() === String(cuponId).trim());
       if (!item) return;
@@ -910,7 +914,7 @@
         ["Tipo de Cambio", `$${item["Tipo de cambio"]} MXN`],
         ["Depósito Realizado", `$${item.Deposito} USD`],
         ["Balance Pendiente", `$${item.Balance} USD`],
-        ["Liquidación Neta", `$${item.Total} USD`],
+        ["Total Del Tour", `$${item["Total Del Tour"] || item.Total} USD`],
         ["Locación Base", item.Locación]
       ];
 
@@ -943,7 +947,6 @@
       }
     });
 
-    // Menú Móvil
     function toggleMobileMenu(e) {
       if (e) e.stopPropagation();
       document.getElementById('mobileDrawer').classList.toggle('hidden');
@@ -952,7 +955,6 @@
       document.getElementById('mobileDrawer').classList.add('hidden');
     }
 
-    // Scroll Arriba
     window.addEventListener('scroll', () => {
       const btn = document.getElementById('backToTopBtn');
       if (window.scrollY > 220) {
@@ -968,7 +970,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Enrutador
     function navigateTo(route) {
       currentRoute = route;
       const vResumen = document.getElementById('view-resumen');
@@ -997,7 +998,6 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Autenticación
     function handleLoginSubmit(event) {
       event.preventDefault();
       const u = document.getElementById('userInput').value.trim().toLowerCase();
@@ -1016,7 +1016,6 @@
       gate.classList.add('opacity-0', 'pointer-events-none');
       setTimeout(() => gate.classList.add('hidden'), 400);
       renderAllDashboard();
-      // Sincronización silenciosa automática al ingresar
       syncFromGoogleSheet(true);
     }
 
@@ -1036,7 +1035,6 @@
       p.type = p.type === 'password' ? 'text' : 'password';
     }
 
-    // Gráficos con Chart.js
     let chartDaily = null;
     let chartDemo = null;
     let chartShare = null;
@@ -1045,13 +1043,12 @@
       const textColor = '#4A5568';
       const gridColor = 'rgba(0,0,0,0.06)';
 
-      // 1. Agrupar facturación por día
       const datesMap = {};
       records.forEach(r => {
         const d = r["Día de operación"] || r.Día;
         if (!datesMap[d]) datesMap[d] = { boat: 0, photo: 0 };
         const isPhoto = String(r.Actividad || '').toLowerCase().includes('foto');
-        const tot = numVal(r.Total || r["Costo Reporte neto por total de reserva"]);
+        const tot = numVal(r["Total Del Tour"] || r.Total || r["Costo Reporte neto por total de reserva"]);
         if (isPhoto) datesMap[d].photo += tot;
         else datesMap[d].boat += tot;
       });
@@ -1060,7 +1057,6 @@
       const dataBoat = labels.map(l => datesMap[l].boat);
       const dataPhoto = labels.map(l => datesMap[l].photo);
 
-      // Gráfica de Barras Diarias
       const ctxDaily = document.getElementById('chartDailyBilling')?.getContext('2d');
       if (ctxDaily) {
         if (chartDaily) {
@@ -1093,7 +1089,6 @@
         }
       }
 
-      // 2. Gráfica Demográfica
       const totalPax = adultos + ninos;
       const pctAdultos = totalPax > 0 ? Math.round((adultos / totalPax) * 100) : 0;
       const pctNinos = totalPax > 0 ? Math.round((ninos / totalPax) * 100) : 0;
@@ -1130,7 +1125,6 @@
         }
       }
 
-      // 3. Proporción Paquetes
       document.getElementById('chartValClearboat').innerText = formatUSD(clearboatTotal);
       document.getElementById('chartValPhoto').innerText = formatUSD(photoTotal);
 
@@ -1159,8 +1153,6 @@
           });
         }
       }
-
-      chartsInitialized = true;
     }
 
     window.addEventListener('DOMContentLoaded', checkAuthOnLoad);
